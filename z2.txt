@@ -1,0 +1,8 @@
+z2-anglų - lietuvių žodynas
+a-raidė 'a'
+en-anglų kalbos trumpinys
+new-naujas
+old-senas
+get-gauti, imti
+set-nustatyti, duoti
+cup-puodukas

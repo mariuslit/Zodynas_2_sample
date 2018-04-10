@@ -1,0 +1,7 @@
+z1-Lietuvių_Anglų
+z2-Anglų_Lietuvių
+z3-Aiškinamasis
+z4-Žodynas 4
+z5-Žodynas 5
+z6-Žodynas 6
+default-z1
