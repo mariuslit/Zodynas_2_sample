@@ -26,14 +26,15 @@ public class ReadWriteData {
                 }
             }
         } catch (IOException e) {
+            System.out.println("Can t read data to file");
         }
 //        return s;
     }
 
-    public static void writeDataIntoFile(List<String> zodynas, String failoVardas) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(failoVardas + ".txt"))) {
-            for (String item : zodynas) {
-                bw.write(item);
+    public static void writeFile(Map<String, String> zodynas, String failoVardas) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("laikinas"+".txt"))) { // kai suveiks atkeisti į failoVardas
+            for (String item : zodynas.keySet()) {
+                bw.write(item+"  =  "+zodynas.get(item));
                 bw.newLine();
             }
         } catch (IOException e) {

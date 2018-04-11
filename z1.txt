@@ -1,11 +1,7 @@
 a-a (ei) pirmoji pirmoji pirmoji pirmoji pirmoji pirmoji pirmoji pirmoji pirmoji pirmoji
-z1-lietuvių anglų žodynas
 naujas-new
-senas-old
 gauti-get
 nustatyti-set
-puodukas-cup
-
 padas1-1
 pakulos2-2
 Pakuonis3-3
@@ -25,4 +21,3 @@ penkiolika16-16
 penktokas17-17
 pensija18-18
 pensininkas19-19
-pienas20-20

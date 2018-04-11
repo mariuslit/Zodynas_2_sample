@@ -20,8 +20,6 @@ public class Controller implements Initializable {
     @FXML
     private Label vertimasLabel;
     @FXML
-    private TextArea visiZodynoZodziaiTextArea;
-    @FXML
     private ListView visiZodynoZodziaiListView;
     @FXML
     private ListView variant7;
@@ -43,7 +41,7 @@ public class Controller implements Initializable {
     private RadioButton z6;
 
     private Map<String, String> zodynasTreeMap = new TreeMap<>();
-//    private Map<String, String> vocaburalyMap = new TreeMap<>();
+    private Map<String, String> setingsLinkedMap = new TreeMap<>();
 
     //todo
     @Override
@@ -56,6 +54,10 @@ public class Controller implements Initializable {
 
         // nuskaito zodyną į zodynasTreemap + siunčiamas failo vardas failoVardas, (laikinai išjungiau su "z1")
         ReadWriteData.readFile(zodynasTreeMap, "z1"); // failoVardas
+        ReadWriteData.readFile(setingsLinkedMap, "setings"); // failoVardas
+        ReadWriteData.writeFile(zodynasTreeMap, "z1"); // failoVardas
+
+        // TODO sukurti ReadFileSetings setings.txt
     }
 
     public void action(ActionEvent event) {
@@ -65,62 +67,40 @@ public class Controller implements Initializable {
 
     //todo
     public void versk(javafx.event.ActionEvent event) {
-        RadioButton pazymetasZodynas = (RadioButton) zodynuGrupe.getSelectedToggle();
-        String failoVardas = pazymetasZodynas.getId();
-        laikinasTextField.setText("Pasirinktas žodynas: " + failoVardas +"="+ pazymetasZodynas.getText());
-        String zodis = zodisTextField.getText(); // nuskaito verčiama žodį
-        String vertimas = zodynasTreeMap.get(zodis); // suranda žodžio vertimą
+        // pasirinktas žodynas
+        RadioButton aktyvusZodynas = (RadioButton) zodynuGrupe.getSelectedToggle();
+        laikinasTextField.setText("Pasirinktas žodynas: " + aktyvusZodynas.getId() + "=" + aktyvusZodynas.getText());
+
+        String fragmentas = zodisTextField.getText(); // nuskaito verčiama žodį
+        String vertimas = zodynasTreeMap.get(fragmentas); // suranda žodžio vertimą
+
         if (vertimas != null) {
             vertimasLabel.setText(vertimas);
-//            laikinasTextField.setText("Zodyno dydis: " + zodynasTreeMap.size());
         } else {
             vertimasLabel.setText("žodyne tokio žodžio nėra");
         }
-        variant7.getId();
 
-        // paima žodyno Key reikšmes ir sukelia į List dinaminį masyvą
-//        List<String> wordsKey = new ArrayList<>(zodynasTreeMap.keySet());
-//        StringBuilder s = new StringBuilder(); // naujas string tipas, reikia išbandyti
+        // parodo visus žodyno žodžius per listView
+        //visiZodynoZodziaiListView.//todo čia reika įrašyti duomenų trynimo iš ListView metodą;
         for (String w : zodynasTreeMap.keySet()) {
             visiZodynoZodziaiListView.getItems().addAll(w);
 //            s.append(w).append(" \n"); // s.append() prijungia prie s viską kas skliausteliuose
         }
-//        visiZodynoZodziaiTextArea.setText(s.toString());
-
-//        laikinasTextField.setText(pask);
-//        s.append("..." + gautiAtitikmenuVariantus(zodynasTreeMap.keySet(), zodis).spliterator());
+        gautiAtitikmenuVariantus(zodynasTreeMap,fragmentas);
     }
-    // TODO veikia sąrašo įkėlimas į visiZodynoZodziaiTextArea
 
-    // TODO pabaigti analizuoti šitą koda, jis veikia ant zodynas1 console
-    // TODO variantų paieškos varikliukas
-    public TreeSet gautiAtitikmenuVariantus(Set<String> zodynoKey, String zodis) {// pakaitalioti list-set
-//        žodis yra/nėra
-        String yraNera;
-        List<String> f = new ArrayList<>();
-//        System.out.print("Veskite žodį: ");
-//        Scanner sc = new Scanner(System.in);
-//        String zodis = sc.nextLine(); // įvedamas key, arba pradžios fragmentas
-        Map<String, String> tm = new TreeMap<>();
-        f.addAll(tm.keySet()); // mapo key reikšmų priskyrimas listui
-        System.out.println(f);
-        TreeSet<String> galimiVariantai = new TreeSet<>();
-        for (int i = 0; i < f.size(); i++) {
-            yraNera = f.get(i);
+    // variantų paieškos varikliukas
+    public TreeSet gautiAtitikmenuVariantus(Map<String, String> zodynas, String fragmentas) {
+        TreeSet<String> variantai = new TreeSet<>(); // čia talpinamas atsakymas
+        for (String item :zodynas.keySet()) {
+//            yraNera = zodynas.get(w);
 //            System.out.println(yraNera.contains(zodis));
-            if (yraNera.toLowerCase().startsWith(zodis)) {
-                System.out.println("žodis " + zodis + " rastas, indeksas: " + i + " key: " + yraNera);
-                galimiVariantai.add(yraNera);
+            if (item.toLowerCase().startsWith(fragmentas)) { // true jei rado atitikmenį
+                variantai.add(item);
+                variant7.getItems().addAll(item);
             }
         }
-        System.out.println("viso žodyne žodžių: " + f.size());
-        if (galimiVariantai.size() > 0) {
-            System.out.println("Rasta " + galimiVariantai.size() + " žodžių su pradžios fragmentu: " + zodis);
-            System.out.println(galimiVariantai);
-        } else {
-            System.out.println("Žodyne žodžių su {" + zodis + "} fragmentu nerasta");
-        }
-        return galimiVariantai;
+        return variantai;
     }
 
     // veikiantis metodas atspausdinti duomenis į ListView
@@ -131,32 +111,13 @@ public class Controller implements Initializable {
         }
     }
 
-    // visi zodziai
-//    public void irasytiZodziusIzoodyna() {
-////        List<String> ss = new ArrayList<>();
-////        ReadWriteData.writeDataIntoFile(ss, "z4");
-//    }
-    //        pastabos.setText(zodis + " vertimas: " + text1 + " žodyno dydis: " + zodynasTreeMap.size());//zodisTextField.getText());
-//            zodisTextField.setText("");
-//        if (zodis.equals(text1)) {
-//            vertimasLabel.setText(text1);
-//        } else {
-//            vertimasLabel.setText("Žodyne tokio žodžio nėra!");
-//            pastabos.setText(text1+", vertimas: "+text2);//zodisTextField.getText());
-//        }
-
-//    public void clearTextFieldOnEsc(KeyEvent event) { // kažkodėl nveikia
-////        if (event.getCode() == KeyCode.ESCAPE) {
-//            zodisTextField.setText("");
-////        }
-//    }
-
+    // aktyvaus žodyno keitimas
     public void kitasZodynas(ActionEvent event) {
         RadioButton pazymetasZodynas = (RadioButton) zodynuGrupe.getSelectedToggle();
         String tugelis = pazymetasZodynas.getText();
-//        Alert alert = new Alert(Alert.AlertType.WARNING);
-//        alert.setContentText("Pasirinktas žodynas:\n   " + tugelis + "\nlaikinai veiks tik z1: " + z1.getText());
-//        alert.show();
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setContentText("Pasirinktas žodynas:\n   " + tugelis + "\nlaikinai veiks tik z1: " + z1.getText());
+        alert.show();
         zodisTextField.setPromptText(tugelis);
         laikinasTextField.setText("Pasirinktas žodynas: " + tugelis);
     }
