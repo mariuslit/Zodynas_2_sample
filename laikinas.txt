@@ -1,23 +1,15 @@
-Pakuonis3  =  3
-Panevėžys8  =  8
-a  =  a (ei) pirmoji pirmoji pirmoji pirmoji pirmoji pirmoji pirmoji pirmoji pirmoji pirmoji
-gauti  =  get
-naujas  =  new
-nustatyti  =  set
-padas1  =  1
-pakulos2  =  2
-panda4  =  4
-pandemija5  =  5
-panelė6  =  6
-panelė7  =  7
-paplotėlis9  =  9
-peilis10  =  10
-pelenai12  =  12
-pelkė14  =  14
-pelė11  =  11
-pelėsis13  =  13
-penki15  =  15
-penkiolika16  =  16
-penktokas17  =  17
-pensija18  =  18
-pensininkas19  =  19
+a-pirmoji abėcėlės raidė
+b-antroji abėcėlės raidė
+duoti-kai kažką duodi
+en-anglų kalba
+eng-anglų kalba
+engl-anglų kalba
+gauti-kai kažką gauni
+klavišas-mygtkas klaviatūroje
+lt-lietuvių kalba
+ltu-lietuvių kalba
+naujas-kažkas, ko dar nebuvo
+nustatyti-nureguliuoti ir palikti
+puodukas-indas kavai gerti [2]
+senas-kažkas, kas buvo seniai
+z3-aiškinamasis žodynas

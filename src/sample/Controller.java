@@ -43,33 +43,68 @@ public class Controller implements Initializable {
     private Map<String, String> zodynasTreeMap = new TreeMap<>();
     private Map<String, String> setingsLinkedMap = new TreeMap<>();
 
-    //todo
     @Override
     // ANDRIAUS KOMENTARAS: "Cia nuskaitai faila ir sudeti i map. Sitas metodas leidziamas ant star upo"
     public void initialize(URL location, ResourceBundle resources) {
+        ReadWriteData.readFile(setingsLinkedMap, "setings"); // nuskaitomas setings.txt
+        zodynasSelect(setingsLinkedMap.get("default")); //keičiamas zodynas ė default stratup metu
 
-        // nustatomas failas iš kurio bus skaitomas žodynas
-        RadioButton pazymetasZodynas = (RadioButton) zodynuGrupe.getSelectedToggle();
-        String failoVardas = pazymetasZodynas.getId();
+//        String failoVardas = ; // čia default= String z1
 
         // nuskaito zodyną į zodynasTreemap + siunčiamas failo vardas failoVardas, (laikinai išjungiau su "z1")
-        ReadWriteData.readFile(zodynasTreeMap, "z1"); // failoVardas
-        ReadWriteData.readFile(setingsLinkedMap, "setings"); // failoVardas
-        ReadWriteData.writeFile(zodynasTreeMap, "z1"); // failoVardas
 
         // TODO sukurti ReadFileSetings setings.txt
     }
 
-    public void action(ActionEvent event) {
-        // ANDRIAUS KOMENTARAS: "cia gali naudoti savo map jis uzpildomas viena karta kai uzkraunama aplikacija"
-// ANDRIAUS: vocaburalyMap.get("teksts"); // darai ka nori su juo
+    // aktyvaus žodyno keitimas
+    public void kitasZodynas(ActionEvent event) {
+        RadioButton pazymetasZodynas = (RadioButton) zodynuGrupe.getSelectedToggle();
+        String failoVardas = pazymetasZodynas.getId();
+        zodynasSelect(failoVardas);
+        zodisTextField.setPromptText(pazymetasZodynas.getText());
+
+//        Alert alert = new Alert(Alert.AlertType.WARNING);
+//        alert.setContentText("Pasirinktas žodynas:\n   " + tugelis + "\nlaikinai veiks tik z1: " + z1.getText());
+//        alert.show();
     }
 
-    //todo
+    public void zodynasSelect(String toggelID) {
+        String failoVardas = toggelID;
+        switch (toggelID) {
+            case "z1":
+                zodynuGrupe.selectToggle(z1);
+                break;
+            case "z2":
+                zodynuGrupe.selectToggle(z2);
+                break;
+            case "z3":
+                zodynuGrupe.selectToggle(z3);
+                break;
+            case "z4":
+                zodynuGrupe.selectToggle(z4);
+                break;
+            case "z5":
+                zodynuGrupe.selectToggle(z5);
+                break;
+            case "z6":
+                zodynuGrupe.selectToggle(z6);
+                break;
+        }
+        ReadWriteData.readFile(zodynasTreeMap, failoVardas); // failoVardas
+        ReadWriteData.writeFile(zodynasTreeMap, "laikinas"); // failoVardas
+        setingsLinkedMap.put("default", failoVardas);
+        ReadWriteData.writeFile(setingsLinkedMap, "setings"); // failoVardas
+        RadioButton pazymetasZodynas = (RadioButton) zodynuGrupe.getSelectedToggle();
+        laikinasTextField.setText("toggles: " + pazymetasZodynas);
+
+
+    }
+    // turi būti naudojamas po kiekvieno klavišo paspaudimo
+
     public void versk(javafx.event.ActionEvent event) {
-        // pasirinktas žodynas
+        // čia tik informacinis įrašas laikiname textfielde pasirinktas žodynas ir jo pavadinimas
         RadioButton aktyvusZodynas = (RadioButton) zodynuGrupe.getSelectedToggle();
-        laikinasTextField.setText("Pasirinktas žodynas: " + aktyvusZodynas.getId() + "=" + aktyvusZodynas.getText());
+//        laikinasTextField.setText("Pasirinktas žodynas: " + aktyvusZodynas.getId() + "=" + aktyvusZodynas.getText());
 
         String fragmentas = zodisTextField.getText(); // nuskaito verčiama žodį
         String vertimas = zodynasTreeMap.get(fragmentas); // suranda žodžio vertimą
@@ -81,18 +116,18 @@ public class Controller implements Initializable {
         }
 
         // parodo visus žodyno žodžius per listView
-        //visiZodynoZodziaiListView.//todo čia reika įrašyti duomenų trynimo iš ListView metodą;
+//        visiZodynoZodziaiListView. ? ; //getItems().add("") neveikia; //todo čia reika įrašyti duomenų trynimo iš ListView metodą;
         for (String w : zodynasTreeMap.keySet()) {
             visiZodynoZodziaiListView.getItems().addAll(w);
 //            s.append(w).append(" \n"); // s.append() prijungia prie s viską kas skliausteliuose
         }
-        gautiAtitikmenuVariantus(zodynasTreeMap,fragmentas);
+        gautiAtitikmenuVariantus(zodynasTreeMap, fragmentas);
     }
-
     // variantų paieškos varikliukas
+
     public TreeSet gautiAtitikmenuVariantus(Map<String, String> zodynas, String fragmentas) {
         TreeSet<String> variantai = new TreeSet<>(); // čia talpinamas atsakymas
-        for (String item :zodynas.keySet()) {
+        for (String item : zodynas.keySet()) {
 //            yraNera = zodynas.get(w);
 //            System.out.println(yraNera.contains(zodis));
             if (item.toLowerCase().startsWith(fragmentas)) { // true jei rado atitikmenį
@@ -102,24 +137,13 @@ public class Controller implements Initializable {
         }
         return variantai;
     }
-
     // veikiantis metodas atspausdinti duomenis į ListView
+
     public void printListView() {
         TreeSet<String> ts = new TreeSet<>(Arrays.asList("pirmas", "antras", "trečias", "ketvirtas", "penktas", "šeštas", "septintas"));
         for (String item : ts) {
             visiZodynoZodziaiListView.getItems().addAll(item);
         }
-    }
-
-    // aktyvaus žodyno keitimas
-    public void kitasZodynas(ActionEvent event) {
-        RadioButton pazymetasZodynas = (RadioButton) zodynuGrupe.getSelectedToggle();
-        String tugelis = pazymetasZodynas.getText();
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setContentText("Pasirinktas žodynas:\n   " + tugelis + "\nlaikinai veiks tik z1: " + z1.getText());
-        alert.show();
-        zodisTextField.setPromptText(tugelis);
-        laikinasTextField.setText("Pasirinktas žodynas: " + tugelis);
     }
 
     public void exitButon() {

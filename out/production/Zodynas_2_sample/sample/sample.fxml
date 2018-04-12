@@ -81,7 +81,7 @@
             </RadioButton>
             <TextField fx:id="laikinasTextField" alignment="TOP_LEFT" editable="false" layoutX="14.0" layoutY="511.0" prefHeight="64.0" prefWidth="425.0" promptText="laikinasTextField">
                <font>
-                  <Font size="18.0" />
+                  <Font size="10.0" />
                </font>
             </TextField>
             <Button alignment="CENTER" defaultButton="true" layoutX="459.0" layoutY="100.0" mnemonicParsing="false" onAction="#versk" prefHeight="51.0" prefWidth="93.0" text="Translate" wrapText="true">

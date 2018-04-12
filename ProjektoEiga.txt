@@ -3,30 +3,9 @@ suranda žodį atitinkame žodyne ir parodo vertimą
 veikia žodynų pasirinkimo radiobutonai
 
 BLOGAI:
-spausdina visus žodynus suplaktus į krūvą visų žodžių saraše
-nebaigtas kurto variantų paieskos varikliukas
+neveikia visų žodžių trynimas iš listview lukų
 
 TODO
 reikia sukurti žodynų redagavimo yrankius
 * žodynų pavadinimų keitimas
 * naujų žodžių įvedimas
-
-
-
-ča Andriaus tekstas:
-
-public class Controller implements Initializable {
-    private Map<String, String> vocaburalyMap = new TreeMap<>();
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        //Cia nuskaitai faila ir sudeti i map. Sitas metodas leidziamas ant star upo
-    }
-
-
-    public void action(ActionEvent event){
-        //cia gali naudoti savo map jis uzpildomas viena karta kai uzkraunama aplikacija
-        vocaburalyMap.get("teksts"); //darai ka nori su juo
-    }
-
-}

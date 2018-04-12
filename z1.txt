@@ -1,4 +1,4 @@
-a-a (ei) pirmoji pirmoji pirmoji pirmoji pirmoji pirmoji pirmoji pirmoji pirmoji pirmoji
+a-a (ei)
 naujas-new
 gauti-get
 nustatyti-set
