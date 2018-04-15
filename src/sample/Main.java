@@ -11,35 +11,35 @@ import javafx.stage.Stage;
 import java.awt.event.ActionEvent;
 
 public class Main extends Application {
-    Button butt;
+    //    Button butT;
+    //    Stage winD;
+    //    Scene sceN;
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
-//        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-//        primaryStage.setTitle("Žodynas Ltit");
-//        primaryStage.setScene(new Scene(root));
-//        primaryStage.show();
-        butt = new Button("helow world");
-        StackPane layout = new StackPane();
-        layout.getChildren().add(butt);
-        Scene cscen = new Scene(layout,500,500);
-        primaryStage.setScene(cscen);
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        primaryStage.setTitle("Žodynas Ltit");
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
+//        winD = primaryStage;
+//        butT = new Button("hellow world");
+//        StackPane layout = new StackPane();
+//        layout.getChildren().add(butT);
+//        Scene cscen = new Scene(layout, 500, 500);
+//        primaryStage.setScene(cscen);
+//        primaryStage.show();
+//        butT.setOnAction(e->winD.setScene(sceN));
 
+
+    }
+
+//    public void showEditWindow(Stage primaryStage) throws Exception {
 //        Parent root2 = FXMLLoader.load(getClass().getResource("sample2.fxml"));
 //        primaryStage.setTitle("Žodynų redagavimas");
 //        primaryStage.setScene(new Scene(root2));
 //        primaryStage.show();
-    }
-//    @Override
-
-    public void showEditWindow(Stage primaryStage) throws Exception{
-        Parent root2 = FXMLLoader.load(getClass().getResource("sample2.fxml"));
-        primaryStage.setTitle("Žodynų redagavimas");
-        primaryStage.setScene(new Scene(root2));
-        primaryStage.show();
-    }
+//    }
 }

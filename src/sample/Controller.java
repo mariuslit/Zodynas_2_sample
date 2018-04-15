@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -26,12 +27,21 @@ public class Controller implements Initializable {
     public Stage newWindow = new Stage();
 
     @FXML
-    public void langas() {
-        //Clicking on Search button triggers this event handler and Search Window will open with all the results
-        newWindow.show();
+    public void langas() throws Exception {
+        Platform.isImplicitExit(); // TODO reika kad atidarius langą, tėvinis langa būtų užrkaintas
+        Parent root = FXMLLoader.load(getClass().getResource("sample2.fxml"));
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("Žodynas Ltit (žodyno redagavimo režimas)");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
     }
 
-    private void pradziaNAVIGACIJAI() {
+    public void onPlus() {
+        editButton.setVisible(editButton.isVisible() == true ? false : true);
+        newWindow.show();
+//        langas();
+//        newWindow.show();
+
     }
 
     @FXML
@@ -64,10 +74,11 @@ public class Controller implements Initializable {
     private RadioButton z4;
     @FXML
     private RadioButton z5;
+
     @FXML
     private RadioButton z6;
-
     private Map<String, String> zodynasTreeMap = new TreeMap<>();
+
     private Map<String, String> settingsLinkedMap = new TreeMap<>();
 
     @Override
@@ -78,8 +89,8 @@ public class Controller implements Initializable {
         versk(zodisTextField.getText());
         zodisTextField.setText("");
     }
-
     //2 aktyvaus žodyno keitimas
+
     public void kitasZodynas(ActionEvent event) {
         RadioButton pazymetasZodynas = (RadioButton) zodynuGrupe.getSelectedToggle();
         zodynasSelect(pazymetasZodynas.getId());
@@ -88,8 +99,8 @@ public class Controller implements Initializable {
 //        alert.setContentText("Pasirinktas žodynas:\n   " + pazymetasZodynas.getId() + "\nlaikinai veiks tik z1: " + z1.getText());
 //        alert.show();
     }
-
     //3 žodyno pakeitima
+
     public void zodynasSelect(String toggelID) {
         String failoVardas = toggelID;
         switch (toggelID) {
@@ -126,14 +137,14 @@ public class Controller implements Initializable {
         printVisiListView(x, "visi");
         RadioButton aktyvusZodynas = (RadioButton) zodynuGrupe.getSelectedToggle();
     }
-
     //4 reakcija į klavišo paspaudimą žodžio fragmento įvedimo langelyje
+
     public void click(MouseEvent event) {
         String s = event.getPickResult().toString(); // TODO užklausiau Andriaus per fb
         laikinasLabel.setText(s); // TODO kai viskas veiks laikinasLabel. pakeisti į vertimasLabel.
     }
-
     //5 reakcija į klavišo paspaudimą žodžio fragmento įvedimo langelyje
+
     public void paspaudimas(KeyEvent event) {
         versk(zodisTextField.getText());
     }
@@ -156,19 +167,18 @@ public class Controller implements Initializable {
         }
     }
 
-    // variantų paieškos varikliukas
-    public TreeSet<String> gautiAtitikmenuVariantus(String fragmentas) { // todo čia stringa
+    // variantų paieškos varikliukas veikia puikiai
+    public TreeSet<String> gautiAtitikmenuVariantus(String fragmentas) {
         TreeSet<String> variantai = new TreeSet<>(); // čia talpinamas atsakymas
         for (String item : zodynasTreeMap.keySet()) {
             if (item.toLowerCase().startsWith(fragmentas)) { // true jei rado atitikmenį
                 variantai.add(item);
             }
         }
-//        laikinasLabel.setText(laikinasLabel.getText() + "variantai: " + variantai.size());
         return variantai;
     }
-
     // veikiantis metodas atspausdinti duomenis į ListView
+
     public void printVisiListView(TreeSet<String> variantai, String kurisSarasas) {
         switch (kurisSarasas) {
             case "visi":
@@ -194,21 +204,13 @@ public class Controller implements Initializable {
     public void isvalytiViska() {
         zodisTextField.clear();
         isvalyti();
-//        zodisTextField.setCursor(); // TODO: padėti kursorių į langelį
+//        zodisTextField.setCursor(); // TODO: padėti kursorių į input langelį
     }
 
     public void isvalyti() {
         variantListView.getItems().clear();// duomenų trynimas iš ListView
         pirmasAtitikmuoLabel.setText("-");
         vertimasLabel.setText("-");
-    }
-
-    public void onPlus() {// todo r = z<y?10:20
-        editButton.setVisible(editButton.isVisible() == true ? false : true);
-        langas();
-//        newWindow.show();
-
-
     }
 
     public void exitButon() {

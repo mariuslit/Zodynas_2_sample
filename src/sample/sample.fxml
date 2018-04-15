@@ -6,6 +6,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
@@ -20,7 +21,7 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <Pane prefHeight="589.0" prefWidth="768.0">
+      <Pane prefHeight="589.0" prefWidth="768.0" style="-fx-background-color: #9adae0;">
          <children>
             <TextField fx:id="zodisTextField" layoutX="15.0" layoutY="100.0" onKeyReleased="#paspaudimas" prefHeight="50.0" prefWidth="175.0" promptText="žodis">
                <font>
@@ -45,7 +46,7 @@
                   <Font size="16.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="z4" layoutX="392.0" layoutY="40.0" mnemonicParsing="false" onAction="#kitasZodynas" prefHeight="25.0" prefWidth="175.0" text="Žodynas 4" toggleGroup="$zodynuGrupe">
+            <RadioButton fx:id="z4" layoutX="392.0" layoutY="40.0" mnemonicParsing="false" onAction="#kitasZodynas" prefHeight="25.0" prefWidth="175.0" text="Italų - Lietuvių" toggleGroup="$zodynuGrupe">
                <font>
                   <Font size="16.0" />
                </font>
@@ -60,7 +61,7 @@
                   <Font size="16.0" />
                </font>
             </RadioButton>
-            <Button alignment="CENTER" layoutX="430.0" layoutY="100.0" mnemonicParsing="false" onAction="#onPlus" prefHeight="40.0" prefWidth="40.0" text="+" textAlignment="CENTER" wrapText="true">
+            <Button alignment="CENTER" layoutX="430.0" layoutY="100.0" mnemonicParsing="false" onAction="#langas" prefHeight="40.0" prefWidth="40.0" text="+" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -120,6 +121,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="425.0" layoutY="380.0" pickOnBounds="true" preserveRatio="true" />
          </children></Pane>
    </children>
 </GridPane>
