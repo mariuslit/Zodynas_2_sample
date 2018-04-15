@@ -1,11 +1,15 @@
-GREAI:
+todo veikiaGREAI:
 suranda žodį atitinkame žodyne ir parodo vertimą
 veikia žodynų pasirinkimo radiobutonai
+vekia ListView spausdinimas
+veikia žodžių pagal fragmentą paieška
+failų nuskaitymas / įrašymas
+veikia paieška po kiekvieno mygtuko paspaudimo
+    (info iš Andriaus: G:\Coding\3 GitHub projektai\fx_random_game)
 
-BLOGAI:
-neveikia visų žodžių trynimas iš listview lukų
+todo veikiaBLOGAI:
 
-TODO
+TODO:
 reikia sukurti žodynų redagavimo yrankius
-* žodynų pavadinimų keitimas
-* naujų žodžių įvedimas
+* žodynų pavadinimų keitimas, išsaugojimas faile
+* naujų žodžių įvedimas, žodynų pildymas

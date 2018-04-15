@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" prefHeight="600.0" prefWidth="800.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -20,33 +20,14 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <Pane prefHeight="600.0" prefWidth="800.0">
+      <Pane prefHeight="589.0" prefWidth="768.0">
          <children>
-            <Label alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="78.0" prefHeight="18.0" prefWidth="136.0" text="Įveskite žodį:">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="zodisTextField" layoutX="14.0" layoutY="98.0" onAction="#versk" prefHeight="17.0" prefWidth="425.0" promptText="žodis">
-               <font>
-                  <Font size="24.0" />
-               </font></TextField>
-            <Button alignment="CENTER" disable="true" layoutX="459.0" layoutY="175.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="93.0" text="Add new &gt;" wrapText="true">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Button>
-            <Label fx:id="vertimasLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="149.0" prefHeight="167.0" prefWidth="425.0" text="čia bus žodžio vertimas" textFill="#1500ff">
+            <TextField fx:id="zodisTextField" layoutX="15.0" layoutY="100.0" onKeyReleased="#paspaudimas" prefHeight="50.0" prefWidth="175.0" promptText="žodis">
                <font>
                   <Font size="18.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="175.0" text="Pasirinkite žodyną:">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <RadioButton fx:id="z1" layoutX="191.0" layoutY="14.0" mnemonicParsing="false" onAction="#kitasZodynas" prefHeight="27.0" prefWidth="175.0" selected="true" text="Lietuvių - Anglų">
+               </font></TextField>
+            <ListView fx:id="variantListView" layoutX="15.0" layoutY="150.0" onMouseClicked="#click" prefHeight="167.0" prefWidth="215.0" />
+            <RadioButton fx:id="z1" layoutX="191.0" layoutY="15.0" mnemonicParsing="false" onAction="#kitasZodynas" prefHeight="25.0" prefWidth="175.0" selected="true" text="Lietuvių - Anglų 12345 67890">
                <font>
                   <Font size="16.0" />
                </font>
@@ -54,59 +35,87 @@
                   <ToggleGroup fx:id="zodynuGrupe" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="z2" layoutX="191.0" layoutY="42.0" mnemonicParsing="false" onAction="#kitasZodynas" text="Anglų - Lietuvių" toggleGroup="$zodynuGrupe">
+            <RadioButton fx:id="z2" layoutX="191.0" layoutY="40.0" mnemonicParsing="false" onAction="#kitasZodynas" prefHeight="25.0" prefWidth="175.0" text="Anglų - Lietuvių" toggleGroup="$zodynuGrupe">
                <font>
                   <Font size="16.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="z3" layoutX="392.0" layoutY="14.0" mnemonicParsing="false" onAction="#kitasZodynas" text="Aiškinamasis" toggleGroup="$zodynuGrupe">
+            <RadioButton fx:id="z3" layoutX="392.0" layoutY="15.0" mnemonicParsing="false" onAction="#kitasZodynas" prefHeight="25.0" prefWidth="175.0" text="Aiškinamasis" toggleGroup="$zodynuGrupe">
                <font>
                   <Font size="16.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="z4" layoutX="392.0" layoutY="42.0" mnemonicParsing="false" onAction="#kitasZodynas" text="Žodynas 4" toggleGroup="$zodynuGrupe">
+            <RadioButton fx:id="z4" layoutX="392.0" layoutY="40.0" mnemonicParsing="false" onAction="#kitasZodynas" prefHeight="25.0" prefWidth="175.0" text="Žodynas 4" toggleGroup="$zodynuGrupe">
                <font>
                   <Font size="16.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="z5" layoutX="576.0" layoutY="14.0" mnemonicParsing="false" onAction="#kitasZodynas" text="Žodynas 5" toggleGroup="$zodynuGrupe">
+            <RadioButton fx:id="z5" layoutX="593.0" layoutY="15.0" mnemonicParsing="false" onAction="#kitasZodynas" prefHeight="25.0" prefWidth="175.0" text="Žodynas 5" toggleGroup="$zodynuGrupe">
                <font>
                   <Font size="16.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="z6" layoutX="576.0" layoutY="42.0" mnemonicParsing="false" onAction="#kitasZodynas" text="Žodynas 6" toggleGroup="$zodynuGrupe">
+            <RadioButton fx:id="z6" layoutX="593.0" layoutY="40.0" mnemonicParsing="false" onAction="#kitasZodynas" prefHeight="25.0" prefWidth="175.0" text="Žodynas 6" toggleGroup="$zodynuGrupe">
                <font>
                   <Font size="16.0" />
                </font>
             </RadioButton>
-            <Button alignment="CENTER" defaultButton="true" layoutX="459.0" layoutY="100.0" mnemonicParsing="false" onAction="#versk" prefHeight="51.0" prefWidth="93.0" text="Translate" wrapText="true">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="edit" alignment="CENTER" disable="true" layoutX="459.0" layoutY="260.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="93.0" text="&lt; Edit" wrapText="true">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Button>
-            <Button alignment="CENTER" layoutX="569.0" layoutY="511.0" mnemonicParsing="false" onAction="#exitButon" prefHeight="64.0" prefWidth="215.0" text="Exit" wrapText="true">
+            <Button alignment="CENTER" layoutX="430.0" layoutY="100.0" mnemonicParsing="false" onAction="#onPlus" prefHeight="40.0" prefWidth="40.0" text="+" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <ListView fx:id="visiZodynoZodziaiListView" layoutX="569.0" layoutY="98.0" onKeyReleased="#printListView" prefHeight="396.0" prefWidth="215.0" />
-            <ListView fx:id="variant7" layoutX="14.0" layoutY="327.0" prefHeight="167.0" prefWidth="425.0" />
-            <Label alignment="TOP_LEFT" layoutX="570.0" layoutY="78.0" prefHeight="19.0" prefWidth="114.0" text="Visas žodynas">
+            <Button fx:id="editButton" alignment="CENTER" disable="true" layoutX="480.0" layoutY="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" text="EDIT" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button alignment="CENTER" layoutX="570.0" layoutY="510.0" mnemonicParsing="false" onAction="#exitButon" prefHeight="39.0" prefWidth="175.0" text="EXIT" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <ListView fx:id="visiListView" layoutX="570.0" layoutY="100.0" onMouseClicked="#click" prefHeight="388.0" prefWidth="175.0" />
+            <Label alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="78.0" prefHeight="20.0" prefWidth="426.0" text="Įveskite žodį: Aiskinamasis &quot;en&quot;, &quot;pa&quot;">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="311.0" prefHeight="20.0" prefWidth="114.0" text="čia bus 7 variantai">
+            <Label fx:id="vertimasLabel" alignment="TOP_LEFT" layoutX="237.0" layoutY="149.0" prefHeight="167.0" prefWidth="318.0" text="-" textFill="BLUE" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label alignment="CENTER" contentDisplay="TOP" layoutX="27.0" layoutY="15.0" prefHeight="50.0" prefWidth="150.0" text="Pasirinkite žodyną:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="570.0" layoutY="78.0" prefHeight="20.0" prefWidth="175.0" text="Visas žodynas">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="laikinas" alignment="TOP_LEFT" layoutX="14.0" layoutY="512.0" prefHeight="64.0" prefWidth="425.0" text="(laikinas)" textFill="RED" wrapText="true">
+            <Label fx:id="laikinasLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="368.0" prefHeight="120.0" prefWidth="426.0" text="laikinas" textFill="BLUE" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="pirmasAtitikmuoLabel" layoutX="238.0" layoutY="98.0" prefHeight="51.0" prefWidth="187.0" text="-" textFill="BLUE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="190.0" layoutY="100.0" mnemonicParsing="false" onAction="#isvalytiViska" prefHeight="50.0" prefWidth="39.0" text="X" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Button>
+            <Label fx:id="zodynoAprasymasLabel" alignment="TOP_LEFT" layoutX="569.0" layoutY="488.0" prefHeight="20.0" prefWidth="175.0" text="-">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="variantuAprasymasLabel" alignment="TOP_LEFT" layoutX="14.0" layoutY="316.0" prefHeight="20.0" prefWidth="175.0" text="-">
                <font>
                   <Font size="14.0" />
                </font>
