@@ -36,10 +36,10 @@ public class Controller implements Initializable {
         primaryStage.show();
     }
 
+    // todo tyrinėjimai
     public void onPlus() {
         editButton.setVisible(editButton.isVisible() == true ? false : true);
         newWindow.show();
-//        langas();
 //        newWindow.show();
 
     }
@@ -89,8 +89,8 @@ public class Controller implements Initializable {
         versk(zodisTextField.getText());
         zodisTextField.setText("");
     }
-    //2 aktyvaus žodyno keitimas
 
+    //2 aktyvaus žodyno keitimas
     public void kitasZodynas(ActionEvent event) {
         RadioButton pazymetasZodynas = (RadioButton) zodynuGrupe.getSelectedToggle();
         zodynasSelect(pazymetasZodynas.getId());
@@ -99,8 +99,8 @@ public class Controller implements Initializable {
 //        alert.setContentText("Pasirinktas žodynas:\n   " + pazymetasZodynas.getId() + "\nlaikinai veiks tik z1: " + z1.getText());
 //        alert.show();
     }
-    //3 žodyno pakeitima
 
+    //3 žodyno pakeitima
     public void zodynasSelect(String toggelID) {
         String failoVardas = toggelID;
         switch (toggelID) {
@@ -137,14 +137,14 @@ public class Controller implements Initializable {
         printVisiListView(x, "visi");
         RadioButton aktyvusZodynas = (RadioButton) zodynuGrupe.getSelectedToggle();
     }
-    //4 reakcija į klavišo paspaudimą žodžio fragmento įvedimo langelyje
 
+    //4 reakcija į klavišo paspaudimą žodžio fragmento įvedimo langelyje
     public void click(MouseEvent event) {
         String s = event.getPickResult().toString(); // TODO užklausiau Andriaus per fb
         laikinasLabel.setText(s); // TODO kai viskas veiks laikinasLabel. pakeisti į vertimasLabel.
     }
-    //5 reakcija į klavišo paspaudimą žodžio fragmento įvedimo langelyje
 
+    //5 reakcija į klavišo paspaudimą žodžio fragmento įvedimo langelyje
     public void paspaudimas(KeyEvent event) {
         versk(zodisTextField.getText());
     }
@@ -177,8 +177,8 @@ public class Controller implements Initializable {
         }
         return variantai;
     }
-    // veikiantis metodas atspausdinti duomenis į ListView
 
+    // veikiantis metodas atspausdinti duomenis į ListView
     public void printVisiListView(TreeSet<String> variantai, String kurisSarasas) {
         switch (kurisSarasas) {
             case "visi":
@@ -203,8 +203,8 @@ public class Controller implements Initializable {
 
     public void isvalytiViska() {
         zodisTextField.clear();
-        isvalyti();
 //        zodisTextField.setCursor(); // TODO: padėti kursorių į input langelį
+        isvalyti();
     }
 
     public void isvalyti() {

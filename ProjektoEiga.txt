@@ -6,10 +6,13 @@ veikia žodžių pagal fragmentą paieška
 failų nuskaitymas / įrašymas
 veikia paieška po kiekvieno mygtuko paspaudimo
     (info iš Andriaus: G:\Coding\3 GitHub projektai\fx_random_game)
+sukurtas žodyno redagavimo GUI
 
 todo veikiaBLOGAI:
+ListView nepaima pažymėtos reikšmės
 
 TODO:
 reikia sukurti žodynų redagavimo yrankius
+* sukurti informaciojs pernešimą iš vieno Controler į kitą - Controler2
 * žodynų pavadinimų keitimas, išsaugojimas faile
 * naujų žodžių įvedimas, žodynų pildymas

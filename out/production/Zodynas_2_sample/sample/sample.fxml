@@ -46,7 +46,7 @@
                   <Font size="16.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="z4" layoutX="392.0" layoutY="40.0" mnemonicParsing="false" onAction="#kitasZodynas" prefHeight="25.0" prefWidth="175.0" text="Žodynas 4" toggleGroup="$zodynuGrupe">
+            <RadioButton fx:id="z4" layoutX="392.0" layoutY="40.0" mnemonicParsing="false" onAction="#kitasZodynas" prefHeight="25.0" prefWidth="175.0" text="Italų - Lietuvių" toggleGroup="$zodynuGrupe">
                <font>
                   <Font size="16.0" />
                </font>
@@ -77,7 +77,7 @@
                </font>
             </Button>
             <ListView fx:id="visiListView" layoutX="570.0" layoutY="100.0" onMouseClicked="#click" prefHeight="388.0" prefWidth="175.0" />
-            <Label alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="78.0" prefHeight="20.0" prefWidth="426.0" text="Įveskite žodį: Aiskinamasis &quot;en&quot;, &quot;pa&quot;">
+            <Label alignment="BOTTOM_LEFT" layoutX="14.0" layoutY="78.0" prefHeight="20.0" prefWidth="426.0" text="Įveskite žodį: Italų-Lietuvių - conc, inde">
                <font>
                   <Font size="14.0" />
                </font>
