@@ -59,7 +59,7 @@ public class Controller implements Initializable {
     @FXML
     private ListView visiListView;
     @FXML
-    private ListView variantListView;
+    private ListView<String> variantListView;
     @FXML
     private Button editButton;
     @FXML
@@ -140,8 +140,12 @@ public class Controller implements Initializable {
 
     //4 reakcija į klavišo paspaudimą žodžio fragmento įvedimo langelyje
     public void click(MouseEvent event) {
-        String s = event.getPickResult().toString(); // TODO užklausiau Andriaus per fb
-        laikinasLabel.setText(s); // TODO kai viskas veiks laikinasLabel. pakeisti į vertimasLabel.
+        String selectedItem = variantListView.getSelectionModel().getSelectedItem(); // padaryta pagal Andriaus kodą
+        pirmasAtitikmuoLabel.setText(selectedItem);
+        vertimasLabel.setText(zodynasTreeMap.get(selectedItem));
+//        String s = event.getPickResult().toString(); // TODO gauti List'o pavadinimą o,mouseClick
+//        String idList = variantListView.getId(); // TODO gauti List'o pavadinimą o,mouseClick
+//        laikinasLabel.setText(s); // TODO kai viskas veiks laikinasLabel. pakeisti į vertimasLabel.
     }
 
     //5 reakcija į klavišo paspaudimą žodžio fragmento įvedimo langelyje

@@ -1,4 +1,4 @@
-default-z4
+default-z6
 z1-Lietuvių_Anglų
 z2-Anglų_Lietuvių
 z3-Aiškinamasis

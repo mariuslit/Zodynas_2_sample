@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
 import java.awt.event.ActionEvent;
@@ -65,6 +66,18 @@ public class Controller2 {
         }
 
     }
+
+    // TODO NEBAIGTA 4 reakcija į klavišo paspaudimą žodžio fragmento įvedimo langelyje
+    public void click(MouseEvent event) {
+        String selectedItem = variantListView.getSelectionModel().getSelectedItem(); // padaryta pagal Andriaus kodą
+        pirmasAtitikmuoLabel.setText(selectedItem);
+        vertimasLabel.setText(zodynasTreeMap.get(selectedItem));
+//        String s = event.getPickResult().toString(); // TODO gauti List'o pavadinimą o,mouseClick
+//        String idList = variantListView.getId(); // TODO gauti List'o pavadinimą o,mouseClick
+//        laikinasLabel.setText(s); // TODO kai viskas veiks laikinasLabel. pakeisti į vertimasLabel.
+    }
+
+
     public void exitButon() {
         Platform.exit();
     }
