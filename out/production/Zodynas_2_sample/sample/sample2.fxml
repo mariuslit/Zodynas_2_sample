@@ -11,118 +11,118 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller2">
-   <children>
-      <BorderPane layoutX="0.0" layoutY="0.0" prefHeight="580.0" prefWidth="800.0" style="-fx-background-color: #9adae0;">
-         <bottom>
-            <HBox alignment="TOP_RIGHT" prefHeight="103.0" prefWidth="800.0" spacing="20.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button alignment="CENTER" disable="true" mnemonicParsing="false" onKeyReleased="#addWordX" prefHeight="39.0" prefWidth="115.0" text="DELETE" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Button>
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#exitButon" prefHeight="39.0" prefWidth="115.0" text="SAVE &amp; EXIT" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Button>
-               </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets right="18.0" top="10.0" />
-               </padding>
-            </HBox>
-         </bottom>
-         <top>
-            <VBox alignment="CENTER" prefHeight="53.0" prefWidth="800.0">
-               <children>
-                  <Label id="spalvos" fx:id="titleRaedagavimasLabel" alignment="CENTER" contentDisplay="TOP" prefHeight="58.0" prefWidth="800.0" style="-fx-background-color: #2bb9e0;" text="Žodyno &quot;ital-liet&quot; redagavimas">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-            </VBox>
-         </top>
-         <left>
-            <VBox prefHeight="427.0" prefWidth="418.0" BorderPane.alignment="CENTER">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="63.0" prefWidth="405.0" spacing="20.0">
-                     <children>
-                        <TextField fx:id="zodynoPavadinimas" disable="true" editable="false" prefHeight="39.0" prefWidth="141.0" text="Žodyno pav.">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </TextField>
-                        <Button fx:id="keistiPavadinimaButton" mnemonicParsing="false" onAction="#keistiZodynoPavadinima" prefHeight="30.0" prefWidth="205.0" text="Keisti žodyno pavadinimą">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <children>
+        <BorderPane layoutX="0.0" layoutY="0.0" prefHeight="580.0" prefWidth="800.0" style="-fx-background-color: #9adae0;">
+            <bottom>
+                <HBox alignment="TOP_RIGHT" prefHeight="103.0" prefWidth="800.0" spacing="20.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Button alignment="CENTER" disable="true" mnemonicParsing="false" onKeyReleased="#addWordR" prefHeight="39.0" prefWidth="115.0" text="DELETE" textAlignment="CENTER" wrapText="true">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
                         </Button>
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="54.0" prefWidth="405.0">
-                     <children>
-                        <TextField fx:id="zodisTextFieldR" prefHeight="45.0" prefWidth="398.0" promptText="žodis">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </TextField>
-                        <Button mnemonicParsing="false" onAction="#isvalytiViska" prefHeight="45.0" prefWidth="39.0" text="X" textFill="RED">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#exitButonR" prefHeight="39.0" prefWidth="115.0" text="SAVE &amp; EXIT" textAlignment="CENTER" wrapText="true">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
                         </Button>
-                     </children>
-                  </HBox>
-                  <TextField fx:id="vertimasTextFieldR" alignment="TOP_LEFT" prefHeight="308.0" prefWidth="378.0" promptText="vertimas">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-               </children>
-               <padding>
-                  <Insets left="20.0" right="20.0" />
-               </padding>
-            </VBox>
-         </left>
-         <right>
-            <HBox alignment="CENTER" prefHeight="421.0" prefWidth="285.0" BorderPane.alignment="CENTER">
-               <children>
-                  <ListView fx:id="visiListViewR" editable="true" prefHeight="407.0" prefWidth="256.0">
-                     <opaqueInsets>
+                    </children>
+                    <opaqueInsets>
                         <Insets />
-                     </opaqueInsets>
-                  </ListView>
-               </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets left="10.0" right="10.0" top="17.0" />
-               </padding>
-            </HBox>
-         </right>
-         <center>
-            <VBox alignment="TOP_CENTER" prefHeight="424.0" prefWidth="80.0" spacing="20.0">
-               <children>
-                  <Pane prefHeight="99.0" prefWidth="97.0" />
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#addWordX" onKeyReleased="#addWordX" prefHeight="39.0" prefWidth="130.0" text="ADD &gt;" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Button>
-                  <Button alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="39.0" prefWidth="130.0" text="&lt; EDIT" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Button>
-               </children>
-            </VBox>
-         </center>
-      </BorderPane>
-   </children>
+                    </opaqueInsets>
+                    <padding>
+                        <Insets right="18.0" top="10.0" />
+                    </padding>
+                </HBox>
+            </bottom>
+            <top>
+                <VBox alignment="CENTER" prefHeight="53.0" prefWidth="800.0">
+                    <children>
+                        <Label id="spalvos" fx:id="antrasteLabelR" alignment="CENTER" contentDisplay="TOP" prefHeight="58.0" prefWidth="800.0" style="-fx-background-color: #2bb9e0;" text="Žodyno &quot;ital-liet&quot; redagavimas">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+            </top>
+            <left>
+                <VBox prefHeight="427.0" prefWidth="418.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <HBox alignment="CENTER" prefHeight="63.0" prefWidth="405.0" spacing="20.0">
+                            <children>
+                                <TextField fx:id="zodynoPavadinimasTextFieldR" disable="true" editable="false" prefHeight="39.0" prefWidth="141.0" text="Žodyno pav.">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </TextField>
+                                <Button fx:id="keistiZodynoPavadinimaButtonR" mnemonicParsing="false" onAction="#keistiZodynoPavadinimaR" prefHeight="30.0" prefWidth="205.0" text="Keisti žodyno pavadinimą">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="54.0" prefWidth="405.0">
+                            <children>
+                                <TextField fx:id="zodisTextFieldR" prefHeight="45.0" prefWidth="398.0" promptText="žodis">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </TextField>
+                                <Button mnemonicParsing="false" onAction="#isvalytiViskaR" prefHeight="45.0" prefWidth="39.0" text="X" textFill="RED">
+                                    <font>
+                                        <Font name="System Bold" size="18.0" />
+                                    </font>
+                                </Button>
+                            </children>
+                        </HBox>
+                        <TextField fx:id="vertimasTextFieldR" alignment="TOP_LEFT" prefHeight="308.0" prefWidth="378.0" promptText="vertimas">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </TextField>
+                    </children>
+                    <padding>
+                        <Insets left="20.0" right="20.0" />
+                    </padding>
+                </VBox>
+            </left>
+            <right>
+                <HBox alignment="CENTER" prefHeight="421.0" prefWidth="285.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <ListView fx:id="visiListViewR" editable="true" prefHeight="407.0" prefWidth="256.0">
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                        </ListView>
+                    </children>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <padding>
+                        <Insets left="10.0" right="10.0" top="17.0" />
+                    </padding>
+                </HBox>
+            </right>
+            <center>
+                <VBox alignment="TOP_CENTER" prefHeight="424.0" prefWidth="80.0" spacing="20.0">
+                    <children>
+                        <Pane prefHeight="99.0" prefWidth="97.0" />
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#addWordR" onKeyReleased="#addWordR" prefHeight="39.0" prefWidth="130.0" text="ADD &gt;" textAlignment="CENTER" wrapText="true">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Button>
+                        <Button alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="39.0" prefWidth="130.0" text="&lt; EDIT" textAlignment="CENTER" wrapText="true">
+                            <font>
+                                <Font name="System Bold" size="14.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </VBox>
+            </center>
+        </BorderPane>
+    </children>
 </Pane>
