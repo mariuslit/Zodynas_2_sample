@@ -57,9 +57,11 @@ public class Controller implements Initializable {
     private Map<String, String> zodynasTreeMap = new TreeMap<>();
     private Map<String, String> settingsLinkedMap = new TreeMap<>();
 
+    // Smaple2.fxml 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+    //////////////////////////////////////////////// čia iš Controller2 kodo kopija
+/*
     public Stage newWindow = new Stage();
 
-    // Smaple2.fxml 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
     @FXML
     private Button keistiZodynoPavadinimaButtonR;
     @FXML
@@ -72,18 +74,6 @@ public class Controller implements Initializable {
     private TextField vertimasTextFieldR;
     @FXML
     private ListView visiListViewR;
-
-    // TODO neveikia SampleR lango iškvietimas per Controller, vis dar kreipiasi į Controller2
-    @FXML
-    public void onButtonPress_plus() throws Exception {
-//        Platform.isImplicitExit(); // TODO reika kad atidarius langą, tėvinis langa būtų užrkaintas
-        Parent root = FXMLLoader.load(getClass().getResource("sample2.fxml"));
-        Stage primaryStage = new Stage();
-        primaryStage.setTitle("Žodynas Ltit (žodyno redagavimo režimas)");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
-//        plusButton.setDisable(true);
-    }
 
     // TODO naujo lango iškvietimo tyrinėjimai
     public void onPlus() {
@@ -128,15 +118,29 @@ public class Controller implements Initializable {
         Platform.exit();
     }
 
-    // end of sample  2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+*/
+    //////////////////////////////////////////////// čia šio Controller kodas iškviečia Controller2 valdimą langą
+    // TODO neveikia SampleR lango iškvietimas per Controller, vis dar kreipiasi į Controller2
+    @FXML
+    public void onButtonPress_plus() throws Exception {
+//        Platform.isImplicitExit(); // TODO reika kad atidarius langą, tėvinis langa būtų užrkaintas
+        Parent root = FXMLLoader.load(getClass().getResource("sample2.fxml"));
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("Žodynas Ltit (žodyno redagavimo režimas)");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+//        plusButton.setDisable(true);
+    }
 
-    @Override
+// end of Smaple2.fxml  2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+
     //1 ANDRIAUS KOMENTARAS: "Cia nuskaitai faila ir sudeti i map. Sitas metodas leidziamas ant star upo"
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
         settingsLinkedMap = ReadWriteData.readFile("settings"); // nuskaitomas settings.txt
         zodynasSelect(settingsLinkedMap.get("default")); //keičiamas zodynas į default stratup metu
         versk(zodisTextField.getText());
-        zodisTextField.setText("");
+//        zodisTextField.setText("");
     }
 
     //2 aktyvaus žodyno keitimas
@@ -219,6 +223,16 @@ public class Controller implements Initializable {
         } else {
             isvalyti();
         }
+        setFragmentasToInformacija();
+    }
+
+    // bandymas dirbti su Klasės lygio informacija, klasė vadinasi "Informacija"
+    public void setFragmentasToInformacija() {
+        Informacija info = new Informacija(); // kai klasė turi konstruktorių: (zodynasTreeMap, zodisTextField.getText());
+        info.setInformacija(zodynasTreeMap, zodisTextField.getText());
+        String s = zodisTextField.getText();
+        System.out.println("Controller: " + s + " -> " + info.getFragmentas());
+
     }
 
     // variantų paieškos varikliukas veikia puikiai

@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.Map;
@@ -27,8 +28,9 @@ public class Controller2 {
     private TextField vertimasTextFieldR;
     @FXML
     private ListView visiListViewR;
+    private Map<String, String> zodynasTreeMapR = new TreeMap<>();
 
-//    public void initialize(URL location, ResourceBundle resources) {
+    //    public void initialize(URL location, ResourceBundle resources) {
 //
 //    }
 
@@ -40,6 +42,9 @@ public class Controller2 {
             c = (a.replace("-", " ") + "-" + b.replace("-", " "));
             visiListViewR.getItems().addAll(c);
         }
+
+        Informacija info = new Informacija();
+        System.out.println("iš Controller2: " + info.getFragmentas()); // TODO užbaigti informacijos nuskaitymą iš Informacija klasės
     }
 
     public void isvalytiViskaR() {
