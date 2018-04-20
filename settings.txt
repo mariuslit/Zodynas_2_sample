@@ -1,7 +1,7 @@
-default-z4
+default-z5
 z1-Lietuvių_Anglų
 z2-Anglų_Lietuvių
 z3-Aiškinamasis
 z4-Italų_Lietuvių
-z5-Žodynas 5
-z6-Žodynas 6
+z5-ssssss
+z6-6

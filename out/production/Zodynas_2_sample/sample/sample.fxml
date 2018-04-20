@@ -60,14 +60,14 @@
                         <Font size="16.0" />
                     </font>
                 </RadioButton>
-                <Button fx:id="plusButton" alignment="CENTER" layoutX="440.0" layoutY="527.0" mnemonicParsing="false" onAction="#onButtonPress_plus" prefHeight="40.0" prefWidth="40.0" text="+" textAlignment="CENTER" wrapText="true">
+                <Button fx:id="plusButton" alignment="CENTER" layoutX="330.0" layoutY="527.0" mnemonicParsing="false" onAction="#onButtonPress_plus" prefHeight="40.0" prefWidth="96.0" text="+ NEW" textAlignment="CENTER" wrapText="true">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Button>
-                <Button fx:id="editButton" alignment="CENTER" disable="true" layoutX="495.0" layoutY="527.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" text="EDIT" textAlignment="CENTER" wrapText="true">
+                <Button fx:id="editButton" alignment="CENTER" layoutX="451.0" layoutY="527.0" mnemonicParsing="false" onAction="#onButtonPress_edit" prefHeight="40.0" prefWidth="104.0" text="EDIT" textAlignment="CENTER" wrapText="true">
                     <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="System Bold" size="18.0" />
                     </font>
                 </Button>
                 <Button alignment="CENTER" layoutX="570.0" layoutY="527.0" mnemonicParsing="false" onAction="#exitButon" prefHeight="39.0" prefWidth="215.0" text="EXIT" wrapText="true">
@@ -81,7 +81,7 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Label fx:id="vertimasLabel" alignment="TOP_LEFT" layoutX="240.0" layoutY="150.0" prefHeight="167.0" prefWidth="320.0" style="-fx-background-color: #b0e5ea;" text="-" textFill="BLUE" wrapText="true">
+                <Label fx:id="vertimasLabel" alignment="TOP_LEFT" layoutX="240.0" layoutY="150.0" prefHeight="167.0" prefWidth="320.0" style="-fx-background-color: #b0e5ea;" text="-" wrapText="true">
                     <font>
                         <Font size="18.0" />
                     </font></Label>
@@ -100,7 +100,7 @@
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Label fx:id="pirmasAtitikmuoLabel" layoutX="240.0" layoutY="100.0" prefHeight="27.0" prefWidth="547.0" style="-fx-background-color: #b0e5ea;" text="-" textFill="BLUE">
+                <Label fx:id="pirmasAtitikmuoLabel" layoutX="240.0" layoutY="100.0" prefHeight="27.0" prefWidth="547.0" style="-fx-background-color: #b0e5ea;" text="-">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
@@ -110,12 +110,12 @@
                         <Font name="System Bold" size="19.0" />
                     </font>
                 </Button>
-                <Label fx:id="zodynoAprasymasLabel" alignment="TOP_LEFT" layoutX="570.0" layoutY="488.0" prefHeight="20.0" prefWidth="175.0" text="-">
+                <Label fx:id="zodynoDydisApaciojeLabel" alignment="TOP_LEFT" layoutX="570.0" layoutY="488.0" prefHeight="20.0" prefWidth="175.0" text="-">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Label>
-                <Label fx:id="variantuAprasymasLabel" alignment="TOP_LEFT" layoutX="15.0" layoutY="316.0" prefHeight="20.0" prefWidth="175.0" text="-">
+                <Label fx:id="variantuKiekisApaciojeLabel" alignment="TOP_LEFT" layoutX="15.0" layoutY="316.0" prefHeight="20.0" prefWidth="175.0" text="-">
                     <font>
                         <Font size="14.0" />
                     </font>

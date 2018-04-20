@@ -28,7 +28,7 @@ public class ReadWriteData {
 //                System.out.println(line);
             }
         } catch (IOException e) {
-            System.out.println("Can t read data to file");
+            System.out.println("Can t read data from file");
         }
         return duomenys;
     }
@@ -41,7 +41,7 @@ public class ReadWriteData {
                     bw.newLine();
                 }
             } catch (IOException e) {
-                System.out.println("Can t write data from file");
+                System.out.println("Can t write data to file");
             }
         }
     }

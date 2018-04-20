@@ -1,0 +1,45 @@
+TODO veikia GREAI:
+suranda žodį atitinkamame žodyne ir parodo vertimą
+veikia žodynų pasirinkimo radiobutonai
+veikia spausdinimas į ListView per mano metodą + for ciklą
+veikia žodžių pagal fragmentą paieška
+veikia failų nuskaitymas / įrašymas
+veikia interaktyvi paieška po kiekvieno mygtuko paspaudimo
+    (info iš Andriaus: G:\Coding\3 GitHub projektai\fx_random_game)
+sukurtas žodyno redagavimo GUI (R - žodyno redagavimo režimas) valdomas per Controller2
+veikia žodyno pavadinimo keitimas (R)
+rodomas vertimas kai pažymi su pele ant bet kurio ListView
+sukurtas informacijos pernešimo tarp kontrolerių tarpininkas - klasė "Informacija"
+veikia informacijos nuskaitymas ir antrame kontroleryje, kaip tarpininką naudojant statinį objektą
+veikia žodynų pavadinimų išsaugojimas faile settings
+
+TODO veikia BLOGAI:
+nepavyksta sklandžiai uždaryti atidaryto antro view lango su mygtuku exit
+
+TODO:
+* žodyno map įrašymas į list view, gal naudoti observableList ?
+
+* naujų žodžių papildymas į žodyną map lygyje [ADD >]
+* žodžių redagavimas [< EDIT]
+* žodžių trynimas [DELETE]
+
+* žodyno map išsaugojimas faile
+* rakto '-' keitimas kitu pvz '-qtq-'
+
+TODO x3:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
