@@ -26,6 +26,7 @@ TODO:
 * žodyno map išsaugojimas faile
 * rakto '-' keitimas kitu pvz '-qtq-'
 
+*button [Ką sako internetas]
 TODO x3:
 
 
