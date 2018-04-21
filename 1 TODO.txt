@@ -12,21 +12,21 @@ rodomas vertimas kai pažymi su pele ant bet kurio ListView
 sukurtas informacijos pernešimo tarp kontrolerių tarpininkas - klasė "Informacija"
 veikia informacijos nuskaitymas ir antrame kontroleryje, kaip tarpininką naudojant statinį objektą
 veikia žodynų pavadinimų išsaugojimas faile settings
+žodyno map įrašymas į list view, gal naudoti observableList ?
+naujų žodžių papildymas į žodyną button [ADD >]
 
 TODO veikia BLOGAI:
+neatnaujinamas ekranas view-1 po žodyno pavadinimo keitimo view-2
 nepavyksta sklandžiai uždaryti atidaryto antro view lango su mygtuku exit
 
 TODO:
-* žodyno map įrašymas į list view, gal naudoti observableList ?
-
-* naujų žodžių papildymas į žodyną map lygyje [ADD >]
-* žodžių redagavimas [< EDIT]
 * žodžių trynimas [DELETE]
-
+* žodžių redagavimas [< EDIT]
 * žodyno map išsaugojimas faile
 * rakto '-' keitimas kitu pvz '-qtq-'
 
-*button [Ką sako internetas]
+* button [Ką sako internetas]
+* žodynų Map įrašymas į list view naudojant observableList
 TODO x3:
 
 

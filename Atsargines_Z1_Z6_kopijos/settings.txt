@@ -1,7 +1,7 @@
-default-z3
+default-z4
 z1-Lietuvių_Anglų
 z2-Anglų_Lietuvių4
 z3-Aiškinamasis s
-z4-Optional[walter]
+z4-Italų_Lietuvių5
 z5-penktas žod.
 z6-6

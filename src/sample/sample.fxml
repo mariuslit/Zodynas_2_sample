@@ -26,7 +26,7 @@
                     <font>
                         <Font size="18.0" />
                     </font></TextField>
-                <ListView fx:id="variantListView" layoutX="15.0" layoutY="150.0" onMouseClicked="#click1list" prefHeight="167.0" prefWidth="215.0" />
+                <ListView fx:id="variantListView" layoutX="15.0" layoutY="150.0" onMouseClicked="#clickList" prefHeight="167.0" prefWidth="215.0" />
                 <RadioButton fx:id="z1" layoutX="191.0" layoutY="15.0" mnemonicParsing="false" onAction="#kitasZodynas" prefHeight="25.0" prefWidth="175.0" selected="true" text="Lietuvių - Anglų 12345 67890">
                     <font>
                         <Font size="16.0" />
@@ -75,7 +75,7 @@
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Button>
-                <ListView fx:id="visiListView" layoutX="570.0" layoutY="150.0" onMouseClicked="#click1list" prefHeight="338.0" prefWidth="215.0" />
+                <ListView fx:id="visiListView" layoutX="570.0" layoutY="150.0" onMouseClicked="#clickList" prefHeight="338.0" prefWidth="215.0" />
                 <Label alignment="BOTTOM_LEFT" layoutX="15.0" layoutY="78.0" prefHeight="20.0" prefWidth="215.0" text="Įveskite žodį: z4: conce, inde">
                     <font>
                         <Font size="14.0" />

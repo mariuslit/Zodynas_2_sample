@@ -12,72 +12,88 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="800.0" style="-fx-background-color: #9adae0;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller2">
     <children>
-            <Button alignment="CENTER" layoutX="432.0" layoutY="219.0" mnemonicParsing="false" onAction="#addWordR" onKeyReleased="#addWordR" prefHeight="39.0" prefWidth="80.0" text="ADD &gt;" textAlignment="CENTER" wrapText="true">
-                <font>
-                    <Font name="System Bold" size="14.0" />
-                </font>
-            </Button>
-            <Button alignment="CENTER" disable="true" layoutX="432.0" layoutY="349.0" mnemonicParsing="false" onKeyReleased="#addWordR" prefHeight="39.0" prefWidth="80.0" text="DELETE" textAlignment="CENTER" wrapText="true">
-                <font>
-                    <Font name="System Bold" size="14.0" />
-                </font>
-            </Button>
-            <Button alignment="CENTER" layoutX="612.0" layoutY="527.0" mnemonicParsing="false" onAction="#exitButonR" prefHeight="39.0" prefWidth="115.0" text="SAVE &amp; EXIT" textAlignment="CENTER" wrapText="true">
-                <font>
-                    <Font name="System Bold" size="14.0" />
-                </font>
-            </Button>
-          <VBox alignment="CENTER" prefHeight="53.0" prefWidth="800.0">
-              <children>
-                  <Label id="spalvos" fx:id="antrasteLabelR" alignment="CENTER" contentDisplay="TOP" prefHeight="58.0" prefWidth="800.0" style="-fx-background-color: #2bb9e0;" text="Žodyno &quot;ital-liet&quot; redagavimas">
-                      <font>
-                          <Font size="24.0" />
-                      </font>
-                  </Label>
-              </children>
-          </VBox>
-            <ListView fx:id="visiListViewR" editable="true" layoutX="533.0" layoutY="87.0" prefHeight="407.0" prefWidth="244.0">
-                <opaqueInsets>
-                    <Insets />
-                </opaqueInsets>
-            </ListView>
-            <Button alignment="CENTER" disable="true" layoutX="432.0" layoutY="284.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="80.0" text="&lt; EDIT" textAlignment="CENTER" wrapText="true">
-                <font>
-                    <Font name="System Bold" size="14.0" />
-                </font>
-            </Button>
-            <TextField fx:id="vertimasTextFieldR" alignment="TOP_LEFT" layoutX="15.0" layoutY="205.0" prefHeight="308.0" prefWidth="405.0" promptText="Naujo žodžio aprašymas / vertimas">
-                <font>
-                    <Font size="18.0" />
-                </font>
-            </TextField>
-            <HBox alignment="CENTER" layoutX="15.0" layoutY="62.0" prefHeight="66.0" prefWidth="405.0" spacing="20.0">
-                <children>
-                    <TextField fx:id="zodynoPavadinimasTextFieldR" disable="true" editable="false" prefHeight="39.0" prefWidth="141.0" text="Žodyno pav.">
-                        <font>
-                            <Font size="18.0" />
-                        </font>
-                    </TextField>
-                    <Button fx:id="keistiZodynoPavadinimaButtonR" mnemonicParsing="false" onMouseClicked="#keistiZodynoPavadinimaR" prefHeight="30.0" prefWidth="205.0" text="Keisti žodyno pavadinimą">
-                        <font>
-                            <Font size="14.0" />
-                        </font>
-                    </Button>
-                </children>
-            </HBox>
-      <HBox alignment="CENTER" layoutX="15.0" layoutY="139.0" prefHeight="66.0" prefWidth="405.0">
-         <children>
-                    <TextField fx:id="zodisTextFieldR" prefHeight="45.0" prefWidth="398.0" promptText="Naujas žodis">
-                        <font>
-                               <Font size="18.0" />
-                        </font>
-                    </TextField>
-                    <Button mnemonicParsing="false" onAction="#isvalytiViskaR" prefHeight="45.0" prefWidth="39.0" text="X" textFill="RED">
-                        <font>
-                            <Font name="System Bold" size="18.0" />
-                        </font>
-                    </Button>
-         </children>
-      </HBox>
+        <Button alignment="CENTER" layoutX="434.0" layoutY="83.0" mnemonicParsing="false" onAction="#addWordR" onKeyReleased="#addWordR" prefHeight="39.0" prefWidth="90.0" text="ADD &gt;" textAlignment="CENTER" wrapText="true">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Button>
+        <Button fx:id="deleteButtonR" alignment="CENTER" layoutX="687.0" layoutY="83.0" mnemonicParsing="false" onAction="#deleteListViewItem" onKeyReleased="#addWordR" prefHeight="39.0" prefWidth="90.0" text="DELETE &gt;" textAlignment="CENTER" wrapText="true">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Button>
+        <Button alignment="CENTER" layoutX="662.0" layoutY="527.0" mnemonicParsing="false" onAction="#exitButonR" prefHeight="39.0" prefWidth="115.0" text="SAVE &amp; EXIT" textAlignment="CENTER" wrapText="true">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Button>
+        <VBox alignment="CENTER" prefHeight="53.0" prefWidth="800.0">
+            <children>
+                <Label id="spalvos" fx:id="antrasteLabelR" alignment="CENTER" contentDisplay="TOP" prefHeight="58.0" prefWidth="800.0" style="-fx-background-color: #2bb9e0;" text="Žodyno &quot;ital-liet&quot; redagavimas">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+            </children>
+        </VBox>
+        <ListView fx:id="visiListViewR" layoutX="433.0" layoutY="151.0" onMouseClicked="#editWordOnDoubleClickMouseSelection" prefHeight="343.0" prefWidth="344.0">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </ListView>
+        <Button fx:id="editButtonR" alignment="CENTER" layoutX="567.0" layoutY="83.0" mnemonicParsing="false" onAction="#editWordR" prefHeight="39.0" prefWidth="90.0" text="&lt; EDIT" textAlignment="CENTER" wrapText="true">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Button>
+        <TextField fx:id="vertimasTextFieldR" alignment="TOP_LEFT" layoutX="15.0" layoutY="216.0" prefHeight="277.0" prefWidth="405.0" promptText="Naujo žodžio aprašymas / vertimas">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </TextField>
+        <HBox alignment="CENTER" layoutX="15.0" layoutY="139.0" prefHeight="66.0" prefWidth="405.0">
+            <children>
+                <TextField fx:id="zodisTextFieldR" prefHeight="45.0" prefWidth="398.0" promptText="Naujas žodis">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </TextField>
+                <Button mnemonicParsing="false" onAction="#isvalytiViskaR" prefHeight="45.0" prefWidth="39.0" text="X" textFill="RED">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Button>
+            </children>
+        </HBox>
+        <Label fx:id="zodynoDydisApaciojeLabelR" alignment="TOP_LEFT" layoutX="434.0" layoutY="493.0" prefHeight="20.0" prefWidth="175.0" text="-">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+          <TextField fx:id="zodynoPavadinimasTextFieldR" layoutX="220.0" layoutY="83.0" prefHeight="39.0" prefWidth="200.0" text="Žodyno pav." visible="false">
+              <font>
+                  <Font size="18.0" />
+              </font>
+          </TextField>
+          <Button fx:id="keistiZodynoPavadinimaButtonR" layoutX="15.0" layoutY="83.0" mnemonicParsing="false" onMouseClicked="#keistiZodynoPavadinimaR" prefHeight="39.0" prefWidth="200.0" text="Keisti žodyno pavadinimą">
+              <font>
+                  <Font size="14.0" />
+              </font>
+          </Button>
+      <Label alignment="TOP_LEFT" layoutX="434.0" layoutY="131.0" prefHeight="20.0" prefWidth="175.0" text="Visas žodynas">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_LEFT" layoutX="15.0" layoutY="129.0" prefHeight="20.0" prefWidth="200.0" text="Naujas / redaguojamas žodis">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_LEFT" layoutX="15.0" layoutY="195.0" prefHeight="20.0" prefWidth="405.0" text="Naujo / redaguojamo žodžio aprašymas / vertimas">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
     </children>
 </Pane>

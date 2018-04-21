@@ -1,0 +1,17 @@
+a-aiškinamasis žodynas
+z3-aiškinamasis žodynas
+puodukas-indas arbatai gerti [1]
+naujas-kažkas, ko dar nebuvo
+senas-kažkas, kas buvo seniai
+gauti-kai kažką gauni
+nustatyti-nureguliuoti ir palikti
+duoti-kai kažką duodi
+puodukas-indas kavai gerti [2]
+klavišas-mygtkas klaviatūroje
+a-pirmoji abėcėlės raidė
+b-antroji abėcėlės raidė
+en-anglų kalba
+eng-anglų kalba
+engl-anglų kalba
+lt-lietuvių kalba
+ltu-lietuvių kalba

@@ -14,8 +14,10 @@ import java.util.TreeMap;
  * TXT FAILAS TURI BŪTI pagrindiniame projekto kataloge ( jokiu būdu ne crs\, ne \crs\sample)
  */
 public class ReadWriteData {
+    private static final String SPLITERIS = "-sitopanake-";
+
     public static Map readFile(String failoVardas) {
-        Map<String,String> duomenys = new TreeMap<>();
+        Map<String, String> duomenys = new TreeMap<>();
         try {
             BufferedReader failas = new BufferedReader(new FileReader(new File(failoVardas + ".txt")));
             String line;
@@ -34,16 +36,17 @@ public class ReadWriteData {
     }
 
     public static void writeFile(Map<String, String> zodynas, String failoVardas) {
-        if (!failoVardas.startsWith("z")) { // todo laikinai neleidžama įrašinėti į z1-z6
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter(failoVardas + ".txt"))) {
-                for (String item : zodynas.keySet()) {
-                    bw.write(item + "-" + zodynas.get(item));
-                    bw.newLine();
-                }
-            } catch (IOException e) {
-                System.out.println("Can t write data to file");
+//        if (!failoVardas.startsWith("z")) { // todo laikinai neleidžama įrašinėti į z1-z6
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(failoVardas + ".txt"))) { // TODO testavimas (failoVardas + failoVardas +)
+            for (String item : zodynas.keySet()) {
+                bw.write(item + "-" + zodynas.get(item));
+                bw.newLine();
             }
+            System.out.println("išsaugoti pakeitimai faile: " + failoVardas + ".txt");
+        } catch (IOException e) {
+            System.out.println("Can t write data to file");
         }
+//        }
     }
 
 }

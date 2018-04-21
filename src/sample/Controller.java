@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import sample.ReadWriteFile.ReadWriteData;
 
@@ -75,7 +74,7 @@ public class Controller implements Initializable {
 //        Platform.isImplicitExit(); // TODO reika kad atidarius langą, tėvinis langa būtų užrkaintas
         Parent root = FXMLLoader.load(getClass().getResource("sample2.fxml"));
         Stage primaryStage = new Stage();
-        primaryStage.setTitle("Žodynas Ltit (žodyno redagavimo režimas)");
+        primaryStage.setTitle("Žodynas Ltit");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
 //        plusButton.setDisable(true); // veikia, bet atjungtas kol nesugalvosiu kur panaudoti
@@ -150,18 +149,21 @@ public class Controller implements Initializable {
         settingsLinkedMap.put("default", failoVardas);
         ReadWriteData.writeFile(settingsLinkedMap, "settings"); // įrašo settings į failą
 
-        // nuskaito ir išsaugo duomenis "Žodynas"
+        // nuskaito duomenis "Žodynas"
         zodynasTreeMap = ReadWriteData.readFile(failoVardas); // užkrauna žodyną
-        ReadWriteData.writeFile(zodynasTreeMap, "laikinas"); // paskutinis naudotas aktyvus žodynas // TODO įrašymo testavimas, naudoti kai veiks žodyno redagavimas
 
         // išvedamas zodyno turinys į ListView
-        TreeSet x = new TreeSet<>();
-        printVisiListView(x, "visi");
+        visiListView.getItems().clear();// duomenų trynimas iš ListView
+        for (String item : zodynasTreeMap.keySet()) { // public Map'as
+            visiListView.getItems().addAll(item);
+        }
+        zodynoDydisApaciojeLabel.setText("(" + zodynasTreeMap.size() + ")");
+
         RadioButton aktyvusZodynas = (RadioButton) zodynuGrupe.getSelectedToggle();
     } // end of zodynasSelect
 
     // reakcija į pelės paspaudimą ListView, vis tik payko su vienu metodu
-    public void click1list(MouseEvent event) {
+    public void clickList(MouseEvent event) {
         String selectedItem = variantListView.getSelectionModel().getSelectedItem(); // padaryta pagal Andriaus kodą
         if (event.getSource().toString().equals("ListView[id=visiListView, styleClass=list-view]")) {
             selectedItem = visiListView.getSelectionModel().getSelectedItem();
@@ -177,12 +179,18 @@ public class Controller implements Initializable {
     }
 
     public void versk(String fragmentas) {
-        if ((!fragmentas.equals(""))) { // ne lygu nuliui
-            fragmentas = fragmentas.toLowerCase(); // nuskaito verčiama žodį
-            TreeSet<String> variantai = new TreeSet(gautiAtitikmenuVariantus(fragmentas));
-            printVisiListView(variantai, "variantai");
+        if ((!fragmentas.equals(""))) {
+            TreeSet<String> variantai = gautiAtitikmenuVariantus(fragmentas.toLowerCase());
+
+            // spausdinti variantue į ListView
+            variantListView.getItems().clear();// duomenų trynimas iš ListView
+            for (String item : variantai) {
+                variantListView.getItems().addAll(item);
+            }
+            variantuKiekisApaciojeLabel.setText("(" + variantai.size() + ")");
+
             if (variantai.size() != 0) { // ne lygu nuliui
-                String pirmasAtitikmuo = variantai.first().toString();
+                String pirmasAtitikmuo = variantai.first();
                 pirmasAtitikmuoLabel.setText(pirmasAtitikmuo);
 //                pirmasAtitikmuoLabel.setTextFill(Color.GREEN);
                 vertimasLabel.setText(zodynasTreeMap.get(pirmasAtitikmuo));
@@ -222,26 +230,6 @@ public class Controller implements Initializable {
             }
         }
         return variantai;
-    }
-
-    // veikiantis metodas atspausdinti duomenis į ListView
-    public void printVisiListView(TreeSet<String> variantai, String kurisSarasas) {
-        switch (kurisSarasas) {
-            case "visi":
-                visiListView.getItems().clear();// duomenų trynimas iš ListView
-                for (String item : zodynasTreeMap.keySet()) { // public Map'as
-                    visiListView.getItems().addAll(item);
-                }
-                zodynoDydisApaciojeLabel.setText("(" + zodynasTreeMap.size() + ")");
-                break;
-            case "variantai":
-                variantListView.getItems().clear();// duomenų trynimas iš ListView
-                for (String item : variantai) {
-                    variantListView.getItems().addAll(item);
-                }
-                variantuKiekisApaciojeLabel.setText("(" + variantai.size() + ")");
-                break;
-        }
     }
 
     public void isvalytiViska() {
