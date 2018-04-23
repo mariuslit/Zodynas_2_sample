@@ -1,649 +1,651 @@
-z61-z6+
-z62-z6++
-z63-z6+++
-z64-z6++++
-z65-z6+++++
-z66-z6++++++
-ABC-ABĖCĖLĖ
-padas1-1
-pakulos2-2
-Pakuonis3-3
-panda4-4
-pandemija5-5
-panelė6-6
-panelė7-7
-Panevėžys8-8
-paplotėlis9-9
-peilis10-10
-pelė11-11
-pelenai12-12
-pelėsis13-13
-pelkė14-14
-penki15-15
-penkiolika16-16
-penktokas17-17
-pensija18-18
-pensininkas19-19
-pienas20-20
-plaktukas21-21
-pletnė22-22
-plienas23-23
-puodukas24-24
-padas25-25
-pakulos26-26
-Pakuonis27-27
-panda28-28
-pandemija29-29
-panelė30-30
-panelė31-31
-Panevėžys32-32
-paplotėlis33-33
-peilis34-34
-pelė35-35
-pelenai36-36
-pelėsis37-37
-pelkė38-38
-penki39-39
-penkiolika40-40
-penktokas41-41
-pensija42-42
-pensininkas43-43
-pienas44-44
-plaktukas45-45
-pletnė46-46
-plienas47-47
-puodukas48-48
-padas49-49
-pakulos50-50
-Pakuonis51-51
-panda52-52
-pandemija53-53
-panelė54-54
-panelė55-55
-Panevėžys56-56
-paplotėlis57-57
-peilis58-58
-pelė59-59
-pelenai60-60
-pelėsis61-61
-pelkė62-62
-penki63-63
-penkiolika64-64
-penktokas65-65
-pensija66-66
-pensininkas67-67
-pienas68-68
-plaktukas69-69
-pletnė70-70
-plienas71-71
-puodukas72-72
-padas73-73
-pakulos74-74
-Pakuonis75-75
-panda76-76
-pandemija77-77
-panelė78-78
-panelė79-79
-Panevėžys80-80
-paplotėlis81-81
-peilis82-82
-pelė83-83
-pelenai84-84
-pelėsis85-85
-pelkė86-86
-penki87-87
-penkiolika88-88
-penktokas89-89
-pensija90-90
-pensininkas91-91
-pienas92-92
-plaktukas93-93
-pletnė94-94
-plienas95-95
-puodukas96-96
-padas97-97
-pakulos98-98
-Pakuonis99-99
-panda100-100
-pandemija101-101
-panelė102-102
-panelė103-103
-Panevėžys104-104
-paplotėlis105-105
-peilis106-106
-pelė107-107
-pelenai108-108
-pelėsis109-109
-pelkė110-110
-penki111-111
-penkiolika112-112
-penktokas113-113
-pensija114-114
-pensininkas115-115
-pienas116-116
-plaktukas117-117
-pletnė118-118
-plienas119-119
-puodukas120-120
-padas121-121
-pakulos122-122
-Pakuonis123-123
-panda124-124
-pandemija125-125
-panelė126-126
-panelė127-127
-Panevėžys128-128
-paplotėlis129-129
-peilis130-130
-pelė131-131
-pelenai132-132
-pelėsis133-133
-pelkė134-134
-penki135-135
-penkiolika136-136
-penktokas137-137
-pensija138-138
-pensininkas139-139
-pienas140-140
-plaktukas141-141
-pletnė142-142
-plienas143-143
-puodukas144-144
-padas145-145
-pakulos146-146
-Pakuonis147-147
-panda148-148
-pandemija149-149
-panelė150-150
-panelė151-151
-Panevėžys152-152
-paplotėlis153-153
-peilis154-154
-pelė155-155
-pelenai156-156
-pelėsis157-157
-pelkė158-158
-penki159-159
-penkiolika160-160
-penktokas161-161
-pensija162-162
-pensininkas163-163
-pienas164-164
-plaktukas165-165
-pletnė166-166
-plienas167-167
-puodukas168-168
-padas169-169
-pakulos170-170
-Pakuonis171-171
-panda172-172
-pandemija173-173
-panelė174-174
-panelė175-175
-Panevėžys176-176
-paplotėlis177-177
-peilis178-178
-pelė179-179
-pelenai180-180
-pelėsis181-181
-pelkė182-182
-penki183-183
-penkiolika184-184
-penktokas185-185
-pensija186-186
-pensininkas187-187
-pienas188-188
-plaktukas189-189
-pletnė190-190
-plienas191-191
-puodukas192-192
-padas193-193
-pakulos194-194
-Pakuonis195-195
-panda196-196
-pandemija197-197
-panelė198-198
-panelė199-199
-Panevėžys200-200
-paplotėlis201-201
-peilis202-202
-pelė203-203
-pelenai204-204
-pelėsis205-205
-pelkė206-206
-penki207-207
-penkiolika208-208
-penktokas209-209
-pensija210-210
-pensininkas211-211
-pienas212-212
-plaktukas213-213
-pletnė214-214
-plienas215-215
-puodukas216-216
-padas217-217
-pakulos218-218
-Pakuonis219-219
-panda220-220
-pandemija221-221
-panelė222-222
-panelė223-223
-Panevėžys224-224
-paplotėlis225-225
-peilis226-226
-pelė227-227
-pelenai228-228
-pelėsis229-229
-pelkė230-230
-penki231-231
-penkiolika232-232
-penktokas233-233
-pensija234-234
-pensininkas235-235
-pienas236-236
-plaktukas237-237
-pletnė238-238
-plienas239-239
-puodukas240-240
-padas241-241
-pakulos242-242
-Pakuonis243-243
-panda244-244
-pandemija245-245
-panelė246-246
-panelė247-247
-Panevėžys248-248
-paplotėlis249-249
-peilis250-250
-pelė251-251
-pelenai252-252
-pelėsis253-253
-pelkė254-254
-penki255-255
-penkiolika256-256
-penktokas257-257
-pensija258-258
-pensininkas259-259
-pienas260-260
-plaktukas261-261
-pletnė262-262
-plienas263-263
-puodukas264-264
-padas265-265
-pakulos266-266
-Pakuonis267-267
-panda268-268
-pandemija269-269
-panelė270-270
-panelė271-271
-Panevėžys272-272
-paplotėlis273-273
-peilis274-274
-pelė275-275
-pelenai276-276
-pelėsis277-277
-pelkė278-278
-penki279-279
-penkiolika280-280
-penktokas281-281
-pensija282-282
-pensininkas283-283
-pienas284-284
-plaktukas285-285
-pletnė286-286
-plienas287-287
-puodukas288-288
-padas289-289
-pakulos290-290
-Pakuonis291-291
-panda292-292
-pandemija293-293
-panelė294-294
-panelė295-295
-Panevėžys296-296
-paplotėlis297-297
-peilis298-298
-pelė299-299
-pelenai300-300
-pelėsis301-301
-pelkė302-302
-penki303-303
-penkiolika304-304
-penktokas305-305
-pensija306-306
-pensininkas307-307
-pienas308-308
-plaktukas309-309
-pletnė310-310
-plienas311-311
-puodukas312-312
-padas313-313
-pakulos314-314
-Pakuonis315-315
-panda316-316
-pandemija317-317
-panelė318-318
-panelė319-319
-Panevėžys320-320
-paplotėlis321-321
-peilis322-322
-pelė323-323
-pelenai324-324
-pelėsis325-325
-pelkė326-326
-penki327-327
-penkiolika328-328
-penktokas329-329
-pensija330-330
-pensininkas331-331
-pienas332-332
-plaktukas333-333
-pletnė334-334
-plienas335-335
-puodukas336-336
-padas337-337
-pakulos338-338
-Pakuonis339-339
-panda340-340
-pandemija341-341
-panelė342-342
-panelė343-343
-Panevėžys344-344
-paplotėlis345-345
-peilis346-346
-pelė347-347
-pelenai348-348
-pelėsis349-349
-pelkė350-350
-penki351-351
-penkiolika352-352
-penktokas353-353
-pensija354-354
-pensininkas355-355
-pienas356-356
-plaktukas357-357
-pletnė358-358
-plienas359-359
-puodukas360-360
-padas361-361
-pakulos362-362
-Pakuonis363-363
-panda364-364
-pandemija365-365
-panelė366-366
-panelė367-367
-Panevėžys368-368
-paplotėlis369-369
-peilis370-370
-pelė371-371
-pelenai372-372
-pelėsis373-373
-pelkė374-374
-penki375-375
-penkiolika376-376
-penktokas377-377
-pensija378-378
-pensininkas379-379
-pienas380-380
-plaktukas381-381
-pletnė382-382
-plienas383-383
-puodukas384-384
-padas385-385
-pakulos386-386
-Pakuonis387-387
-panda388-388
-pandemija389-389
-panelė390-390
-panelė391-391
-Panevėžys392-392
-paplotėlis393-393
-peilis394-394
-pelė395-395
-pelenai396-396
-pelėsis397-397
-pelkė398-398
-penki399-399
-penkiolika400-400
-penktokas401-401
-pensija402-402
-pensininkas403-403
-pienas404-404
-plaktukas405-405
-pletnė406-406
-plienas407-407
-puodukas408-408
-padas409-409
-pakulos410-410
-Pakuonis411-411
-panda412-412
-pandemija413-413
-panelė414-414
-panelė415-415
-Panevėžys416-416
-paplotėlis417-417
-peilis418-418
-pelė419-419
-pelenai420-420
-pelėsis421-421
-pelkė422-422
-penki423-423
-penkiolika424-424
-penktokas425-425
-pensija426-426
-pensininkas427-427
-pienas428-428
-plaktukas429-429
-pletnė430-430
-plienas431-431
-puodukas432-432
-padas433-433
-pakulos434-434
-Pakuonis435-435
-panda436-436
-pandemija437-437
-panelė438-438
-panelė439-439
-Panevėžys440-440
-paplotėlis441-441
-peilis442-442
-pelė443-443
-pelenai444-444
-pelėsis445-445
-pelkė446-446
-penki447-447
-penkiolika448-448
-penktokas449-449
-pensija450-450
-pensininkas451-451
-pienas452-452
-plaktukas453-453
-pletnė454-454
-plienas455-455
-puodukas456-456
-padas457-457
-pakulos458-458
-Pakuonis459-459
-panda460-460
-pandemija461-461
-panelė462-462
-panelė463-463
-Panevėžys464-464
-paplotėlis465-465
-peilis466-466
-pelė467-467
-pelenai468-468
-pelėsis469-469
-pelkė470-470
-penki471-471
-penkiolika472-472
-penktokas473-473
-pensija474-474
-pensininkas475-475
-pienas476-476
-plaktukas477-477
-pletnė478-478
-plienas479-479
-puodukas480-480
-padas481-481
-pakulos482-482
-Pakuonis483-483
-panda484-484
-pandemija485-485
-panelė486-486
-panelė487-487
-Panevėžys488-488
-paplotėlis489-489
-peilis490-490
-pelė491-491
-pelenai492-492
-pelėsis493-493
-pelkė494-494
-penki495-495
-penkiolika496-496
-penktokas497-497
-pensija498-498
-pensininkas499-499
-pienas500-500
-plaktukas501-501
-pletnė502-502
-plienas503-503
-puodukas504-504
-padas505-505
-pakulos506-506
-Pakuonis507-507
-panda508-508
-pandemija509-509
-panelė510-510
-panelė511-511
-Panevėžys512-512
-paplotėlis513-513
-peilis514-514
-pelė515-515
-pelenai516-516
-pelėsis517-517
-pelkė518-518
-penki519-519
-penkiolika520-520
-penktokas521-521
-pensija522-522
-pensininkas523-523
-pienas524-524
-plaktukas525-525
-pletnė526-526
-plienas527-527
-puodukas528-528
-padas529-529
-pakulos530-530
-Pakuonis531-531
-panda532-532
-pandemija533-533
-panelė534-534
-panelė535-535
-Panevėžys536-536
-paplotėlis537-537
-peilis538-538
-pelė539-539
-pelenai540-540
-pelėsis541-541
-pelkė542-542
-penki543-543
-penkiolika544-544
-penktokas545-545
-pensija546-546
-pensininkas547-547
-pienas548-548
-plaktukas549-549
-pletnė550-550
-plienas551-551
-puodukas552-552
-padas553-553
-pakulos554-554
-Pakuonis555-555
-panda556-556
-pandemija557-557
-panelė558-558
-panelė559-559
-Panevėžys560-560
-paplotėlis561-561
-peilis562-562
-pelė563-563
-pelenai564-564
-pelėsis565-565
-pelkė566-566
-penki567-567
-penkiolika568-568
-penktokas569-569
-pensija570-570
-pensininkas571-571
-pienas572-572
-plaktukas573-573
-pletnė574-574
-plienas575-575
-puodukas576-576
-padas577-577
-pakulos578-578
-Pakuonis579-579
-panda580-580
-pandemija581-581
-panelė582-582
-panelė583-583
-Panevėžys584-584
-paplotėlis585-585
-peilis586-586
-pelė587-587
-pelenai588-588
-pelėsis589-589
-pelkė590-590
-penki591-591
-penkiolika592-592
-penktokas593-593
-pensija594-594
-pensininkas595-595
-pienas596-596
-plaktukas597-597
-pletnė598-598
-plienas599-599
-puodukas600-600
-padas601-601
-pakulos602-602
-Pakuonis603-603
-panda604-604
-pandemija605-605
-panelė606-606
-panelė607-607
-Panevėžys608-608
-paplotėlis609-609
-peilis610-610
-pelė611-611
-pelenai612-612
-pelėsis613-613
-pelkė614-614
-penki615-615
-penkiolika616-616
-penktokas617-617
-pensija618-618
-pensininkas619-619
-pienas620-620
-plaktukas621-621
-pletnė622-622
-plienas623-623
-puodukas624-624
-padas625-625
-pakulos626-626
-Pakuonis627-627
-panda628-628
-pandemija629-629
-panelė630-630
-panelė631-631
-Panevėžys632-632
-paplotėlis633-633
-peilis634-634
-pelė635-635
-pelenai636-636
-pelėsis637-637
-pelkė638-638
-penki639-639
-penkiolika640-640
-penktokas641-641
-pensija642-642
+ABC -->> ABĖCĖLĖ visomis kalbomisdsdmkld
+Pakuonis123 -->> 123
+Pakuonis147 -->> 147
+Pakuonis171 -->> 171
+Pakuonis195 -->> 195
+Pakuonis219 -->> 219
+Pakuonis243 -->> 243
+Pakuonis267 -->> 267
+Pakuonis27 -->> 27
+Pakuonis291 -->> 291
+Pakuonis3 -->> 3
+Pakuonis315 -->> 315
+Pakuonis339 -->> 339
+Pakuonis363 -->> 363
+Pakuonis387 -->> 387
+Pakuonis411 -->> 411
+Pakuonis435 -->> 435
+Pakuonis459 -->> 459
+Pakuonis483 -->> 483
+Pakuonis507 -->> 507
+Pakuonis51 -->> 51
+Pakuonis531 -->> 531
+Pakuonis555 -->> 555
+Pakuonis579 -->> 579111
+Pakuonis603 -->> 603
+Pakuonis627 -->> 627
+Pakuonis75 -->> 75
+Pakuonis99 -->> 99
+Panevėžys104 -->> 104
+Panevėžys128 -->> 128
+Panevėžys152 -->> 152
+Panevėžys176 -->> 176
+Panevėžys200 -->> 200
+Panevėžys224 -->> 224
+Panevėžys248 -->> 248
+Panevėžys272 -->> 272
+Panevėžys296 -->> 296
+Panevėžys32 -->> 32
+Panevėžys320 -->> 320
+Panevėžys344 -->> 344
+Panevėžys368 -->> 368
+Panevėžys392 -->> 392
+Panevėžys416 -->> 416
+Panevėžys440 -->> 440
+Panevėžys464 -->> 464
+Panevėžys488 -->> 488
+Panevėžys512 -->> 512
+Panevėžys536 -->> 536
+Panevėžys56 -->> 56
+Panevėžys560 -->> 560
+Panevėžys584 -->> 584
+Panevėžys608 -->> 608
+Panevėžys632 -->> 632
+Panevėžys8 -->> 8
+Panevėžys80 -->> 80
+aa -->> aa aa
+conduct -->> belenkas
+padas1 -->> 1
+padas121 -->> 121
+padas145 -->> 145
+padas169 -->> 169
+padas193 -->> 193
+padas217 -->> 217
+padas241 -->> 241
+padas25 -->> 25
+padas265 -->> 265
+padas289 -->> 289
+padas313 -->> 313
+padas337 -->> 337
+padas361 -->> 361
+padas385 -->> 385
+padas409 -->> 409
+padas433 -->> 433
+padas457 -->> 457
+padas481 -->> 481
+padas49 -->> 49
+padas505 -->> 505
+padas529 -->> 529
+padas553 -->> 553
+padas577 -->> 577
+padas601 -->> 601
+padas625 -->> 625
+padas73 -->> 73
+padas97 -->> 97
+pakulos122 -->> 122
+pakulos146 -->> 146
+pakulos170 -->> 170
+pakulos194 -->> 194
+pakulos2 -->> 2
+pakulos218 -->> 218
+pakulos242 -->> 242
+pakulos26 -->> 26
+pakulos266 -->> 266
+pakulos290 -->> 290
+pakulos314 -->> 314
+pakulos338 -->> 338
+pakulos362 -->> 362
+pakulos386 -->> 386
+pakulos410 -->> 410
+pakulos434 -->> 434
+pakulos458 -->> 458
+pakulos482 -->> 482
+pakulos50 -->> 50
+pakulos506 -->> 506
+pakulos530 -->> 530
+pakulos554 -->> 554
+pakulos578 -->> 578
+pakulos602 -->> 602
+pakulos626 -->> 626
+pakulos74 -->> 74
+pakulos98 -->> 98
+panda100 -->> 100
+panda124 -->> 124
+panda148 -->> 148
+panda172 -->> 172
+panda196 -->> 196
+panda220 -->> 220
+panda244 -->> 244
+panda268 -->> 268
+panda28 -->> 28
+panda292 -->> 292
+panda316 -->> 316
+panda340 -->> 340
+panda364 -->> 364
+panda388 -->> 388
+panda4 -->> 4
+panda412 -->> 412
+panda436 -->> 436
+panda460 -->> 460
+panda484 -->> 484
+panda508 -->> 508
+panda52 -->> 52
+panda532 -->> 532
+panda556 -->> 556
+panda580 -->> 580
+panda604 -->> 604
+panda628 -->> 628
+panda76 -->> 76
+pandemija101 -->> 101
+pandemija125 -->> 125
+pandemija149 -->> 149
+pandemija173 -->> 173
+pandemija197 -->> 197
+pandemija221 -->> 221
+pandemija245 -->> 245
+pandemija269 -->> 269
+pandemija29 -->> 29
+pandemija293 -->> 293
+pandemija317 -->> 317
+pandemija341 -->> 341
+pandemija365 -->> 365
+pandemija389 -->> 389
+pandemija413 -->> 413
+pandemija437 -->> 437
+pandemija461 -->> 461
+pandemija485 -->> 485
+pandemija5 -->> 5
+pandemija509 -->> 509
+pandemija53 -->> 53
+pandemija533 -->> 533
+pandemija557 -->> 557
+pandemija581 -->> 581
+pandemija605 -->> 605
+pandemija629 -->> 629
+pandemija77 -->> 77
+panelė102 -->> 102
+panelė103 -->> 103
+panelė126 -->> 126
+panelė127 -->> 127
+panelė150 -->> 150
+panelė151 -->> 151
+panelė174 -->> 174
+panelė175 -->> 175
+panelė198 -->> 198
+panelė199 -->> 199
+panelė222 -->> 222
+panelė223 -->> 223
+panelė246 -->> 246
+panelė247 -->> 247
+panelė270 -->> 270
+panelė271 -->> 271
+panelė294 -->> 294
+panelė295 -->> 295
+panelė30 -->> 30
+panelė31 -->> 31
+panelė318 -->> 318
+panelė319 -->> 319
+panelė342 -->> 342
+panelė343 -->> 343
+panelė366 -->> 366
+panelė367 -->> 367
+panelė390 -->> 390
+panelė391 -->> 391
+panelė414 -->> 414
+panelė415 -->> 415
+panelė438 -->> 438
+panelė439 -->> 439
+panelė462 -->> 462
+panelė463 -->> 463
+panelė486 -->> 486
+panelė487 -->> 487
+panelė510 -->> 510
+panelė511 -->> 511
+panelė534 -->> 534
+panelė535 -->> 535
+panelė54 -->> 54
+panelė55 -->> 55
+panelė558 -->> 558
+panelė559 -->> 559
+panelė582 -->> 582
+panelė583 -->> 583
+panelė6 -->> 6
+panelė606 -->> 606
+panelė607 -->> 607
+panelė630 -->> 630
+panelė631 -->> 631
+panelė7 -->> 7
+panelė78 -->> 78
+panelė79 -->> 79
+paplotėlis105 -->> 105
+paplotėlis129 -->> 129
+paplotėlis153 -->> 153
+paplotėlis177 -->> 177
+paplotėlis201 -->> 201
+paplotėlis225 -->> 225
+paplotėlis249 -->> 249
+paplotėlis273 -->> 273
+paplotėlis297 -->> 297
+paplotėlis321 -->> 321
+paplotėlis33 -->> 33
+paplotėlis345 -->> 345
+paplotėlis369 -->> 369
+paplotėlis393 -->> 393
+paplotėlis417 -->> 417
+paplotėlis441 -->> 441
+paplotėlis465 -->> 465
+paplotėlis489 -->> 489
+paplotėlis513 -->> 513
+paplotėlis537 -->> 537
+paplotėlis561 -->> 561
+paplotėlis57 -->> 57
+paplotėlis585 -->> 585
+paplotėlis609 -->> 609
+paplotėlis633 -->> 633
+paplotėlis81 -->> 81
+paplotėlis9 -->> 9
+peilis10 -->> 10
+peilis106 -->> 106
+peilis130 -->> 130
+peilis154 -->> 154
+peilis178 -->> 178
+peilis202 -->> 202
+peilis226 -->> 226
+peilis250 -->> 250
+peilis274 -->> 274
+peilis298 -->> 298
+peilis322 -->> 322
+peilis34 -->> 34
+peilis346 -->> 346
+peilis370 -->> 370
+peilis394 -->> 394
+peilis418 -->> 418
+peilis442 -->> 442
+peilis466 -->> 466
+peilis490 -->> 490
+peilis514 -->> 514
+peilis538 -->> 538
+peilis562 -->> 562
+peilis58 -->> 58
+peilis586 -->> 586
+peilis610 -->> 610
+peilis634 -->> 634
+peilis82 -->> 82
+pelenai108 -->> 108
+pelenai12 -->> 12
+pelenai132 -->> 132
+pelenai156 -->> 156
+pelenai180 -->> 180
+pelenai204 -->> 204
+pelenai228 -->> 228
+pelenai252 -->> 252
+pelenai276 -->> 276
+pelenai300 -->> 300
+pelenai324 -->> 324
+pelenai348 -->> 348
+pelenai36 -->> 36
+pelenai372 -->> 372
+pelenai396 -->> 396
+pelenai420 -->> 420
+pelenai444 -->> 444
+pelenai468 -->> 468
+pelenai492 -->> 492
+pelenai516 -->> 516
+pelenai540 -->> 540
+pelenai564 -->> 564
+pelenai588 -->> 588
+pelenai60 -->> 60
+pelenai612 -->> 612
+pelenai636 -->> 636
+pelenai84 -->> 84
+pelkė110 -->> 110
+pelkė134 -->> 134
+pelkė14 -->> 14
+pelkė158 -->> 158
+pelkė182 -->> 182
+pelkė206 -->> 206
+pelkė230 -->> 230
+pelkė254 -->> 254
+pelkė278 -->> 278
+pelkė302 -->> 302
+pelkė326 -->> 326
+pelkė350 -->> 350
+pelkė374 -->> 374
+pelkė38 -->> 38
+pelkė398 -->> 398
+pelkė422 -->> 422
+pelkė446 -->> 446
+pelkė470 -->> 470
+pelkė494 -->> 494
+pelkė518 -->> 518
+pelkė542 -->> 542
+pelkė566 -->> 566
+pelkė590 -->> 590
+pelkė614 -->> 614
+pelkė62 -->> 62
+pelkė638 -->> 638
+pelkė86 -->> 86
+pelė107 -->> 107
+pelė11 -->> 11
+pelė131 -->> 131
+pelė155 -->> 155
+pelė179 -->> 179
+pelė203 -->> 203
+pelė227 -->> 227
+pelė251 -->> 251
+pelė275 -->> 275
+pelė299 -->> 299
+pelė323 -->> 323
+pelė347 -->> 347
+pelė35 -->> 35
+pelė371 -->> 371
+pelė395 -->> 395
+pelė419 -->> 419
+pelė443 -->> 443
+pelė467 -->> 467
+pelė491 -->> 491
+pelė515 -->> 515
+pelė539 -->> 539
+pelė563 -->> 563
+pelė587 -->> 587
+pelė59 -->> 59
+pelė611 -->> 611
+pelė635 -->> 635
+pelė83 -->> 83
+pelėsis109 -->> 109
+pelėsis13 -->> 13
+pelėsis133 -->> 133
+pelėsis157 -->> 157
+pelėsis181 -->> 181
+pelėsis205 -->> 205
+pelėsis229 -->> 229
+pelėsis253 -->> 253
+pelėsis277 -->> 277
+pelėsis301 -->> 301
+pelėsis325 -->> 325
+pelėsis349 -->> 349
+pelėsis37 -->> 37
+pelėsis373 -->> 373
+pelėsis397 -->> 397
+pelėsis421 -->> 421
+pelėsis445 -->> 445
+pelėsis469 -->> 469
+pelėsis493 -->> 493
+pelėsis517 -->> 517
+pelėsis541 -->> 541
+pelėsis565 -->> 565
+pelėsis589 -->> 589
+pelėsis61 -->> 61
+pelėsis613 -->> 613
+pelėsis637 -->> 637
+pelėsis85 -->> 85
+penki111 -->> 111
+penki135 -->> 135
+penki15 -->> 15
+penki159 -->> 159
+penki183 -->> 183
+penki207 -->> 207
+penki231 -->> 231
+penki255 -->> 255
+penki279 -->> 279
+penki303 -->> 303
+penki327 -->> 327
+penki351 -->> 351
+penki375 -->> 375
+penki39 -->> 39
+penki399 -->> 399
+penki423 -->> 423
+penki447 -->> 447
+penki471 -->> 471
+penki495 -->> 495
+penki519 -->> 519
+penki543 -->> 543
+penki567 -->> 567
+penki591 -->> 591
+penki615 -->> 615
+penki63 -->> 63
+penki639 -->> 639
+penki87 -->> 87
+penkiolika112 -->> 112
+penkiolika136 -->> 136
+penkiolika16 -->> 16
+penkiolika160 -->> 160
+penkiolika184 -->> 184
+penkiolika208 -->> 208
+penkiolika232 -->> 232
+penkiolika256 -->> 256
+penkiolika280 -->> 280
+penkiolika304 -->> 304
+penkiolika328 -->> 328
+penkiolika352 -->> 352
+penkiolika376 -->> 376
+penkiolika40 -->> 40
+penkiolika400 -->> 400
+penkiolika424 -->> 424
+penkiolika448 -->> 448
+penkiolika472 -->> 472
+penkiolika496 -->> 496
+penkiolika520 -->> 520
+penkiolika544 -->> 544
+penkiolika568 -->> 568
+penkiolika592 -->> 592
+penkiolika616 -->> 616
+penkiolika64 -->> 64
+penkiolika640 -->> 640
+penkiolika88 -->> 88
+penktokas113 -->> 113
+penktokas137 -->> 137
+penktokas161 -->> 161
+penktokas17 -->> 17
+penktokas185 -->> 185
+penktokas209 -->> 209
+penktokas233 -->> 233
+penktokas257 -->> 257
+penktokas281 -->> 281
+penktokas305 -->> 305
+penktokas329 -->> 329
+penktokas353 -->> 353
+penktokas377 -->> 377
+penktokas401 -->> 401
+penktokas41 -->> 41
+penktokas425 -->> 425
+penktokas449 -->> 449
+penktokas473 -->> 473
+penktokas497 -->> 497
+penktokas521 -->> 521
+penktokas545 -->> 545
+penktokas569 -->> 569
+penktokas593 -->> 593
+penktokas617 -->> 617
+penktokas641 -->> 641
+penktokas65 -->> 65
+penktokas89 -->> 89
+pensija114 -->> 114
+pensija138 -->> 138
+pensija162 -->> 162
+pensija18 -->> 18
+pensija186 -->> 186
+pensija210 -->> 210
+pensija234 -->> 234
+pensija258 -->> 258
+pensija282 -->> 282
+pensija306 -->> 306
+pensija330 -->> 330
+pensija354 -->> 354
+pensija378 -->> 378
+pensija402 -->> 402
+pensija42 -->> 42
+pensija426 -->> 426
+pensija450 -->> 450
+pensija474 -->> 474
+pensija498 -->> 498
+pensija522 -->> 522
+pensija546 -->> 546
+pensija570 -->> 570
+pensija594 -->> 594
+pensija618 -->> 618
+pensija642 -->> 642
+pensija66 -->> 66
+pensija90 -->> 90
+pensininkas115 -->> 115
+pensininkas139 -->> 139
+pensininkas163 -->> 163
+pensininkas187 -->> 187
+pensininkas19 -->> 19
+pensininkas211 -->> 211
+pensininkas235 -->> 235
+pensininkas259 -->> 259
+pensininkas283 -->> 283
+pensininkas307 -->> 307
+pensininkas331 -->> 331
+pensininkas355 -->> 355
+pensininkas379 -->> 379
+pensininkas403 -->> 403
+pensininkas427 -->> 427
+pensininkas43 -->> 43
+pensininkas451 -->> 451
+pensininkas475 -->> 475
+pensininkas499 -->> 499
+pensininkas523 -->> 523
+pensininkas547 -->> 547
+pensininkas571 -->> 571
+pensininkas595 -->> 595
+pensininkas619 -->> 619
+pensininkas67 -->> 67
+pensininkas91 -->> 91
+pienas116 -->> 116
+pienas140 -->> 140
+pienas164 -->> 164
+pienas188 -->> 188
+pienas20 -->> 20
+pienas212 -->> 212
+pienas236 -->> 236
+pienas260 -->> 260
+pienas284 -->> 284
+pienas308 -->> 308
+pienas332 -->> 332
+pienas356 -->> 356
+pienas380 -->> 380
+pienas404 -->> 404
+pienas428 -->> 428
+pienas44 -->> 44
+pienas452 -->> 452
+pienas476 -->> 476
+pienas500 -->> 500
+pienas524 -->> 524
+pienas548 -->> 548
+pienas572 -->> 572
+pienas596 -->> 596
+pienas620 -->> 620
+pienas68 -->> 68
+pienas92 -->> 92
+plaktukas117 -->> 117
+plaktukas141 -->> 141
+plaktukas165 -->> 165
+plaktukas189 -->> 189
+plaktukas21 -->> 21
+plaktukas213 -->> 213
+plaktukas237 -->> 237
+plaktukas261 -->> 261
+plaktukas285 -->> 285
+plaktukas309 -->> 309
+plaktukas333 -->> 333
+plaktukas357 -->> 357
+plaktukas381 -->> 381
+plaktukas405 -->> 405
+plaktukas429 -->> 429
+plaktukas45 -->> 45
+plaktukas453 -->> 453
+plaktukas477 -->> 477
+plaktukas501 -->> 501
+plaktukas525 -->> 525
+plaktukas549 -->> 549
+plaktukas573 -->> 573
+plaktukas597 -->> 597
+plaktukas621 -->> 621
+plaktukas69 -->> 69
+plaktukas93 -->> 93
+pletnė118 -->> 118
+pletnė142 -->> 142
+pletnė166 -->> 166
+pletnė190 -->> 190
+pletnė214 -->> 214
+pletnė22 -->> 22
+pletnė238 -->> 238
+pletnė262 -->> 262
+pletnė286 -->> 286
+pletnė310 -->> 310
+pletnė334 -->> 334
+pletnė358 -->> 358
+pletnė382 -->> 382
+pletnė406 -->> 406
+pletnė430 -->> 430
+pletnė454 -->> 454
+pletnė46 -->> 46
+pletnė478 -->> 478
+pletnė502 -->> 502
+pletnė526 -->> 526
+pletnė550 -->> 550
+pletnė574 -->> 574
+pletnė598 -->> 598
+pletnė622 -->> 622
+pletnė70 -->> 70
+pletnė94 -->> 94
+plienas119 -->> 119
+plienas143 -->> 143
+plienas167 -->> 167
+plienas191 -->> 191
+plienas215 -->> 215
+plienas23 -->> 23
+plienas239 -->> 239
+plienas263 -->> 263
+plienas287 -->> 287
+plienas311 -->> 311
+plienas335 -->> 335
+plienas359 -->> 359
+plienas383 -->> 383
+plienas407 -->> 407
+plienas431 -->> 431
+plienas455 -->> 455
+plienas47 -->> 47
+plienas479 -->> 479
+plienas503 -->> 503
+plienas527 -->> 527
+plienas551 -->> 551
+plienas575 -->> 575
+plienas599 -->> 599
+plienas623 -->> 623
+plienas71 -->> 71
+plienas95 -->> 95
+puodukas120 -->> 120
+puodukas144 -->> 144
+puodukas168 -->> 168
+puodukas192 -->> 192
+puodukas216 -->> 216
+puodukas24 -->> 24
+puodukas240 -->> 240
+puodukas264 -->> 264
+puodukas288 -->> 288
+puodukas312 -->> 312
+puodukas336 -->> 336
+puodukas360 -->> 360
+puodukas384 -->> 384
+puodukas408 -->> 408
+puodukas432 -->> 432
+puodukas456 -->> 456
+puodukas48 -->> 48
+puodukas480 -->> 480
+puodukas504 -->> 504
+puodukas528 -->> 528
+puodukas552 -->> 552
+puodukas576 -->> 576
+puodukas600 -->> 600
+puodukas624 -->> 624
+puodukas72 -->> 72
+puodukas96 -->> 96
+z61 -->> z6+++++++++
+z62 -->> z6++
+z63 -->> z6+++
+z64 -->> z6++++
+z65 -->> z6+++++
+z66 -->> z6++++++

@@ -1,9 +1,9 @@
-z2-anglų - lietuvių žodynas
-a-raidė 'a'
-en-anglų kalbos trumpinys
-new-naujas
-old-senas
-get-gauti, imti
-set-nustatyti, duoti
-cup-puodukas
-z2-z2 vertimas
+a -->> raidė 'a'
+anlalkd -->> pilnas
+cup -->> puodukas, puodelis
+en -->> anglų kalbos trumpinys
+get -->> gauti, imti
+new -->> naujas
+new world -->> naujas pasaulis
+old -->> senas
+set -->> nustatyti, duoti

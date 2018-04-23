@@ -25,12 +25,14 @@ nepavyksta sklandžiai uždaryti atidaryto antro view lango su mygtuku close
 neatnaujinamas ekranas view-1 po žodyno pavadinimo keitimo view-2
 
 TODO:
-1. lt -> en
-padaryti vaikstant suklaviaturos rodyklem, kad rodytu vertima iskart
-
-TODO jeigu spėsiu
-* žodynų Map įrašymas į list view naudojant observableList
+* lt -> en
 * button [Ką sako internetas]
+* žodynų Map įrašymas į list view naudojant observableList
+
+TODO x3:
+sutvarkyti pažaliavimus
+kodo ptimizavimas
+padaryti vaikstant suklaviaturos rodyklem, kad rodytu vertima iskart
 
 TODO klausimai Andriui
 ---
@@ -38,11 +40,9 @@ Kodėl galimi 4 kintamojo List deklaravimo variantai, kada kurį geriau naudoti
 
 public static ObservableList<Student> students; // deklaracija klasėje
               List<Student> students = new ArrayList<>();
-
-1             List<String> examples;
-2             List<String> examples = new ArrayList<>();
-3             ArrayList<String> examples = new ArrayList<>();
-4             ArrayList<String> examples = new ArrayList<>( reikšmių priskyrimas );
+              List<String> examples = new ArrayList<>();
+              ArrayList<String> examples = new ArrayList<>();
+              ArrayList<String> examples = new ArrayList<>();
 ---
 
 

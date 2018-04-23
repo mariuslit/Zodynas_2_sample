@@ -8,7 +8,7 @@ public class Informacija {
     private Map<String, String> zodynasR = new TreeMap<>();
     private String fragmentasR = new String();
     private String vertimasR = new String();
-    private String zodynoIdR = new String();
+//    private String zodynoIdR = new String(); // jei reikės papildomo parametro
 
     // konstruktoriaus Overloading'as
     public Informacija(Map<String, String> zodynas, String fragmentas) {
@@ -21,7 +21,7 @@ public class Informacija {
         this.zodynasR = zodynas;
         this.fragmentasR = fragmentas;
         this.vertimasR = vertimas;
-//        this.zodynoIdR = zodynoID; // jei reikės papildomo parametro
+//        this.zodynoIdR = zodynoID;
     }
 
     public void setInformacija(Map<String, String> zodynas, String fragmentas) {
@@ -41,6 +41,7 @@ public class Informacija {
     public String getVertimas() {
         return vertimasR;
     }
+
 //    public String getZodynoID() {
 //        return zodynoIdR;
 //    }

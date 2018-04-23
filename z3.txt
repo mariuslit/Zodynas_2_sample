@@ -1,17 +1,18 @@
-a-pirmoji abėcėlės raidė
-b-antroji abėcėlės raidė
-duoti-kai kažką duodi
-en-anglų kalba2
-en anglų kalba2-anglų kalba-3
-en-anglų kalba2-anglų kalba
-eng-anglų kalba
-engl-anglų kalba
-gauti-kai kažką gauni
-klavišas-mygtkas klaviatūroje
-lt-lietuvių kalba
-ltu-lietuvių kalba
-naujas-kažkas, ko dar nebuvo
-nustatyti-nureguliuoti ir palikti
-puodukas-indas kavai gerti [2]
-senas-kažkas, kas buvo seniai
-z3-aiškinamasis žodynas
+a -->> pirmoji abėcėlės raidė
+b -->> antroji abėcėlės raidė
+con -->> 1 pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas  <enter> 2 antras  <enter> 3 trečias <enter> 4 <enter> 5++ <enter>  <enter> 
+duoti -->> kai kažką duodi
+en -->> anglų kalba3
+eng -->> anglų kalba
+engl -->> anglų kalba anglų kalba  <enter> 2 eilutė 3 <enter>  4  <enter> 5
+gauti -->> kai kažką gauni
+klavišas -->> mygtukas kompiuterio klaviatūroje
+lt -->> lietuvių kalba
+ltu -->> Lietuvos tarptautinis kodas LTU
+naujas -->> kažkas, ko dar nebuvo
+nustatyti -->> nureguliuoti ir palikti
+puodukas -->> 1. indas kavai gerti [2] 2.... dar nesugalvojau
+senas -->> kažkas, kas buvo seniai
+x -->> [Ljava.lang.String;@2159d1cf
+xxx -->> fdk;lwek vkmev oemqp wokpwekf peok  l ej  ewfwkmlkfmwfei jijff j   fjsjpsdcpsamc l   ls sl ldav
+z3 -->> aiškinamasis žodynas

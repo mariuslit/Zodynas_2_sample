@@ -1,7 +1,7 @@
-default-z4
-z1-Lietuvių_Anglų
-z2-Anglų_Lietuvių4
-z3-Aiškinamasis s
-z4-Italų_Lietuvių5
-z5-penktas žod.
-z6-6
+default -->> z3
+z1 -->> LIE-ITA
+z2 -->> Anglų - Lietuvių
+z3 -->> Aiškinamasis
+z4 -->> Italų - Lietuvių 1
+z5 -->> bandomasis
+z6 -->> Ilgas

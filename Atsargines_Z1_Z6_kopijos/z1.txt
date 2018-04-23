@@ -1,23 +1,19 @@
-a-/ei/ is the first letter and the first vowel of the ISO basic Latin alphabet
-naujas-new
-gauti-get
-nustatyti-set
-padas1-1
-pakulos2-2
-Pakuonis3-3
-panda4-4
-pandemija5-5
-panelė6-6
-panelė7-7
-Panevėžys8-8
-paplotėlis9-9
-peilis10-10
-pelė11-11
-pelenai12-12
-pelėsis13-13
-pelkė14-14
-penki15-15
-penkiolika16-16
-penktokas17-17
-pensija18-18
-pensininkas19-19
+Pakuonis3 -->> 3+
+Panevėžys8 -->> 8
+a -->> /ei/ is the first letter and the first vowel of the ISO basic Latin alphabet
+naujas -->> new
+nustatyti -->> set
+panda4 -->> 4
+pandemija5 -->> nepandemija
+panelė6 -->> 6
+paplotėlis9 -->> 9
+peilis10 -->> 10
+pelenai12 -->> 12
+pelkė14 -->> 14
+penki15 -->> 15
+penkiolika16 -->> 16
+penktokas17 -->> 17
+pensija18 -->> 18
+pensininkas19 -->> 19
+stalas -->> il tavolo (vyr g.), la tavola
+x -->> xx
