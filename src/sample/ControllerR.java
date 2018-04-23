@@ -1,25 +1,20 @@
 package sample;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 import sample.ReadWriteFile.ReadWriteData;
 
-import java.util.Arrays;
 import java.util.Map;
 import java.util.Optional;
 import java.util.TreeMap;
 
-public class Controller2 {
+public class ControllerR {
 
     @FXML
     private Label antrasteLabelR;
     @FXML
     private Label zodynoDydisApaciojeLabelR;
-    @FXML
-    private TextField zodynoPavadinimasTextFieldR;
     @FXML
     private TextField zodisTextFieldR;
     @FXML
@@ -32,15 +27,13 @@ public class Controller2 {
     private String pazymetasZodisZodyneR;
 
     public void initialize() { // ištryniau (URL location, ResourceBundle resources) ir suveikė
-
-        zodisTextFieldR.setText(Controller.info.getFragmentas()); // informacijos nuskaitymas iš Informacija klasės
+        zodisTextFieldR.setText(Controller.info.getFragmentas()); // informacijos nuskaitymas iš Info klasės
         settingsLinkedMapR = ReadWriteData.readFile("settings");
         String zodynoDefaultId = settingsLinkedMapR.get("default");
         zodynasTreeMapR = ReadWriteData.readFile(zodynoDefaultId);
         String zodynoPavadinimas = settingsLinkedMapR.get(zodynoDefaultId);
-        zodynoPavadinimasTextFieldR.setText(zodynoPavadinimas);
         antrasteLabelR.setText("Žodyno \"" + zodynoPavadinimas + "\" redagavimas");
-        vertimasTextAreaR.setText(Controller.info.getVertimas()); // informacijos nuskaitymas iš Informacija klasės
+        vertimasTextAreaR.setText(Controller.info.getVertimas()); // informacijos nuskaitymas iš Info klasės
         printVisiListViewR();
     }
 
@@ -78,12 +71,15 @@ public class Controller2 {
                 alert.setContentText("Neteisingai užpildyti laukai");
                 alert.show();
             } else {
-                zodynasTreeMapR.put(a, b.toString());
+                zodynasTreeMapR.put(a, b);
                 String aktyvusZodynas = settingsLinkedMapR.get("default");
                 ReadWriteData.writeFile(zodynasTreeMapR, aktyvusZodynas);
                 System.out.println("addWord: įdėtas naujas žodis į žodyną: " + aktyvusZodynas + ", įrašomas į failą 'Zx.txt'");
                 visiListViewR.getItems().clear(); // duomenų trynimas iš ListView
                 printVisiListViewR(); // žodyno spausdinimas toliau
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setContentText("Žodis išsaugotas");
+                alert.show();
             }
         }
     }
@@ -110,6 +106,7 @@ public class Controller2 {
                 visiListViewR.getItems().clear(); // duomenų trynimas iš ListView
                 printVisiListViewR(); // žodyno spausdinimas toliau
                 ReadWriteData.writeFile(zodynasTreeMapR, settingsLinkedMapR.get("default"));
+                isvalytiViskaR();
             }
         }
     }
@@ -125,35 +122,28 @@ public class Controller2 {
 
     public void uzpildytiLaukus() {
         String a = pazymetasZodisZodyneR;
-        String b = zodynasTreeMapR.get(a);
         zodisTextFieldR.setText(a);
-        vertimasTextAreaR.setText(b);
+        vertimasTextAreaR.setText(zodynasTreeMapR.get(a));
     }
 
     public void isvalytiViskaR() {
         zodisTextFieldR.clear();
         vertimasTextAreaR.clear();
-//        zodisTextField.setCursor(); // TODO: padėti kursorių į input langelį
+//        zodisTextFieldR.setCursor(); // TODO: padėti kursorių į input langelį
     }
 
     // veikiantis metodas atspausdinti duomenis į ListView
     public void printVisiListViewR() {
         for (String item : zodynasTreeMapR.keySet()) { // public Map'as
             visiListViewR.getItems().addAll(item);
-//            visiListViewR.getItems().addAll(item + " - " + zodynasTreeMapR.get(item));
         }
-        zodynoDydisApaciojeLabelR.setText("(" + zodynasTreeMapR.size() + ")");
+        zodynoDydisApaciojeLabelR.setText(zodynasTreeMapR.size() + "");
     }
 
-    // exitas iš View-2
+    // exitas iš sampleR
     public void exitButonR() {
-        Stage window = new Stage();
-        window.close();
-        Platform.exit();
-    }
-
-    public void onCloseEvent2() {
-        System.out.println("2 windowClose metodas");
+        Controller x = new Controller();
+        x.closeRstage();
     }
 }
 

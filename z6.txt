@@ -1,6 +1,6 @@
-ABC -->> ABĖCĖLĖ visomis kalbomisdsdmkld
-Pakuonis123 -->> 123
-Pakuonis147 -->> 147
+ABC -->> ABĖCĖLĖ visomis kalbomis <enter> dsdmkld
+Pakuonis123 -->> 123+++ <enter> +++ <enter> +++
+Pakuonis147 -->> 147++
 Pakuonis171 -->> 171
 Pakuonis195 -->> 195
 Pakuonis219 -->> 219
@@ -10,18 +10,14 @@ Pakuonis27 -->> 27
 Pakuonis291 -->> 291
 Pakuonis3 -->> 3
 Pakuonis315 -->> 315
-Pakuonis339 -->> 339
-Pakuonis363 -->> 363
 Pakuonis387 -->> 387
 Pakuonis411 -->> 411
 Pakuonis435 -->> 435
-Pakuonis459 -->> 459
 Pakuonis483 -->> 483
 Pakuonis507 -->> 507
 Pakuonis51 -->> 51
 Pakuonis531 -->> 531
-Pakuonis555 -->> 555
-Pakuonis579 -->> 579111
+Pakuonis555 -->> 555++ <enter> +++
 Pakuonis603 -->> 603
 Pakuonis627 -->> 627
 Pakuonis75 -->> 75
@@ -53,8 +49,9 @@ Panevėžys608 -->> 608
 Panevėžys632 -->> 632
 Panevėžys8 -->> 8
 Panevėžys80 -->> 80
-aa -->> aa aa
-conduct -->> belenkas
+aa -->> aa aa S   <enter> SADSS <enter>    SDDDD
+con -->> yra toks žodis
+conduct -->> belenkas+ <enter> ++ <enter> xxxxxxxxxxxxxxxxxxxxxxxx
 padas1 -->> 1
 padas121 -->> 121
 padas145 -->> 145
@@ -103,7 +100,6 @@ pakulos482 -->> 482
 pakulos50 -->> 50
 pakulos506 -->> 506
 pakulos530 -->> 530
-pakulos554 -->> 554
 pakulos578 -->> 578
 pakulos602 -->> 602
 pakulos626 -->> 626

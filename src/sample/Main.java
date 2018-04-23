@@ -24,19 +24,6 @@ public class Main extends Application {
 
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-
-
-// pagal bucky video sukuriamas mygtukas ir parodomas lange.
-//        Button but = new Button();
-//        but.setText("paspausk mane");
-//        Pane pane = new Pane();
-//        pane.getChildren().add(but);
-//
-//        Scene scene = new Scene(pane,500,500);
-//        primaryStage.setScene(scene);
-//        primaryStage.show();
-
-
     }
 }
 

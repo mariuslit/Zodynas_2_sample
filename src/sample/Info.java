@@ -1,37 +1,38 @@
 package sample;
 
+import javafx.stage.Stage;
+
 import java.util.Map;
 import java.util.TreeMap;
 
-public class Informacija {
+public class Info {
 
     private Map<String, String> zodynasR = new TreeMap<>();
     private String fragmentasR = new String();
     private String vertimasR = new String();
-//    private String zodynoIdR = new String(); // jei reikės papildomo parametro
+    private Stage stage2 = new Stage();
 
     // konstruktoriaus Overloading'as
-    public Informacija(Map<String, String> zodynas, String fragmentas) {
+    public Info(Map<String, String> zodynas, String fragmentas) {
         this.zodynasR = zodynas;
         this.fragmentasR = fragmentas;
     }
 
     // konstruktoriaus Overloading'as
-    public Informacija(Map<String, String> zodynas, String fragmentas, String vertimas/*, String zodynoID*/) {
+    public Info(Map<String, String> zodynas, String fragmentas, String vertimas/*, String zodynoID*/) {
         this.zodynasR = zodynas;
         this.fragmentasR = fragmentas;
         this.vertimasR = vertimas;
 //        this.zodynoIdR = zodynoID;
     }
 
-    public void setInformacija(Map<String, String> zodynas, String fragmentas) {
-        this.zodynasR = zodynas;
-        this.fragmentasR = fragmentas;
-//        System.out.println(fragmentasR);
+    // konstruktoriaus Overloading'as
+    public Info(Stage stage) {
+        this.stage2 = stage;
     }
 
-    public Map getZodynas() {
-        return zodynasR;
+    public Stage getStage() {
+        return stage2;
     }
 
     public String getFragmentas() {
@@ -41,8 +42,4 @@ public class Informacija {
     public String getVertimas() {
         return vertimasR;
     }
-
-//    public String getZodynoID() {
-//        return zodynoIdR;
-//    }
 }

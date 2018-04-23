@@ -19,9 +19,9 @@ naujų žodžių papildymas į žodyną button [ADD >]
 žodyno map išsaugojimas faile
 rakto '-' keitimas kitu pvz ' -->> '
 padaryta, kad paspaudus enter vertimo laukelyje persoktu i nauja eilute
+sklandžiai uždaromas antras view su mygtuku [close]
 
 TODO veikia BLOGAI:
-nepavyksta sklandžiai uždaryti atidaryto antro view lango su mygtuku close
 neatnaujinamas ekranas view-1 po žodyno pavadinimo keitimo view-2
 
 TODO:

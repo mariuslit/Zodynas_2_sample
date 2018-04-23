@@ -1,6 +1,7 @@
 a -->> pirmoji abėcėlės raidė
+abc -->> abccc
 b -->> antroji abėcėlės raidė
-con -->> 1 pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas  <enter> 2 antras  <enter> 3 trečias <enter> 4 <enter> 5++ <enter>  <enter> 
+con -->> 1 pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas  <enter> 2 antras  <enter> 3 trečias <enter> 
 duoti -->> kai kažką duodi
 en -->> anglų kalba3
 eng -->> anglų kalba

@@ -4,6 +4,5 @@ cup -->> puodukas, puodelis
 en -->> anglų kalbos trumpinys
 get -->> gauti, imti
 new -->> naujas
-new world -->> naujas pasaulis
 old -->> senas
 set -->> nustatyti, duoti

@@ -2,7 +2,6 @@ package sample;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,7 +11,6 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import sample.ReadWriteFile.ReadWriteData;
 
@@ -22,11 +20,13 @@ import java.util.*;
 public class Controller implements Initializable {
 
     @FXML
+    private Pane pagrindinisPane;
+    @FXML
     private TextField zodisTextField;
     @FXML
-    private Label laikinasLabel;
-    @FXML
     private Label pirmasAtitikmuoLabel;
+    @FXML
+    private Label antrasteLabel;
     @FXML
     private Label vertimasLabel;
     @FXML
@@ -52,41 +52,64 @@ public class Controller implements Initializable {
     @FXML
     private RadioButton z6;
 
-    public static Informacija info;
+    public static Info info;
     private Map<String, String> zodynasTreeMap = new TreeMap<>();
     private Map<String, String> settingsLinkedMap = new TreeMap<>();
 
-    // čia šio Controller kodas iškviečia Controller2 valdymo langą sample2.fxml
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+//        students = FXCollections.observableList(createDummyStudents()); // TODO reikia padaryti viską per observableList
+        settingsLinkedMap = ReadWriteData.readFile("settings"); // nuskaitomas settings.txt
+        zodynasSelect(settingsLinkedMap.get("default")); // keičiamas zodynas į default stratup metu
+        versk(zodisTextField.getText());
+    }
+
+    // čia šio Controller kodas iškviečia ControllerR valdomą langą sampleR.fxml
     @FXML
     public void openNewView() throws Exception {
-//        Platform.isImplicitExit(); // TODO reika kad atidarius langą, tėvinis langa būtų užrkaintas
-        FXMLLoader load = new FXMLLoader(getClass().getResource("sample2.fxml")); // perkopijuota iš Main
+//        Platform.isImplicitExit(); // TODO reika kad atidarius langą, tėvinis langa liktų užrkaintas
+        FXMLLoader load = new FXMLLoader(getClass().getResource("sampleR.fxml")); // perkopijuota iš Main
         Parent root = load.load(); // perkopijuota iš Main
-//        Parent root = FXMLLoader.load(getClass().getResource("sample2.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("sampleR.fxml"));
         Stage secondaryStage = new Stage();
         secondaryStage.setTitle("Žodynas Ltit");
 //        Controller controller2 = load2.getController(); // perkopijuota iš Main
 //        exitButton.setOnAction(e -> windowClose());
         secondaryStage.setScene(new Scene(root));
         secondaryStage.show();
+        info = new Info(secondaryStage);
+    }
+
+    @FXML
+    public void closeRstage() {
+//        System.out.println("kreipinys į Controler iš antro view");
+        Stage stage = info.getStage();
+        stage.close();
+        atliktiKokiusNorsVeiksmus();
+    }
+
+    //TODO Ppadaryti kad atliktų kokius nors veiksmus po sampleR uždarymo
+    public void atliktiKokiusNorsVeiksmus() {
+//        System.out.println("atlikti Kokius Nors Veiksmus");
+//        zodynasSelect(settingsLinkedMap.get("default"));
+//        versk(zodisTextField.getText());
     }
 
     public void onNewButtonPress() throws Exception {
-        info = new Informacija(zodynasTreeMap, zodisTextField.getText());
+        info = new Info(zodynasTreeMap, zodisTextField.getText());
         openNewView();
     }
 
     public void onEditButtonPress() throws Exception {
-        info = new Informacija(zodynasTreeMap, pirmasAtitikmuoLabel.getText(), vertimasLabel.getText()); // jei reikės papildomo parametro, settingsLinkedMap.get("default"));
+        info = new Info(zodynasTreeMap, pirmasAtitikmuoLabel.getText(), vertimasLabel.getText()); // jei reikės papildomo parametro, settingsLinkedMap.get("default"));
         openNewView();
     }
 
-    // ANDRIAUS KOMENTARAS: "Cia nuskaitai faila ir sudeti i map. Sitas metodas leidziamas ant star upo"
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-//        students = FXCollections.observableList(createDummyStudents()); // TODO reikia padaryti viską per observableList
+    // aktyvaus žodyno keitimas
+    public void kitasZodynas(ActionEvent event) { // kreipiasi visi 6 radioButton į šį metodą onAction
         settingsLinkedMap = ReadWriteData.readFile("settings"); // nuskaitomas settings.txt
-        zodynasSelect(settingsLinkedMap.get("default")); //keičiamas zodynas į default stratup metu
+        RadioButton pazymetasZodynas = (RadioButton) zodynuGrupe.getSelectedToggle();
+        zodynasSelect(pazymetasZodynas.getId());
         versk(zodisTextField.getText());
     }
 
@@ -119,6 +142,7 @@ public class Controller implements Initializable {
         ReadWriteData.writeFile(settingsLinkedMap, "settings"); // įrašo settings į failą
 
         // žodynų pavadinimų surašymas
+        antrasteLabel.setText("Žodžių paieška žodyne \"" + settingsLinkedMap.get(failoVardas) + "\"");
         z1.setText(settingsLinkedMap.get("z1"));
         z2.setText(settingsLinkedMap.get("z2"));
         z3.setText(settingsLinkedMap.get("z3"));
@@ -134,36 +158,30 @@ public class Controller implements Initializable {
         for (String item : zodynasTreeMap.keySet()) { // public Map'as
             visiListView.getItems().addAll(item);
         }
-        zodynoDydisApaciojeLabel.setText("(" + zodynasTreeMap.size() + ")");
+        zodynoDydisApaciojeLabel.setText(zodynasTreeMap.size() + "");
     } // end of zodynasSelect
-
-    // aktyvaus žodyno keitimas
-    public void kitasZodynas(ActionEvent event) {
-        settingsLinkedMap = ReadWriteData.readFile("settings"); // nuskaitomas settings.txt
-        RadioButton pazymetasZodynas = (RadioButton) zodynuGrupe.getSelectedToggle();
-        zodynasSelect(pazymetasZodynas.getId());
-        versk(zodisTextField.getText());
-//        Alert alert = new Alert(Alert.AlertType.WARNING);
-//        alert.setContentText("Pasirinktas žodynas:\n   " + pazymetasZodynas.getId() + "\nlaikinai veiks tik z1: " + z1.getText());
-//        alert.show();
-    }
 
     // reakcija į pelės paspaudimą ant ListView lauko, vis tik payko su vienu metodu
     public void clickList(MouseEvent event) {
-        String selectedItem;
+        String selectedItem = "";
         if (event.getSource().toString().equals("ListView[id=variantListView, styleClass=list-view]") &&
                 variantListView.getSelectionModel().getSelectedItem() != null) {
             selectedItem = variantListView.getSelectionModel().getSelectedItem();
             pirmasAtitikmuoLabel.setText(selectedItem);
             vertimasLabel.setText(zodynasTreeMap.get(selectedItem));
-            laikinasLabel.setText(event.getSource().toString());
+//            System.out.println(event.getSource().toString());
         }
         if (event.getSource().toString().equals("ListView[id=visiListView, styleClass=list-view]") &&
                 visiListView.getSelectionModel().getSelectedItem() != null) {
             selectedItem = visiListView.getSelectionModel().getSelectedItem();
             pirmasAtitikmuoLabel.setText(selectedItem);
             vertimasLabel.setText(zodynasTreeMap.get(selectedItem));
-            laikinasLabel.setText(event.getSource().toString());
+//            System.out.println(event.getSource().toString());
+        }
+        setColorsToFields();
+        if (event.getClickCount() == 2) {
+            zodisTextField.setText(selectedItem);
+            setColorsToFields();
         }
     }
 
@@ -180,7 +198,7 @@ public class Controller implements Initializable {
             for (String item : variantai) {
                 variantListView.getItems().addAll(item);
             }
-            variantuKiekisApaciojeLabel.setText("(" + variantai.size() + ")");
+            variantuKiekisApaciojeLabel.setText(variantai.size() + "");
             if (variantai.size() != 0) { // ne lygu nuliui
                 String pirmasAtitikmuo = variantai.first();
                 pirmasAtitikmuoLabel.setText(pirmasAtitikmuo);
@@ -191,10 +209,15 @@ public class Controller implements Initializable {
         } else {
             isvalyti();
         }
-        info = new Informacija(zodynasTreeMap, zodisTextField.getText());
+        info = new Info(zodynasTreeMap, zodisTextField.getText());
 //        System.out.println("Controller: " + zodisTextField.getText() + " -> " + info.getFragmentas());
+        setColorsToFields();
+    }
+
+    // tikrina ir pataiso spalvas
+    private void setColorsToFields() {
         // fono spalvos
-        if (!fragmentas.toLowerCase().equals(pirmasAtitikmuoLabel.getText().toLowerCase())) {
+        if (!zodisTextField.getText().toLowerCase().equals(pirmasAtitikmuoLabel.getText().toLowerCase())) {
             pirmasAtitikmuoLabel.setStyle("-fx-background-color: #b0e5ea");
             vertimasLabel.setStyle("-fx-background-color: #b0e5ea");
         } else {
