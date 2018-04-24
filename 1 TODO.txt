@@ -1,4 +1,4 @@
-TODO veikia GREAI:
+// veikia GREAI:
 suranda žodį atitinkamame žodyne ir parodo vertimą
 veikia žodynų pasirinkimo radiobutonai
 veikia spausdinimas į ListView per mano metodą + for ciklą
@@ -26,7 +26,7 @@ neatnaujinamas ekranas view-1 po žodyno pavadinimo keitimo view-2
 
 TODO:
 1. lt -> en
-padaryti vaikstant suklaviaturos rodyklem, kad rodytu vertima iskart
+padaryti vaikstant su klaviaturos rodyklem, kad rodytu vertima iskart
 
 TODO jeigu spėsiu
 * žodynų Map įrašymas į list view naudojant observableList
@@ -34,7 +34,7 @@ TODO jeigu spėsiu
 
 TODO klausimai Andriui
 ---
-Kodėl galimi 4 kintamojo List deklaravimo variantai, kada kurį geriau naudoti
+Kodėl galimi 4 kintamojo List deklaravimo variantai, kada kurį geriau naudoti?
 
 public static ObservableList<Student> students; // deklaracija klasėje
               List<Student> students = new ArrayList<>();
@@ -44,6 +44,9 @@ public static ObservableList<Student> students; // deklaracija klasėje
 3             ArrayList<String> examples = new ArrayList<>();
 4             ArrayList<String> examples = new ArrayList<>( reikšmių priskyrimas );
 ---
+Kaip sukurti exe failą
+---
+
 
 
 
