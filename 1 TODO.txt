@@ -30,6 +30,7 @@ nepavyksta automatiškai atlikti veiksmų parent view'e, po children view uždar
 TODO:
 1. lt -> en
 2. public -> private
+3. Stage paga Andriaus pavyzdį
 
 TODO jeigu spėsiu
 padaryti vaikstant su klaviaturos rodyklem, kad rodytu vertima iskart

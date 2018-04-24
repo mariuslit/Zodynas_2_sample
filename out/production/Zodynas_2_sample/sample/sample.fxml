@@ -24,42 +24,42 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="800.0" style="-fx-background-color: #9adae0;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
-        <TextField fx:id="zodisTextField" layoutX="15.0" layoutY="100.0" onKeyReleased="#paspaudimas" prefHeight="50.0" prefWidth="175.0" promptText="žodis">
+        <TextField fx:id="fragment_TextField" layoutX="15.0" layoutY="100.0" onKeyReleased="#doOnKeyPress" prefHeight="50.0" prefWidth="175.0" promptText="žodis">
             <font>
                 <Font size="18.0" />
             </font>
         </TextField>
-        <ListView fx:id="variantListView" layoutX="15.0" layoutY="150.0" onMouseClicked="#clickList" prefHeight="285.0" prefWidth="215.0" />
-        <ListView fx:id="visiListView" layoutX="570.0" layoutY="150.0" onMouseClicked="#clickList" prefHeight="333.0" prefWidth="215.0" />
-        <RadioButton fx:id="z1" layoutX="15.0" layoutY="506.0" mnemonicParsing="false" onAction="#kitasZodynas" prefHeight="25.0" prefWidth="175.0" selected="true" text="Žodynas 1">
+        <ListView fx:id="variants_ListView" layoutX="15.0" layoutY="150.0" onMouseClicked="#doByClickingOnListView" prefHeight="285.0" prefWidth="215.0" />
+        <ListView fx:id="allWords_ListView" layoutX="570.0" layoutY="150.0" onMouseClicked="#doByClickingOnListView" prefHeight="333.0" prefWidth="215.0" />
+        <RadioButton fx:id="d1" layoutX="15.0" layoutY="506.0" mnemonicParsing="false" onAction="#nextDictionary" prefHeight="25.0" prefWidth="175.0" selected="true" text="Žodynas 1">
             <font>
                 <Font size="16.0" />
             </font>
             <toggleGroup>
-                <ToggleGroup fx:id="zodynuGrupe" />
+                <ToggleGroup fx:id="dictionarys_ToggleGroup" />
             </toggleGroup>
         </RadioButton>
-        <RadioButton fx:id="z2" layoutX="15.0" layoutY="535.0" mnemonicParsing="false" onAction="#kitasZodynas" prefHeight="25.0" prefWidth="175.0" text="Žodynas 2" toggleGroup="$zodynuGrupe">
+        <RadioButton fx:id="d2" layoutX="15.0" layoutY="535.0" mnemonicParsing="false" onAction="#nextDictionary" prefHeight="25.0" prefWidth="175.0" text="Žodynas 2" toggleGroup="$dictionarys_ToggleGroup">
             <font>
                 <Font size="16.0" />
             </font>
         </RadioButton>
-        <RadioButton fx:id="z3" layoutX="199.0" layoutY="506.0" mnemonicParsing="false" onAction="#kitasZodynas" prefHeight="25.0" prefWidth="175.0" text="Žodynas 3" toggleGroup="$zodynuGrupe">
+        <RadioButton fx:id="d3" layoutX="199.0" layoutY="506.0" mnemonicParsing="false" onAction="#nextDictionary" prefHeight="25.0" prefWidth="175.0" text="Žodynas 3" toggleGroup="$dictionarys_ToggleGroup">
             <font>
                 <Font size="16.0" />
             </font>
         </RadioButton>
-        <RadioButton fx:id="z4" layoutX="199.0" layoutY="535.0" mnemonicParsing="false" onAction="#kitasZodynas" prefHeight="25.0" prefWidth="175.0" text="Žodynas 4" toggleGroup="$zodynuGrupe">
+        <RadioButton fx:id="d4" layoutX="199.0" layoutY="535.0" mnemonicParsing="false" onAction="#nextDictionary" prefHeight="25.0" prefWidth="175.0" text="Žodynas 4" toggleGroup="$dictionarys_ToggleGroup">
             <font>
                 <Font size="16.0" />
             </font>
         </RadioButton>
-        <RadioButton fx:id="z5" layoutX="383.0" layoutY="506.0" mnemonicParsing="false" onAction="#kitasZodynas" prefHeight="25.0" prefWidth="175.0" text="Žodynas 5" toggleGroup="$zodynuGrupe">
+        <RadioButton fx:id="d5" layoutX="383.0" layoutY="506.0" mnemonicParsing="false" onAction="#nextDictionary" prefHeight="25.0" prefWidth="175.0" text="Žodynas 5" toggleGroup="$dictionarys_ToggleGroup">
             <font>
                 <Font size="16.0" />
             </font>
         </RadioButton>
-        <RadioButton fx:id="z6" layoutX="383.0" layoutY="535.0" mnemonicParsing="false" onAction="#kitasZodynas" prefHeight="25.0" prefWidth="175.0" text="Žodynas 6" toggleGroup="$zodynuGrupe">
+        <RadioButton fx:id="d6" layoutX="383.0" layoutY="535.0" mnemonicParsing="false" onAction="#nextDictionary" prefHeight="25.0" prefWidth="175.0" text="Žodynas 6" toggleGroup="$dictionarys_ToggleGroup">
             <font>
                 <Font size="16.0" />
             </font>
@@ -84,7 +84,7 @@
                 <Font size="14.0" />
             </font>
         </Label>
-        <Label fx:id="vertimasLabel" alignment="TOP_LEFT" layoutX="240.0" layoutY="150.0" prefHeight="285.0" prefWidth="320.0" style="-fx-background-color: #b0e5ea;" textAlignment="JUSTIFY" textOverrun="CENTER_ELLIPSIS" wrapText="true">
+        <Label fx:id="translation_Label" alignment="TOP_LEFT" layoutX="240.0" layoutY="150.0" prefHeight="285.0" prefWidth="320.0" style="-fx-background-color: #b0e5ea;" textAlignment="JUSTIFY" textOverrun="CENTER_ELLIPSIS" wrapText="true">
             <font>
                 <Font size="18.0" />
             </font>
@@ -94,22 +94,22 @@
                 <Font size="14.0" />
             </font>
         </Label>
-        <Label fx:id="pirmasAtitikmuoLabel" layoutX="240.0" layoutY="101.0" prefHeight="27.0" prefWidth="547.0" style="-fx-background-color: #b0e5ea;">
+        <Label fx:id="firstEquivalent_Label" layoutX="240.0" layoutY="101.0" prefHeight="27.0" prefWidth="547.0" style="-fx-background-color: #b0e5ea;">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font>
         </Label>
-        <Button layoutX="191.0" layoutY="100.0" mnemonicParsing="false" onAction="#isvalytiViska" prefHeight="49.0" prefWidth="39.0" text="X" textFill="RED">
+        <Button layoutX="191.0" layoutY="100.0" mnemonicParsing="false" onAction="#clearAllFields" prefHeight="49.0" prefWidth="39.0" text="X" textFill="RED">
             <font>
                 <Font name="System Bold" size="19.0" />
             </font>
         </Button>
-        <Label fx:id="zodynoDydisApaciojeLabel" alignment="TOP_LEFT" layoutX="570.0" layoutY="483.0" prefHeight="20.0" prefWidth="175.0" text="0">
+        <Label fx:id="sizeOfDictionaryBelow_Label" alignment="TOP_LEFT" layoutX="570.0" layoutY="483.0" prefHeight="20.0" prefWidth="175.0" text="0">
             <font>
                 <Font size="14.0" />
             </font>
         </Label>
-        <Label fx:id="variantuKiekisApaciojeLabel" alignment="TOP_LEFT" layoutX="15.0" layoutY="435.0" prefHeight="20.0" prefWidth="175.0" text="0">
+        <Label fx:id="countityOfVariants_BelowLabel" alignment="TOP_LEFT" layoutX="15.0" layoutY="435.0" prefHeight="20.0" prefWidth="175.0" text="0">
             <font>
                 <Font size="14.0" />
             </font>
@@ -131,7 +131,7 @@
       </Label>
       <VBox alignment="CENTER" prefHeight="53.0" prefWidth="800.0">
          <children>
-            <Label id="spalvos" fx:id="antrasteLabel" alignment="CENTER" contentDisplay="TOP" prefHeight="58.0" prefWidth="800.0" style="-fx-background-color: #2bb9e0;" text="Žodžių paieška žodyne &quot;Žodynas 1&quot;">
+            <Label id="spalvos" fx:id="title_Label" alignment="CENTER" contentDisplay="TOP" prefHeight="58.0" prefWidth="800.0" style="-fx-background-color: #2bb9e0;" text="Žodžių paieška žodyne &quot;Žodynas 1&quot;">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

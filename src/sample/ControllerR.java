@@ -3,6 +3,7 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import sample.ReadWriteFile.ReadWriteData;
 
 import java.util.Map;
@@ -12,33 +13,32 @@ import java.util.TreeMap;
 public class ControllerR {
 
     @FXML
-    private Label antrasteLabelR;
+    private Label title_LabelR;
     @FXML
-    private Label zodynoDydisApaciojeLabelR;
+    private Label sizeOfDictionaryBelow_LabelR;
     @FXML
-    private TextField zodisTextFieldR;
+    private TextField word_TextFieldR;
     @FXML
-    private TextArea vertimasTextAreaR;
+    private TextArea translation_TextAreaR;
     @FXML
-    private ListView<String> visiListViewR;
+    private ListView<String> allWords_ListViewR;
 
-    private Map<String, String> zodynasTreeMapR = new TreeMap<>();
+    private Map<String, String> dictionaryTreeMapR = new TreeMap<>();
     private Map<String, String> settingsLinkedMapR = new TreeMap<>();
-    private String pazymetasZodisZodyneR;
+    private String selectedWord;
 
     public void initialize() { // ištryniau (URL location, ResourceBundle resources) ir suveikė
-        zodisTextFieldR.setText(Controller.info.getFragmentas()); // informacijos nuskaitymas iš Info klasės
+        word_TextFieldR.setText(Controller.info.getFragmentas()); // informacijos nuskaitymas iš Info klasės
         settingsLinkedMapR = ReadWriteData.readFile("settings");
-        String zodynoDefaultId = settingsLinkedMapR.get("default");
-        zodynasTreeMapR = ReadWriteData.readFile(zodynoDefaultId);
-        String zodynoPavadinimas = settingsLinkedMapR.get(zodynoDefaultId);
-        antrasteLabelR.setText("Žodyno \"" + zodynoPavadinimas + "\" redagavimas");
-        vertimasTextAreaR.setText(Controller.info.getVertimas()); // informacijos nuskaitymas iš Info klasės
-        printVisiListViewR();
+        String defaultDictionaryId = settingsLinkedMapR.get("default");
+        dictionaryTreeMapR = ReadWriteData.readFile(defaultDictionaryId);
+        title_LabelR.setText("\"" + settingsLinkedMapR.get(defaultDictionaryId) + "\" žodyno redagavimas");
+        translation_TextAreaR.setText(Controller.info.getVertimas()); // informacijos nuskaitymas iš Info klasės
+        fillInTheListViewR();
     }
 
     // žodyno pavadinimo keitimas
-    public void keistiZodynoPavadinimaR() {
+    public void changeDictionaryNameR() {
         TextInputDialog dialog = new TextInputDialog(settingsLinkedMapR.get(settingsLinkedMapR.get("default")));
         dialog.setTitle("Žodyno pavadinomo keitimas");
         dialog.setHeaderText("Senasis žodynas: " + settingsLinkedMapR.get(settingsLinkedMapR.get("default")));
@@ -46,104 +46,106 @@ public class ControllerR {
         // Traditional way to get the response value.
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
-            antrasteLabelR.setText("Žodyno \"" + result.get() + "\" redagavimas");
+            title_LabelR.setText("\"" + result.get() + "\" žodyno redagavimas");
             settingsLinkedMapR.put(settingsLinkedMapR.get("default"), result.get());
             ReadWriteData.writeFile(settingsLinkedMapR, "settings");
-            System.out.println("result: " + result.get());
+            title_LabelR.setTextFill(Color.RED);
         }
     }
 
     // naujas žodis
     public void addWordR() {
-        String a = zodisTextFieldR.getText();
-        String b = vertimasTextAreaR.getText();
+        String word = word_TextFieldR.getText();
+        String transl = translation_TextAreaR.getText();
 
         // neteisingo žodyno pildymo filtrai
-        if (zodynasTreeMapR.containsKey(a) && zodynasTreeMapR.get(a).equals(b)) { // vienodų žodžių filtras
+        if (dictionaryTreeMapR.containsKey(word) && dictionaryTreeMapR.get(word).equals(transl)) { // vienodų žodžių filtras
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setContentText("Toks žodis su tokiu pačiu vertimu šiame žodyne jau yra");
             alert.show();
         } else {
-            if (a.length() == 0 || b.length() == 0) { // tuščių ir bereikšmių žodžių filtras
+            if (word.length() == 0 || transl.length() == 0) { // tuščių ir bereikšmių žodžių filtras
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Klaidelė");
                 alert.setHeaderText(null);
                 alert.setContentText("Neteisingai užpildyti laukai");
                 alert.show();
             } else {
-                zodynasTreeMapR.put(a, b);
-                String aktyvusZodynas = settingsLinkedMapR.get("default");
-                ReadWriteData.writeFile(zodynasTreeMapR, aktyvusZodynas);
-                System.out.println("addWord: įdėtas naujas žodis į žodyną: " + aktyvusZodynas + ", įrašomas į failą 'Zx.txt'");
-                visiListViewR.getItems().clear(); // duomenų trynimas iš ListView
-                printVisiListViewR(); // žodyno spausdinimas toliau
+                dictionaryTreeMapR.put(word, transl);
+                String activeDict = settingsLinkedMapR.get("default");
+                ReadWriteData.writeFile(dictionaryTreeMapR, activeDict);
+                System.out.println("addWord: įdėtas naujas žodis į žodyną: " + activeDict + ", įrašomas į failą 'Zx.txt'");
+                allWords_ListViewR.getItems().clear(); // duomenų trynimas iš ListView
+                fillInTheListViewR(); // žodyno spausdinimas toliau
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setContentText("Žodis išsaugotas");
                 alert.show();
+                title_LabelR.setTextFill(Color.RED);
             }
         }
     }
 
     // button [EDIT]
     public void editWordR() {
-        if (pazymetasZodisZodyneR != null) {
-            uzpildytiLaukus();
+        if (selectedWord != null) {
+            fillInTheFieldsR();
         }
     }
 
     // button [DELETE]
-    public void deleteListViewItem() {
-        if (pazymetasZodisZodyneR != null) {
+    public void deleteWordFromDictionaryR() {
+        if (selectedWord != null) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Įspėjimas !!!");
             alert.setHeaderText("Ar tikrai norite ištrinti žodį iš žodyno?");
-            alert.setContentText(pazymetasZodisZodyneR);
+            alert.setContentText(selectedWord);
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
                 // ... user chose OK
-//            System.out.println("žodis " + pazymetasZodisZodyneR + " trinamas");
-                zodynasTreeMapR.remove(pazymetasZodisZodyneR);
-                visiListViewR.getItems().clear(); // duomenų trynimas iš ListView
-                printVisiListViewR(); // žodyno spausdinimas toliau
-                ReadWriteData.writeFile(zodynasTreeMapR, settingsLinkedMapR.get("default"));
-                isvalytiViskaR();
+//            System.out.println("žodis " + selectedWord + " trinamas");
+                dictionaryTreeMapR.remove(selectedWord);
+                allWords_ListViewR.getItems().clear(); // duomenų trynimas iš ListView
+                fillInTheListViewR(); // žodyno spausdinimas toliau
+                ReadWriteData.writeFile(dictionaryTreeMapR, settingsLinkedMapR.get("default"));
+                clearFieldsR();
+                title_LabelR.setTextFill(Color.RED);
             }
         }
     }
 
     // reakcija į pelės paspaudimą ListViewR
-    public void editWordOnDoubleClickMouseSelection(MouseEvent event) {
-        String selectedItem = visiListViewR.getSelectionModel().getSelectedItem(); // padaryta pagal Andriaus kodą
-        pazymetasZodisZodyneR = selectedItem;
+    public void editWordOnDoubleClickMouseSelectionR(MouseEvent event) {
+        String selectedItem = allWords_ListViewR.getSelectionModel().getSelectedItem(); // padaryta pagal Andriaus kodą
+        selectedWord = selectedItem;
         if (event.getClickCount() == 2) {
-            uzpildytiLaukus();
+            fillInTheFieldsR();
         }
     }
 
-    public void uzpildytiLaukus() {
-        String a = pazymetasZodisZodyneR;
-        zodisTextFieldR.setText(a);
-        vertimasTextAreaR.setText(zodynasTreeMapR.get(a));
+    private void fillInTheFieldsR() {
+        String a = selectedWord;
+        word_TextFieldR.setText(a);
+        translation_TextAreaR.setText(dictionaryTreeMapR.get(a));
     }
 
-    public void isvalytiViskaR() {
-        zodisTextFieldR.clear();
-        vertimasTextAreaR.clear();
-//        zodisTextFieldR.setCursor(); // TODO: padėti kursorių į input langelį
+    public void clearFieldsR() {
+        word_TextFieldR.clear();
+        translation_TextAreaR.clear();
+//        word_TextFieldR.setCursor(); // TODO: padėti kursorių į input langelį
     }
 
     // veikiantis metodas atspausdinti duomenis į ListView
-    public void printVisiListViewR() {
-        for (String item : zodynasTreeMapR.keySet()) { // public Map'as
-            visiListViewR.getItems().addAll(item);
+    private void fillInTheListViewR() {
+        for (String item : dictionaryTreeMapR.keySet()) { // public Map'as
+            allWords_ListViewR.getItems().addAll(item);
         }
-        zodynoDydisApaciojeLabelR.setText(zodynasTreeMapR.size() + "");
+        sizeOfDictionaryBelow_LabelR.setText(dictionaryTreeMapR.size() + "");
     }
 
     // exitas iš sampleR
     public void exitButonR() {
         Controller x = new Controller();
-        x.closeRstage();
+        x.closeStageR();
     }
 }
 
