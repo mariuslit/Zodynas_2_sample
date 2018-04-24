@@ -31,19 +31,15 @@ TODO:
 1. lt -> en
 2. public -> private
 3. Stage paga Andriaus pavyzdį
-
 TODO jeigu spėsiu
 padaryti vaikstant su klaviaturos rodyklem, kad rodytu vertima iskart
 * žodynų Map įrašymas į list view naudojant observableList
 * button [Ką sako internetas]
-
 TODO klausimai Andriui
 ---
 Kodėl galimi 4 kintamojo List deklaravimo variantai, kada kurį geriau naudoti?
-
 public static ObservableList<Student> students; // deklaracija klasėje
               List<Student> students = new ArrayList<>();
-
 1             List<String> examples;
 2             List<String> examples = new ArrayList<>();
 3             ArrayList<String> examples = new ArrayList<>();
