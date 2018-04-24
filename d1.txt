@@ -1,6 +1,8 @@
-Pakuonis3 -->> 3+
+Pakuonis3 -->> 3++
+Pakuonis5 -->> 3+++++ <enter> + <enter> + <enter> + <enter> +
 Panevėžys8 -->> 8
 a -->> /ei/ is the first letter and the first vowel of the ISO basic Latin alphabet
+b -->> antra raidė
 naujas -->> new
 nustatyti -->> set
 panda4 -->> 4

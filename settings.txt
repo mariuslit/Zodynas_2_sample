@@ -1,7 +1,7 @@
-default -->> z6
-z1 -->> Lietuvių - Italų
-z2 -->> Anglų - Lietuvių
-z3 -->> Aiškinamasis
-z4 -->> Italų - Lietuvių 1
-z5 -->> Bandomasis
-z6 -->> Ilgas
+d1 -->> Lietuvių - Italų
+d2 -->> Anglų - Lietuvių
+d3 -->> Aiškinamasis
+d4 -->> Italų - Lietuvių
+d5 -->> Bandomasis
+d6 -->> Ilgas2
+default -->> d4

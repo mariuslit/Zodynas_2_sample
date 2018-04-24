@@ -9,33 +9,33 @@ import java.util.TreeMap;
  * mano kodas pagal << Created by andriusbaltrunas on 3/3/2017. >> pavyzdį
  */
 public class ReadWriteData {
-    private static final String SPLITERIS = " -->> ";
-    private static final String SPLITERIS2 = " <enter> ";
+    private static final String SPLITER = " -->> ";
+    private static final String SPLITER2 = " <enter> ";
 
     public static Map readFile(String failoVardas) {
-        Map<String, String> duomenys = new TreeMap<>();
+        Map<String, String> data = new TreeMap<>();
         try {
-            BufferedReader failas = new BufferedReader(new FileReader(new File(failoVardas + ".txt")));
+            BufferedReader file = new BufferedReader(new FileReader(new File(failoVardas + ".txt")));
             String line;
 
-            while ((line = failas.readLine()) != null) { // jeigu eilutė egzistuoja, t.y. ne lygi nuliui
-                String[] masyvasDuZodziai = line.split(SPLITERIS);
-                String s = masyvasDuZodziai[1].replace(SPLITERIS2,"\n");
-                if (masyvasDuZodziai.length == 2) {
-                    duomenys.put(masyvasDuZodziai[0], s);
+            while ((line = file.readLine()) != null) { // jeigu eilutė egzistuoja, t.y. ne lygi nuliui
+                String[] mas = line.split(SPLITER);
+                String s = mas[1].replace(SPLITER2,"\n");
+                if (mas.length == 2) {
+                    data.put(mas[0], s);
                 }
             }
         } catch (IOException e) {
             System.out.println("Can t read data from file");
         }
-        return duomenys;
+        return data;
     }
 
-    public static void writeFile(Map<String, String> zodynas, String failoVardas) {
-        try (BufferedWriter failas = new BufferedWriter(new FileWriter(failoVardas + ".txt"))) {
-            for (String item : zodynas.keySet()) {
-                failas.write(item + SPLITERIS + zodynas.get(item).replace("\n",SPLITERIS2));
-                failas.newLine();
+    public static void writeFile(Map<String, String> dict, String fileName) {
+        try (BufferedWriter file = new BufferedWriter(new FileWriter(fileName + ".txt"))) {
+            for (String item : dict.keySet()) {
+                file.write(item + SPLITER + dict.get(item).replace("\n", SPLITER2));
+                file.newLine();
             }
 //            System.out.println("writeFile >> pakeistas failas: " + failoVardas + ".txt");
         } catch (IOException e) {

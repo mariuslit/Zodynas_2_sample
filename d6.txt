@@ -1,14 +1,14 @@
 ABC -->> ABĖCĖLĖ visomis kalbomis <enter> dsdmkld
 Pakuonis123 -->> 123+++ <enter> +++ <enter> +++
-Pakuonis147 -->> 147++
+Pakuonis147 -->> 147+++
 Pakuonis171 -->> 171
 Pakuonis195 -->> 195
-Pakuonis219 -->> 219
+Pakuonis219 -->> 219+
 Pakuonis243 -->> 243
 Pakuonis267 -->> 267
-Pakuonis27 -->> 27
+Pakuonis27 -->> 27+
 Pakuonis291 -->> 291
-Pakuonis3 -->> 3
+Pakuonis3+ -->> 3++
 Pakuonis315 -->> 315
 Pakuonis387 -->> 387
 Pakuonis411 -->> 411
@@ -27,8 +27,6 @@ Panevėžys128 -->> 128
 Panevėžys152 -->> 152
 Panevėžys176 -->> 176
 Panevėžys200 -->> 200
-Panevėžys224 -->> 224
-Panevėžys248 -->> 248
 Panevėžys272 -->> 272
 Panevėžys296 -->> 296
 Panevėžys32 -->> 32
@@ -79,6 +77,7 @@ padas601 -->> 601
 padas625 -->> 625
 padas73 -->> 73
 padas97 -->> 97
+pak -->> 3++l <enter> l <enter> l <enter> l <enter> penkta eilutė
 pakulos122 -->> 122
 pakulos146 -->> 146
 pakulos170 -->> 170
