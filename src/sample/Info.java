@@ -7,39 +7,39 @@ import java.util.TreeMap;
 
 public class Info {
 
-    private Map<String, String> zodynasR = new TreeMap<>();
-    private String fragmentasR = new String();
-    private String vertimasR = new String();
-    private Stage stage2 = new Stage();
+    private Map<String, String> dictionary = new TreeMap<>();
+    private String fragment = new String();
+    private String translation = new String();
+    private Stage stageR = new Stage();
 
     // konstruktoriaus Overloading'as
     public Info(Map<String, String> zodynas, String fragmentas) {
-        this.zodynasR = zodynas;
-        this.fragmentasR = fragmentas;
+        this.dictionary = zodynas;
+        this.fragment = fragmentas;
     }
 
     // konstruktoriaus Overloading'as
-    public Info(Map<String, String> zodynas, String fragmentas, String vertimas/*, String zodynoID*/) {
-        this.zodynasR = zodynas;
-        this.fragmentasR = fragmentas;
-        this.vertimasR = vertimas;
+    public Info(Map<String, String> dictionary, String fragment, String translation/*, String zodynoID*/) {
+        this.dictionary = dictionary;
+        this.fragment = fragment;
+        this.translation = translation;
 //        this.zodynoIdR = zodynoID;
     }
 
     // konstruktoriaus Overloading'as
     public Info(Stage stage) {
-        this.stage2 = stage;
+        this.stageR = stage;
     }
 
     public Stage getStage() {
-        return stage2;
+        return stageR;
     }
 
     public String getFragmentas() {
-        return fragmentasR;
+        return fragment;
     }
 
     public String getVertimas() {
-        return vertimasR;
+        return translation;
     }
 }

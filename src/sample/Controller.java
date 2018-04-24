@@ -27,9 +27,9 @@ public class Controller implements Initializable {
     @FXML
     private Label translation_Label;
     @FXML
-    private Label countityOfVariants_BelowLabel;
+    private Label countityOfVariantsBelowListView_Label;
     @FXML
-    private Label sizeOfDictionaryBelow_Label;
+    private Label sizeOfDictionaryBelowListView_Label;
     @FXML
     private ListView<String> allWords_ListView;
     @FXML
@@ -51,13 +51,13 @@ public class Controller implements Initializable {
 
     public static Info info;
     private Map<String, String> dictionaryTreeMap = new TreeMap<>(); //
-    private Map<String, String> settingsLinkedMap = new TreeMap<>();
+    private Map<String, String> settingsTreeMap = new TreeMap<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 //        students = FXCollections.observableList(createDummyStudents()); // TODO reikia padaryti viską per observableList
-        settingsLinkedMap = ReadWriteData.readFile("settings"); // nuskaitomas settings.txt
-        dictionarySelect(settingsLinkedMap.get("default")); // keičiamas zodynas į default stratup metu
+        settingsTreeMap = ReadWriteData.readFile("settings"); // nuskaitomas settings.txt
+        dictionarySelect(settingsTreeMap.get("default")); // keičiamas zodynas į default stratup metu
         translate(fragment_TextField.getText());
     }
 
@@ -70,7 +70,7 @@ public class Controller implements Initializable {
 //        Parent root = FXMLLoader.load(getClass().getResource("sampleR.fxml"));
         Stage stageR = new Stage();
         stageR.setTitle("Žodynas Ltit");
-//        Controller controller2 = load2.getController(); // perkopijuota iš Main
+//        Controller controllerR = load.getController(); // perkopijuota iš Main
 //        exitButton.setOnAction(e -> windowClose());
         stageR.setScene(new Scene(root));
         stageR.show();
@@ -88,7 +88,7 @@ public class Controller implements Initializable {
     //TODO Ppadaryti kad atliktų kokius nors veiksmus po sampleR uždarymo
     private void doSomething() {
 //        System.out.println("atlikti Kokius Nors Veiksmus");
-//        dictionarySelect(settingsLinkedMap.get("default"));
+//        dictionarySelect(settingsTreeMap.get("default"));
 //        translate(fragment_TextField.getText());
     }
 
@@ -98,19 +98,19 @@ public class Controller implements Initializable {
     }
 
     public void onEditButtonPress() throws Exception {
-        info = new Info(dictionaryTreeMap, firstEquivalent_Label.getText(), translation_Label.getText()); // jei reikės papildomo parametro, settingsLinkedMap.get("default"));
+        info = new Info(dictionaryTreeMap, firstEquivalent_Label.getText(), translation_Label.getText()); // jei reikės papildomo parametro, settingsTreeMap.get("default"));
         openNewView();
     }
 
     // aktyvaus žodyno keitimas
     public void nextDictionary(ActionEvent event) { // kreipiasi visi 6 radioButton į šį metodą onAction
-        settingsLinkedMap = ReadWriteData.readFile("settings"); // nuskaitomas settings.txt
+        settingsTreeMap = ReadWriteData.readFile("settings"); // nuskaitomas settings.txt
         RadioButton selectedDict = (RadioButton) dictionarys_ToggleGroup.getSelectedToggle();
         dictionarySelect(selectedDict.getId());
         translate(fragment_TextField.getText());
     }
 
-    // žodyno pakeitima
+    // žodyno pakeitimas, toggel ID = failo vardas
     private void dictionarySelect(String toggelID) {
         switch (toggelID) {
             case "d1":
@@ -135,17 +135,17 @@ public class Controller implements Initializable {
         String fileName = toggelID; // dėl kodo skaitymo aiškumo
 
         // išsaugomas default žodynas "setings" faile
-        settingsLinkedMap.put("default", fileName);
-        ReadWriteData.writeFile(settingsLinkedMap, "settings"); // įrašo settings į failą
+        settingsTreeMap.put("default", fileName);
+        ReadWriteData.writeFile(settingsTreeMap, "settings"); // įrašo settings į failą
 
-        // žodynų pavadinimų surašymas
-        title_Label.setText("Žodžių paieška žodyne \"" + settingsLinkedMap.get(fileName) + "\"");
-        d1.setText(settingsLinkedMap.get("d1"));
-        d2.setText(settingsLinkedMap.get("d2"));
-        d3.setText(settingsLinkedMap.get("d3"));
-        d4.setText(settingsLinkedMap.get("d4"));
-        d5.setText(settingsLinkedMap.get("d5"));
-        d6.setText(settingsLinkedMap.get("d6"));
+        // žodynų pavadinimų surašymas iš settings failo
+        title_Label.setText("Žodžių paieška žodyne \"" + settingsTreeMap.get(fileName) + "\"");
+        d1.setText(settingsTreeMap.get("d1"));
+        d2.setText(settingsTreeMap.get("d2"));
+        d3.setText(settingsTreeMap.get("d3"));
+        d4.setText(settingsTreeMap.get("d4"));
+        d5.setText(settingsTreeMap.get("d5"));
+        d6.setText(settingsTreeMap.get("d6"));
 
         // nuskaito duomenis "Žodynas"
         dictionaryTreeMap = ReadWriteData.readFile(fileName); // užkrauna žodyną
@@ -155,7 +155,7 @@ public class Controller implements Initializable {
         for (String item : dictionaryTreeMap.keySet()) { // public Map'as
             allWords_ListView.getItems().addAll(item);
         }
-        sizeOfDictionaryBelow_Label.setText(dictionaryTreeMap.size() + "");
+        sizeOfDictionaryBelowListView_Label.setText(dictionaryTreeMap.size() + "");
     } // end of dictionarySelect
 
     // reakcija į pelės paspaudimą ant ListView lauko, vis tik payko su vienu metodu
@@ -167,6 +167,7 @@ public class Controller implements Initializable {
             firstEquivalent_Label.setText(selectedItem);
             translation_Label.setText(dictionaryTreeMap.get(selectedItem));
 //            System.out.println(event.getSource().toString());
+            fillColorsToFields();
         }
         if (event.getSource().toString().equals("ListView[id=allWords_ListView, styleClass=list-view]") &&
                 allWords_ListView.getSelectionModel().getSelectedItem() != null) {
@@ -174,12 +175,13 @@ public class Controller implements Initializable {
             firstEquivalent_Label.setText(selectedItem);
             translation_Label.setText(dictionaryTreeMap.get(selectedItem));
 //            System.out.println(event.getSource().toString());
+            fillColorsToFields();
         }
-        fillColorsToFields();
-        if (event.getClickCount() == 2) {
+        if (event.getClickCount() == 2 && selectedItem != "") {
             fragment_TextField.setText(selectedItem);
             fillColorsToFields();
             translate(selectedItem);
+            fillColorsToFields();
         }
     }
 
@@ -196,7 +198,7 @@ public class Controller implements Initializable {
             for (String item : variant) {
                 variants_ListView.getItems().addAll(item);
             }
-            countityOfVariants_BelowLabel.setText(variant.size() + "");
+            countityOfVariantsBelowListView_Label.setText(variant.size() + "");
             if (variant.size() != 0) { // ne lygu nuliui
                 String firstEquiv = variant.first();
                 firstEquivalent_Label.setText(firstEquiv);

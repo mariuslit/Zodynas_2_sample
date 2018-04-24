@@ -104,12 +104,12 @@
                 <Font name="System Bold" size="19.0" />
             </font>
         </Button>
-        <Label fx:id="sizeOfDictionaryBelow_Label" alignment="TOP_LEFT" layoutX="570.0" layoutY="483.0" prefHeight="20.0" prefWidth="175.0" text="0">
+        <Label fx:id="sizeOfDictionaryBelowListView_Label" alignment="TOP_LEFT" layoutX="570.0" layoutY="483.0" prefHeight="20.0" prefWidth="175.0" text="0">
             <font>
                 <Font size="14.0" />
             </font>
         </Label>
-        <Label fx:id="countityOfVariants_BelowLabel" alignment="TOP_LEFT" layoutX="15.0" layoutY="435.0" prefHeight="20.0" prefWidth="175.0" text="0">
+        <Label fx:id="countityOfVariantsBelowListView_Label" alignment="TOP_LEFT" layoutX="15.0" layoutY="435.0" prefHeight="20.0" prefWidth="175.0" text="0">
             <font>
                 <Font size="14.0" />
             </font>

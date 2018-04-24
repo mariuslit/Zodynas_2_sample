@@ -15,7 +15,7 @@ public class ControllerR {
     @FXML
     private Label title_LabelR;
     @FXML
-    private Label sizeOfDictionaryBelow_LabelR;
+    private Label sizeOfDictionaryBelowListView_LabelR;
     @FXML
     private TextField word_TextFieldR;
     @FXML
@@ -24,31 +24,31 @@ public class ControllerR {
     private ListView<String> allWords_ListViewR;
 
     private Map<String, String> dictionaryTreeMapR = new TreeMap<>();
-    private Map<String, String> settingsLinkedMapR = new TreeMap<>();
+    private Map<String, String> settingsTreeMapR = new TreeMap<>();
     private String selectedWord;
 
     public void initialize() { // ištryniau (URL location, ResourceBundle resources) ir suveikė
         word_TextFieldR.setText(Controller.info.getFragmentas()); // informacijos nuskaitymas iš Info klasės
-        settingsLinkedMapR = ReadWriteData.readFile("settings");
-        String defaultDictionaryId = settingsLinkedMapR.get("default");
+        settingsTreeMapR = ReadWriteData.readFile("settings");
+        String defaultDictionaryId = settingsTreeMapR.get("default");
         dictionaryTreeMapR = ReadWriteData.readFile(defaultDictionaryId);
-        title_LabelR.setText("\"" + settingsLinkedMapR.get(defaultDictionaryId) + "\" žodyno redagavimas");
+        title_LabelR.setText("\"" + settingsTreeMapR.get(defaultDictionaryId) + "\" žodyno redagavimas");
         translation_TextAreaR.setText(Controller.info.getVertimas()); // informacijos nuskaitymas iš Info klasės
         fillInTheListViewR();
     }
 
     // žodyno pavadinimo keitimas
     public void changeDictionaryNameR() {
-        TextInputDialog dialog = new TextInputDialog(settingsLinkedMapR.get(settingsLinkedMapR.get("default")));
+        TextInputDialog dialog = new TextInputDialog(settingsTreeMapR.get(settingsTreeMapR.get("default")));
         dialog.setTitle("Žodyno pavadinomo keitimas");
-        dialog.setHeaderText("Senasis žodynas: " + settingsLinkedMapR.get(settingsLinkedMapR.get("default")));
+        dialog.setHeaderText("Senasis žodynas: " + settingsTreeMapR.get(settingsTreeMapR.get("default")));
         dialog.setContentText("Įveskite naują žodyno avadinimą:");
         // Traditional way to get the response value.
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
             title_LabelR.setText("\"" + result.get() + "\" žodyno redagavimas");
-            settingsLinkedMapR.put(settingsLinkedMapR.get("default"), result.get());
-            ReadWriteData.writeFile(settingsLinkedMapR, "settings");
+            settingsTreeMapR.put(settingsTreeMapR.get("default"), result.get());
+            ReadWriteData.writeFile(settingsTreeMapR, "settings");
             title_LabelR.setTextFill(Color.RED);
         }
     }
@@ -59,20 +59,22 @@ public class ControllerR {
         String transl = translation_TextAreaR.getText();
 
         // neteisingo žodyno pildymo filtrai
-        if (dictionaryTreeMapR.containsKey(word) && dictionaryTreeMapR.get(word).equals(transl)) { // vienodų žodžių filtras
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setContentText("Toks žodis su tokiu pačiu vertimu šiame žodyne jau yra");
+        if (word.length() == 0 || transl.length() == 0) { // tuščių ir bereikšmių žodžių filtras
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Klaidelė:");
+            alert.setHeaderText(null);
+            alert.setContentText("Ne visi laukai užpildyti");
             alert.show();
         } else {
-            if (word.length() == 0 || transl.length() == 0) { // tuščių ir bereikšmių žodžių filtras
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Klaidelė");
+            if (dictionaryTreeMapR.containsKey(word) && dictionaryTreeMapR.get(word).equals(transl)) { // vienodų žodžių filtras
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Klaidelė:");
                 alert.setHeaderText(null);
-                alert.setContentText("Neteisingai užpildyti laukai");
+                alert.setContentText("Toks žodis su tokiu pačiu vertimu šiame žodyne jau yra");
                 alert.show();
             } else {
                 dictionaryTreeMapR.put(word, transl);
-                String activeDict = settingsLinkedMapR.get("default");
+                String activeDict = settingsTreeMapR.get("default");
                 ReadWriteData.writeFile(dictionaryTreeMapR, activeDict);
                 System.out.println("addWord: įdėtas naujas žodis į žodyną: " + activeDict + ", įrašomas į failą 'Zx.txt'");
                 allWords_ListViewR.getItems().clear(); // duomenų trynimas iš ListView
@@ -106,7 +108,7 @@ public class ControllerR {
                 dictionaryTreeMapR.remove(selectedWord);
                 allWords_ListViewR.getItems().clear(); // duomenų trynimas iš ListView
                 fillInTheListViewR(); // žodyno spausdinimas toliau
-                ReadWriteData.writeFile(dictionaryTreeMapR, settingsLinkedMapR.get("default"));
+                ReadWriteData.writeFile(dictionaryTreeMapR, settingsTreeMapR.get("default"));
                 clearFieldsR();
                 title_LabelR.setTextFill(Color.RED);
             }
@@ -139,7 +141,7 @@ public class ControllerR {
         for (String item : dictionaryTreeMapR.keySet()) { // public Map'as
             allWords_ListViewR.getItems().addAll(item);
         }
-        sizeOfDictionaryBelow_LabelR.setText(dictionaryTreeMapR.size() + "");
+        sizeOfDictionaryBelowListView_LabelR.setText(dictionaryTreeMapR.size() + "");
     }
 
     // exitas iš sampleR

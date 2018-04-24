@@ -20,16 +20,16 @@ naujų žodžių papildymas į žodyną button [ADD >]
 rakto '-' keitimas kitu pvz ' -->> '
 padaryta, kad paspaudus enter vertimo laukelyje persoktu i nauja eilute
 sklandžiai uždaromas antras view su mygtuku [close]
+1. lt -> en
+2. public -> private
 
 TODO veikia BLOGAI:
 nepavyksta automatiškai atlikti veiksmų parent view'e, po children view uždarymo
     riktų atnaujinti duomenis:
     1 žodyno pavadinimas
-    2 ktyvaus žodžio keitimas (laukų sutvarkymas)
+    2 žodynoišvedimas į listView
 
 TODO:
-1. lt -> en
-2. public -> private
 3. Stage paga Andriaus pavyzdį
 
 TODO jeigu spėsiu
