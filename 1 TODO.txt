@@ -22,13 +22,17 @@ padaryta, kad paspaudus enter vertimo laukelyje persoktu i nauja eilute
 sklandžiai uždaromas antras view su mygtuku [close]
 
 TODO veikia BLOGAI:
-neatnaujinamas ekranas view-1 po žodyno pavadinimo keitimo view-2
+nepavyksta automatiškai atlikti veiksmų parent view'e, po children view uždarymo
+    riktų atnaujinti duomenis:
+    1 žodyno pavadinimas
+    2 ktyvaus žodžio keitimas (laukų sutvarkymas)
 
 TODO:
 1. lt -> en
-padaryti vaikstant su klaviaturos rodyklem, kad rodytu vertima iskart
+2. public -> private
 
 TODO jeigu spėsiu
+padaryti vaikstant su klaviaturos rodyklem, kad rodytu vertima iskart
 * žodynų Map įrašymas į list view naudojant observableList
 * button [Ką sako internetas]
 
