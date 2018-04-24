@@ -51,8 +51,10 @@ public static ObservableList<Student> students; // deklaracija klasėje
 ---
 Kaip sukurti exe failą
 ---
-
-
+dar karta  apie:
+@FXML
+@Override
+ObservableList
 
 
 
