@@ -13,9 +13,9 @@ public class Info {
     private Stage stageR = new Stage();
 
     // konstruktoriaus Overloading'as
-    public Info(Map<String, String> zodynas, String fragmentas) {
-        this.dictionary = zodynas;
-        this.fragment = fragmentas;
+    public Info(Map<String, String> dictionary, String fragment) {
+        this.dictionary = dictionary;
+        this.fragment = fragment;
     }
 
     // konstruktoriaus Overloading'as

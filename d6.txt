@@ -1,5 +1,14 @@
-ABC -->> ABĖCĖLĖ visomis kalbomis <enter> dsdmkld
-Pakuonis123 -->> 123+++ <enter> +++ <enter> +++
+ABC -->> ABĖCĖLĖ visomis kalbomis
+K -->> ok 1
+KA -->> ok 1
+KAU -->> ok 1
+KAUN -->> ok 1
+KAUNA -->> ok 1
+KAUNAS -->> ok 1
+KC -->> kas tai?
+KCA -->> kas tai?
+KCS -->> Puiki programuotojų mokykla!
+Pakuonis123 -->> 1 vertimas <enter> 2 vertimas  <enter> 3 vertimas
 Pakuonis147 -->> 147+++
 Pakuonis171 -->> 171
 Pakuonis195 -->> 195
@@ -42,7 +51,6 @@ Panevėžys512 -->> 512
 Panevėžys536 -->> 536
 Panevėžys56 -->> 56
 Panevėžys560 -->> 560
-Panevėžys584 -->> 584
 Panevėžys608 -->> 608
 Panevėžys632 -->> 632
 Panevėžys8 -->> 8
@@ -65,7 +73,6 @@ padas337 -->> 337
 padas361 -->> 361
 padas385 -->> 385
 padas409 -->> 409
-padas433 -->> 433
 padas457 -->> 457
 padas481 -->> 481
 padas49 -->> 49

@@ -3,5 +3,5 @@ d2 -->> Anglų - Lietuvių
 d3 -->> Aiškinamasis
 d4 -->> Italų - Lietuvių
 d5 -->> Bandomasis
-d6 -->> Ilgas2
-default -->> d4
+d6 -->> Ilgas
+default -->> d6
