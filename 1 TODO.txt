@@ -1,4 +1,4 @@
-// veikia GREAI:
+﻿TODO Atlikta, veikia gerai:
 suranda žodį atitinkamame žodyne ir parodo vertimą
 veikia žodynų pasirinkimo radiobutonai
 veikia spausdinimas į ListView per mano metodą + for ciklą
@@ -17,40 +17,40 @@ naujų žodžių papildymas į žodyną button [ADD >]
 žodžių trynimas [DELETE]
 žodžių redagavimas [< EDIT]
 žodyno map išsaugojimas faile
-rakto '-' keitimas kitu pvz ' -->> '
-padaryta, kad paspaudus enter vertimo laukelyje persoktu i nauja eilute
+rakto '-' keitimas kitu SPLITER = ' -->> '
+padaryta su SPLITER2 = ' <enter> ', kad paspaudus enter vertimo laukelyje persoktu i nauja eilute 
 sklandžiai uždaromas antras view su mygtuku [close]
-1. lt -> en
-2. public -> private
+pakeisti visi kintamųjų ir metodų pavadinimai išlietuviškų į angliškus
+kur reikia pakeista public -> private
 
-TODO veikia BLOGAI:
-nepavyksta automatiškai atlikti veiksmų parent view'e, po children view uždarymo
-    riktų atnaujinti duomenis:
+TODO veikia blogai:
+* nepavyksta automatiškai atlikti veiksmų parent view'e, po children view uždarymo
+    reiktų atnaujinti duomenis:
     1 žodyno pavadinimas
-    2 žodynoišvedimas į listView
+    2 žodyno išvedimas į listView
 
 TODO:
-3. Stage paga Andriaus pavyzdį
-TODO jeigu spėsiu
-padaryti vaikstant su klaviaturos rodyklem, kad rodytu vertima iskart
+* Stage paga Andriaus pavyzdį
+* padaryti vaikstant su klaviaturos rodyklem, kad rodytu vertima iškart
 * žodynų Map įrašymas į list view naudojant observableList
 * button [Ką sako internetas]
-TODO klausimai Andriui
+
+TODO klausimai Andriui:
 ---
-Kodėl galimi 4 kintamojo List deklaravimo variantai, kada kurį geriau naudoti?
-public static ObservableList<Student> students; // deklaracija klasėje
-              List<Student> students = new ArrayList<>();
-1             List<String> examples;
-2             List<String> examples = new ArrayList<>();
-3             ArrayList<String> examples = new ArrayList<>();
-4             ArrayList<String> examples = new ArrayList<>( reikšmių priskyrimas );
----
-Kaip sukurti exe failą
----
-dar karta  apie:
-@FXML
-@Override
-ObservableList
+* Kodėl galimi 4 kintamojo List deklaravimo variantai, kada kurį geriau naudoti?
+	1 List<String> examples;
+	2 List<String> examples = new ArrayList<>();
+	3 ArrayList<String> examples = new ArrayList<>();
+	4 ArrayList<String> examples = new ArrayList<>( reikšmių priskyrimas );
+
+* kas tiksliai yra ObservableList<Klasė>
+
+* kaip sukurti exe failą
+
+* dar karta  apie:
+	@FXML
+	@Override
+	ObservableList
 
 
 
