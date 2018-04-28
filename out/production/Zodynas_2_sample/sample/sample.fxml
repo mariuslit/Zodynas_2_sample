@@ -29,8 +29,8 @@
                 <Font size="18.0" />
             </font>
         </TextField>
-        <ListView fx:id="variants_ListView" layoutX="15.0" layoutY="150.0" onMouseClicked="#doByClickingOnListView" prefHeight="285.0" prefWidth="215.0" />
-        <ListView fx:id="allWords_ListView" layoutX="570.0" layoutY="150.0" onMouseClicked="#doByClickingOnListView" prefHeight="333.0" prefWidth="215.0" />
+        <ListView fx:id="variants_ListView" layoutX="15.0" layoutY="150.0" onKeyReleased="#doOnKeyPressListView_2" onMouseClicked="#doByClickingOnListView" prefHeight="285.0" prefWidth="215.0" />
+        <ListView fx:id="allWords_ListView" layoutX="570.0" layoutY="150.0" onKeyReleased="#doOnKeyPressListView_1" onMouseClicked="#doByClickingOnListView" prefHeight="333.0" prefWidth="215.0" />
         <RadioButton fx:id="d1" layoutX="15.0" layoutY="506.0" mnemonicParsing="false" onAction="#nextDictionary" prefHeight="25.0" prefWidth="175.0" selected="true" text="Žodynas 1">
             <font>
                 <Font size="16.0" />

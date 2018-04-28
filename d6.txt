@@ -81,7 +81,6 @@ padas529 -->> 529
 padas553 -->> 553
 padas577 -->> 577
 padas601 -->> 601
-padas625 -->> 625
 padas73 -->> 73
 padas97 -->> 97
 pak -->> 3++l <enter> l <enter> l <enter> l <enter> penkta eilutė

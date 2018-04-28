@@ -177,7 +177,7 @@ public class Controller implements Initializable {
 //            System.out.println(event.getSource().toString());
             fillColorsToFields();
         }
-        if (event.getClickCount() == 2 && selectedItem != "") {
+        if (event.getClickCount() == 2 && !selectedItem.equals("")) {
             fragment_TextField.setText(selectedItem);
             fillColorsToFields();
             translate(selectedItem);
@@ -190,6 +190,22 @@ public class Controller implements Initializable {
         translate(fragment_TextField.getText());
     }
 
+    // reakcija į klavišo paspaudimą ant ListView todo
+    public void doOnKeyPressListView_1(KeyEvent event) {
+        firstEquivalent_Label.setText(allWords_ListView.getSelectionModel().getSelectedItem());
+        translation_Label.setText(dictionaryTreeMap.get(allWords_ListView.getSelectionModel().getSelectedItem()));
+//        System.out.println(allWords_ListView.getSelectionModel());
+    }
+
+    // reakcija į klavišo paspaudimą ant ListView todo
+    public void doOnKeyPressListView_2(KeyEvent event) {
+        firstEquivalent_Label.setText(variants_ListView.getSelectionModel().getSelectedItem());
+        translation_Label.setText(dictionaryTreeMap.get(variants_ListView.getSelectionModel().getSelectedItem()));
+//        translate(variants_ListView.getSelectionModel().getSelectedItem());
+//        System.out.println(variants_ListView.getSelectionModel());
+    }
+
+    // vertimas
     private void translate(String fragment) {
         if ((!fragment.equals(""))) {
             TreeSet<String> variant = getEquivalentVariants(fragment.toLowerCase());

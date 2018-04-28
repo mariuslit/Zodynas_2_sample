@@ -6,28 +6,28 @@ veikia žodžių pagal fragmentą paieška
 veikia failų nuskaitymas / įrašymas
 veikia interaktyvi paieška po kiekvieno mygtuko paspaudimo
     (info iš Andriaus: G:\Coding\3 GitHub projektai\fx_random_game)
-sukurtas žodyno redagavimo GUI (R - žodyno redagavimo režimas) valdomas per Controller2
-veikia žodyno pavadinimo keitimas (R)
+sukurtas žodyno redagavimo UI (R - žodyno redagavimo režimas) valdomas per Controller2
+veikia žodyno pavadinimo keitimas
 rodomas vertimas kai pažymi su pele ant bet kurio ListView
 sukurtas informacijos pernešimo tarp kontrolerių tarpininkas - klasė "Informacija"
 veikia informacijos nuskaitymas ir antrame kontroleryje, kaip tarpininką naudojant statinį objektą
 veikia žodynų pavadinimų išsaugojimas faile settings
-žodyno map įrašymas į list view, gal naudoti observableList ?
-naujų žodžių papildymas į žodyną button [ADD >]
-žodžių trynimas [DELETE]
-žodžių redagavimas [< EDIT]
+? idėja žodyno map įrašymas į list view, gal naudoti observableList ?
+naujų žodžių papildymas į žodyną button [ADD]
+veikia žodžių trynimas [DELETE]
+veikia žodžių redagavimas [EDIT]
 žodyno map išsaugojimas faile
 rakto '-' keitimas kitu SPLITER = ' -->> '
-padaryta su SPLITER2 = ' <enter> ', kad paspaudus enter vertimo laukelyje persoktu i nauja eilute 
+padaryta su SPLITER2 = ' <enter> ', kad paspaudus enter vertimo laukelyje persoktu i nauja eilute
 sklandžiai uždaromas antras view su mygtuku [close]
 pakeisti visi kintamųjų ir metodų pavadinimai išlietuviškų į angliškus
 kur reikia pakeista public -> private
 
 TODO veikia blogai:
 * nepavyksta automatiškai atlikti veiksmų parent view'e, po children view uždarymo
-    reiktų atnaujinti duomenis:
-    1 žodyno pavadinimas
-    2 žodyno išvedimas į listView
+    reiktų atnaujinti duomenis (refresh):
+        1 žodyno pavadinimas
+        2 žodyno išvedimas į listView
 
 TODO:
 * Stage paga Andriaus pavyzdį
@@ -38,27 +38,17 @@ TODO:
 TODO klausimai Andriui:
 ---
 * Kodėl galimi 4 kintamojo List deklaravimo variantai, kada kurį geriau naudoti?
-	1 List<String> examples;
-	2 List<String> examples = new ArrayList<>();
-	3 ArrayList<String> examples = new ArrayList<>();
-	4 ArrayList<String> examples = new ArrayList<>( reikšmių priskyrimas );
+    1 List<String> examples;
+    2 List<String> examples = new ArrayList<>();
+    3 ArrayList<String> examples = new ArrayList<>();
+    4 ArrayList<String> examples = new ArrayList<>( reikšmių priskyrimas );
 
 * kas tiksliai yra ObservableList<Klasė>
 
 * kaip sukurti exe failą
 
-* dar karta  apie:
-	@FXML
-	@Override
-	ObservableList
-
-
-
-
-
-
-
-
-
+* dar karta  apie @:
+    @Override
+    @FXML
 
 
