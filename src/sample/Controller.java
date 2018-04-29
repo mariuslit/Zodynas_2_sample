@@ -2,17 +2,22 @@ package sample;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import sample.ReadWriteFile.ReadWriteData;
+import sample.ReadWriteData.ReadWriteData;
 
+import javax.swing.tree.ExpandVetoException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.*;
 
@@ -52,6 +57,7 @@ public class Controller implements Initializable {
     public static Info info;
     private Map<String, String> dictionaryTreeMap = new TreeMap<>(); //
     private Map<String, String> settingsTreeMap = new TreeMap<>();
+    public static int x = 0; // skaitliukas man
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -159,18 +165,24 @@ public class Controller implements Initializable {
     } // end of dictionarySelect
 
     // reakcija į pelės paspaudimą ant ListView lauko, vis tik payko su vienu metodu
-    public void doByClickingOnListView(MouseEvent event) {
+    public void doByClickingOnListView_1(MouseEvent event) {
         String selectedItem = "";
-        if (event.getSource().toString().equals("ListView[id=variants_ListView, styleClass=list-view]") &&
-                variants_ListView.getSelectionModel().getSelectedItem() != null) {
+        if (variants_ListView.getSelectionModel().getSelectedItem() != null) {
             selectedItem = variants_ListView.getSelectionModel().getSelectedItem();
             firstEquivalent_Label.setText(selectedItem);
             translation_Label.setText(dictionaryTreeMap.get(selectedItem));
 //            System.out.println(event.getSource().toString());
             fillColorsToFields();
         }
-        if (event.getSource().toString().equals("ListView[id=allWords_ListView, styleClass=list-view]") &&
-                allWords_ListView.getSelectionModel().getSelectedItem() != null) {
+        if (event.getClickCount() == 2 && !selectedItem.equals("")) {
+            onDoubleClick(selectedItem);
+        }
+    }
+
+    // reakcija į pelės paspaudimą ant ListView lauko, vis tik payko su vienu metodu
+    public void doByClickingOnListView_2(MouseEvent event) {
+        String selectedItem = "";
+        if (allWords_ListView.getSelectionModel().getSelectedItem() != null) {
             selectedItem = allWords_ListView.getSelectionModel().getSelectedItem();
             firstEquivalent_Label.setText(selectedItem);
             translation_Label.setText(dictionaryTreeMap.get(selectedItem));
@@ -178,11 +190,15 @@ public class Controller implements Initializable {
             fillColorsToFields();
         }
         if (event.getClickCount() == 2 && !selectedItem.equals("")) {
-            fragment_TextField.setText(selectedItem);
-            fillColorsToFields();
-            translate(selectedItem);
-            fillColorsToFields();
+            onDoubleClick(selectedItem);
         }
+    }
+
+    // aptarnauja tik doByClickingOnListView_1 + _2
+    private void onDoubleClick(String selectedItem) {
+        fragment_TextField.setText(selectedItem);
+        translate(selectedItem);
+        fillColorsToFields();
     }
 
     // reakcija į klavišo paspaudimą žodžio fragmento įvedimo langelyje (interaktyvi paieška)
@@ -190,19 +206,34 @@ public class Controller implements Initializable {
         translate(fragment_TextField.getText());
     }
 
-    // reakcija į klavišo paspaudimą ant ListView todo
+    // reakcija į klavišo paspaudimą ant ListView
     public void doOnKeyPressListView_1(KeyEvent event) {
-        firstEquivalent_Label.setText(allWords_ListView.getSelectionModel().getSelectedItem());
-        translation_Label.setText(dictionaryTreeMap.get(allWords_ListView.getSelectionModel().getSelectedItem()));
-//        System.out.println(allWords_ListView.getSelectionModel());
+        Node node = (Node) event.getSource();
+        System.out.println(++x + " ---" + node.getId());
+        if (event.getCode() == KeyCode.TAB) {
+            variants_ListView.getSelectionModel().select(1); // padeda kursorių į pirmą celę
+        }
+        if (variants_ListView.getSelectionModel().getSelectedItem() != null) { // jei ListView ne tuščias
+            String a = variants_ListView.getSelectionModel().getSelectedItem();
+            firstEquivalent_Label.setText(a); // ?
+            translation_Label.setText(dictionaryTreeMap.get(a)); // ?
+        } /*else if (event.getCode() == KeyCode.TAB) {
+//            System.out.println("xxxxxxxxxxxxxxxxxxxx");
+//            doOnKeyPressListView_2(event);
+        }*/
     }
 
-    // reakcija į klavišo paspaudimą ant ListView todo
+    // reakcija į klavišo paspaudimą ant ListView todo padaryti pagal doOnKeyPressListView_1
     public void doOnKeyPressListView_2(KeyEvent event) {
-        firstEquivalent_Label.setText(variants_ListView.getSelectionModel().getSelectedItem());
-        translation_Label.setText(dictionaryTreeMap.get(variants_ListView.getSelectionModel().getSelectedItem()));
-//        translate(variants_ListView.getSelectionModel().getSelectedItem());
-//        System.out.println(variants_ListView.getSelectionModel());
+        if (event.getCode().equals(KeyCode.TAB)) {
+            System.out.println("xxxxxxxxxxxxxxxxxxxx " + event.getCode());
+        }
+        if (allWords_ListView.getFocusModel().getFocusedIndex() != -1) {
+            String a = allWords_ListView.getSelectionModel().getSelectedItem();
+            firstEquivalent_Label.setText(a); // ?
+            translation_Label.setText(dictionaryTreeMap.get(a)); // ?
+            System.out.println(allWords_ListView.getSelectionModel());
+        }
     }
 
     // vertimas
@@ -255,9 +286,9 @@ public class Controller implements Initializable {
 
     public void clearAllFields() {
         fragment_TextField.clear();
-//        fragment_TextField.setCursor(); // TODO: padėti kursorių į input langelį
         clearFields();
         translate("");
+        fragment_TextField.requestFocus(); // padeda kursorių į input langelį
     }
 
     private void clearFields() {

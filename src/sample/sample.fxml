@@ -24,13 +24,13 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="800.0" style="-fx-background-color: #9adae0;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
-        <TextField fx:id="fragment_TextField" layoutX="15.0" layoutY="100.0" onKeyReleased="#doOnKeyPress" prefHeight="50.0" prefWidth="175.0" promptText="žodis">
+        <TextField fx:id="fragment_TextField" cache="true" layoutX="15.0" layoutY="100.0" onKeyReleased="#doOnKeyPress" prefHeight="50.0" prefWidth="175.0" promptText="žodis">
             <font>
                 <Font size="18.0" />
             </font>
         </TextField>
-        <ListView fx:id="variants_ListView" layoutX="15.0" layoutY="150.0" onKeyReleased="#doOnKeyPressListView_2" onMouseClicked="#doByClickingOnListView" prefHeight="285.0" prefWidth="215.0" />
-        <ListView fx:id="allWords_ListView" layoutX="570.0" layoutY="150.0" onKeyReleased="#doOnKeyPressListView_1" onMouseClicked="#doByClickingOnListView" prefHeight="333.0" prefWidth="215.0" />
+        <ListView fx:id="variants_ListView" layoutX="15.0" layoutY="150.0" onKeyReleased="#doOnKeyPressListView_1" onMouseClicked="#doByClickingOnListView_1" prefHeight="285.0" prefWidth="215.0" />
+        <ListView fx:id="allWords_ListView" layoutX="570.0" layoutY="150.0" onKeyReleased="#doOnKeyPressListView_2" onMouseClicked="#doByClickingOnListView_2" prefHeight="333.0" prefWidth="215.0" />
         <RadioButton fx:id="d1" layoutX="15.0" layoutY="506.0" mnemonicParsing="false" onAction="#nextDictionary" prefHeight="25.0" prefWidth="175.0" selected="true" text="Žodynas 1">
             <font>
                 <Font size="16.0" />

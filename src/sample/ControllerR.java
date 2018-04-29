@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import sample.ReadWriteFile.ReadWriteData;
+import sample.ReadWriteData.ReadWriteData;
 
 import java.util.Map;
 import java.util.Optional;
@@ -133,7 +133,7 @@ public class ControllerR {
     public void clearFieldsR() {
         word_TextFieldR.clear();
         translation_TextAreaR.clear();
-//        word_TextFieldR.setCursor(); // TODO: padėti kursorių į input langelį
+        word_TextFieldR.requestFocus(); // padeda kursorių į input langelį
     }
 
     // veikiantis metodas atspausdinti duomenis į ListView

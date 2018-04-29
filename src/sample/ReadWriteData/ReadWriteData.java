@@ -1,4 +1,4 @@
-package sample.ReadWriteFile;
+package sample.ReadWriteData;
 
 import java.io.*;
 import java.util.Map;
