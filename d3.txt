@@ -5,7 +5,7 @@ con -->> 1 pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas
 duoti -->> kai kažką duodi
 en -->> anglų kalba3
 eng -->> anglų kalba
-engl -->> anglų kalba anglų kalba  <enter> 2 eilutė 3 <enter>  4  <enter> 5
+engl -->> anglų kalba anglų kalba  <enter> 2eilutė  <enter> 3e <enter> 4e <enter> 5e
 gauti -->> kai kažką gauni
 klavišas -->> mygtukas kompiuterio klaviatūroje
 lt -->> lietuvių kalba

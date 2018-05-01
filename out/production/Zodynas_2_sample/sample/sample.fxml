@@ -22,9 +22,9 @@
 <!--</children>-->
 <!--</GridPane>-->
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="800.0" style="-fx-background-color: #9adae0;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<Pane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" onKeyReleased="#doOnEscapePres" prefHeight="580.0" prefWidth="800.0" style="-fx-background-color: #9adae0;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
-        <TextField fx:id="fragment_TextField" cache="true" layoutX="15.0" layoutY="100.0" onKeyReleased="#doOnKeyPress" prefHeight="50.0" prefWidth="175.0" promptText="žodis">
+        <TextField fx:id="fragment_TextField" cache="true" layoutX="15.0" layoutY="100.0" onKeyReleased="#doOnKeyPressInFragmentField" prefHeight="50.0" prefWidth="175.0" promptText="žodis">
             <font>
                 <Font size="18.0" />
             </font>
@@ -64,12 +64,12 @@
                 <Font size="16.0" />
             </font>
         </RadioButton>
-        <Button alignment="CENTER" layoutX="240.0" layoutY="442.0" mnemonicParsing="false" onAction="#onNewButtonPress" prefHeight="40.0" prefWidth="153.0" text="NAUJAS ŽODIS" textAlignment="CENTER" wrapText="true">
+        <Button alignment="CENTER" layoutX="240.0" layoutY="442.0" mnemonicParsing="false" onAction="#onNewButtonPress" prefHeight="40.0" prefWidth="153.0" text="NAUJAS ŽODIS" wrapText="true">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button alignment="CENTER" layoutX="407.0" layoutY="442.0" mnemonicParsing="false" onAction="#onEditButtonPress" prefHeight="40.0" prefWidth="153.0" text="REDAGUOTI ŽODĮ" textAlignment="CENTER" wrapText="true">
+        <Button alignment="CENTER" layoutX="407.0" layoutY="442.0" mnemonicParsing="false" onAction="#onEditButtonPress" prefHeight="40.0" prefWidth="153.0" text="REDAGUOTI ŽODĮ" wrapText="true">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
