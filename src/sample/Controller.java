@@ -2,11 +2,9 @@ package sample;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -16,8 +14,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import sample.ReadWriteData.ReadWriteData;
 
-import javax.swing.tree.ExpandVetoException;
-import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.*;
 
@@ -57,14 +53,14 @@ public class Controller implements Initializable {
     public static Info info;
     private Map<String, String> dictionaryTreeMap = new TreeMap<>(); //
     private Map<String, String> settingsTreeMap = new TreeMap<>();
-    private static int x = 0; // skaitliukas man
+    private static int x = 0; // skaitliukas man, vėliau ištrinti
     private Boolean first = false; // šokinėjimo tarp fragment <-> variant laukų valdymui
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 //        students = FXCollections.observableList(createDummyStudents()); // TODO reikia padaryti viską per observableList
         settingsTreeMap = ReadWriteData.readFile("settings"); // nuskaitomas settings.txt
-        dictionarySelect(settingsTreeMap.get("default")); // keičiamas zodynas į default stratup metu
+        doOnSelectRadioButton(settingsTreeMap.get("default")); // keičiamas zodynas į default stratup metu
         translate(fragment_TextField.getText());
         variants_ListView.setStyle("-fx-font-size: 16px;");
         variants_ListView.setFixedCellSize(28);
@@ -74,7 +70,7 @@ public class Controller implements Initializable {
 
     // čia šio Controller kodas iškviečia ControllerR valdomą langą sampleR.fxml
     @FXML
-    private void openNewView() throws Exception {
+    private void openNewStageR() throws Exception {
 //        Platform.isImplicitExit(); // TODO reika kad atidarius langą, tėvinis langa liktų užrkaintas
         FXMLLoader load = new FXMLLoader(getClass().getResource("sampleR.fxml")); // perkopijuota iš Main
         Parent root = load.load(); // perkopijuota iš Main
@@ -99,32 +95,32 @@ public class Controller implements Initializable {
     //TODO Ppadaryti kad atliktų kokius nors veiksmus po sampleR uždarymo
     private void doSomething() {
 //        System.out.println("atlikti Kokius Nors Veiksmus");
-//        dictionarySelect(settingsTreeMap.get("default"));
+//        doOnSelectRadioButton(settingsTreeMap.get("default"));
 //        translate(fragment_TextField.getText());
     }
 
     public void onNewButtonPress() throws Exception {
         info = new Info(dictionaryTreeMap, fragment_TextField.getText());
-        openNewView();
+        openNewStageR();
     }
 
     public void onEditButtonPress() throws Exception {
         info = new Info(dictionaryTreeMap, firstEquivalent_Label.getText(), translation_Label.getText()); // jei reikės papildomo parametro, settingsTreeMap.get("default"));
-        openNewView();
+        openNewStageR();
     }
 
     // aktyvaus žodyno keitimas
     public void nextDictionary(ActionEvent event) { // kreipiasi visi 6 radioButton į šį metodą onAction
         settingsTreeMap = ReadWriteData.readFile("settings"); // nuskaitomas settings.txt
         RadioButton selectedDict = (RadioButton) dictionarys_ToggleGroup.getSelectedToggle();
-        dictionarySelect(selectedDict.getId());
+        doOnSelectRadioButton(selectedDict.getId());
         translate(fragment_TextField.getText());
         allWords_ListView.getSelectionModel().select(0); // padeda kursorių į pirmą celę
     }
 
     // žodyno pakeitimas, toggel ID = failo vardas
-    private void dictionarySelect(String toggelID) {
-        switch (toggelID) {
+    private void doOnSelectRadioButton(String toggelID_fileName) {
+        switch (toggelID_fileName) {
             case "d1":
                 dictionarys_ToggleGroup.selectToggle(d1);
                 break;
@@ -144,14 +140,13 @@ public class Controller implements Initializable {
                 dictionarys_ToggleGroup.selectToggle(d6);
                 break;
         }
-        String fileName = toggelID; // dėl kodo skaitymo aiškumo
 
         // išsaugomas default žodynas "setings" faile
-        settingsTreeMap.put("default", fileName);
+        settingsTreeMap.put("default", toggelID_fileName);
         ReadWriteData.writeFile(settingsTreeMap, "settings"); // įrašo settings į failą
 
         // žodynų pavadinimų surašymas iš settings failo
-        title_Label.setText("Žodžių paieška žodyne \"" + settingsTreeMap.get(fileName) + "\"");
+        title_Label.setText("Žodžių paieška žodyne \"" + settingsTreeMap.get(toggelID_fileName) + "\"");
         d1.setText(settingsTreeMap.get("d1"));
         d2.setText(settingsTreeMap.get("d2"));
         d3.setText(settingsTreeMap.get("d3"));
@@ -160,7 +155,7 @@ public class Controller implements Initializable {
         d6.setText(settingsTreeMap.get("d6"));
 
         // nuskaito duomenis "Žodynas"
-        dictionaryTreeMap = ReadWriteData.readFile(fileName); // užkrauna žodyną
+        dictionaryTreeMap = ReadWriteData.readFile(toggelID_fileName); // užkrauna žodyną
 
         // išvedamas zodyno turinys į ListView
         allWords_ListView.getItems().clear();// duomenų trynimas iš ListView
@@ -169,7 +164,7 @@ public class Controller implements Initializable {
         }
         allWords_ListView.getSelectionModel().selectFirst(); // padeda kursorių į pirmą celę
         sizeOfDictionaryBelowListView_Label.setText(dictionaryTreeMap.size() + "");
-    } // end of dictionarySelect
+    } // end of doOnSelectRadioButton
 
     // reakcija į pelės paspaudimą ant ListView lauko, vis tik payko su vienu metodu
     public void doByClickingOnListView_1(MouseEvent event) {
@@ -207,7 +202,7 @@ public class Controller implements Initializable {
     }
 
     // reakcija į klavišo paspaudimą žodžio fragmento įvedimo langelyje (interaktyvi paieška)
-    public void doOnKeyPressInFragmentField(KeyEvent event) {
+    public void doOnKeyPressFragmentField(KeyEvent event) {
         if (event.getCode().equals(KeyCode.DOWN) && !variants_ListView.getSelectionModel().isEmpty()) {
             variants_ListView.requestFocus();
             variants_ListView.getSelectionModel().selectFirst();

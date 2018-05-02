@@ -8,7 +8,7 @@ KAUNAS -->> ok 1
 KC -->> kas tai?
 KCA -->> kas tai?
 KCS -->> Puiki programuotojų mokykla!
-Pakuonis123 -->> 1 vertimas <enter> 2 vertimas  <enter> 3 vertimas
+Pakuonis123+ -->> 1 vertimas <enter> 2 vertimas  <enter> 3 vertimas
 Pakuonis147 -->> 147+++
 Pakuonis171 -->> 171
 Pakuonis195 -->> 195

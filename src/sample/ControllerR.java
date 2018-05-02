@@ -35,13 +35,15 @@ public class ControllerR {
         title_LabelR.setText("\"" + settingsTreeMapR.get(defaultDictionaryId) + "\" žodyno redagavimas");
         translation_TextAreaR.setText(Controller.info.getVertimas()); // informacijos nuskaitymas iš Info klasės
         fillInTheListViewR();
+        allWords_ListViewR.setStyle("-fx-font-size: 14px;");
+        allWords_ListViewR.setFixedCellSize(24);
     }
 
     // žodyno pavadinimo keitimas
     public void changeDictionaryNameR() {
         TextInputDialog dialog = new TextInputDialog(settingsTreeMapR.get(settingsTreeMapR.get("default")));
         dialog.setTitle("Žodyno pavadinomo keitimas");
-        dialog.setHeaderText("Senasis žodynas: " + settingsTreeMapR.get(settingsTreeMapR.get("default")));
+        dialog.setHeaderText("Senasis žodyno pavadinimas: \"" + settingsTreeMapR.get(settingsTreeMapR.get("default"))+"\"");
         dialog.setContentText("Įveskite naują žodyno avadinimą:");
         // Traditional way to get the response value.
         Optional<String> result = dialog.showAndWait();
@@ -67,7 +69,7 @@ public class ControllerR {
             alert.show();
         } else {
             if (dictionaryTreeMapR.containsKey(word) && dictionaryTreeMapR.get(word).equals(transl)) { // vienodų žodžių filtras
-                Alert alert = new Alert(Alert.AlertType.WARNING);
+                Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Klaidelė:");
                 alert.setHeaderText(null);
                 alert.setContentText("Toks žodis su tokiu pačiu vertimu šiame žodyne jau yra");
