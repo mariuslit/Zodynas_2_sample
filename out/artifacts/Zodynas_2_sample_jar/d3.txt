@@ -1,0 +1,19 @@
+a -->> pirmoji abėcėlės raidė
+abc -->> abccc
+b -->> antroji abėcėlės raidė
+con -->> 1 pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas pirmas  <enter> 2 antras  <enter> 3 trečias <enter> 
+duoti -->> kai kažką duodi
+en -->> anglų kalba3
+eng -->> anglų kalba
+engl -->> anglų kalba anglų kalba  <enter> 2eilutė  <enter> 3e <enter> 4e <enter> 5e
+gauti -->> kai kažką gauni
+klavišas -->> mygtukas kompiuterio klaviatūroje
+lt -->> lietuvių kalba
+ltu -->> Lietuvos tarptautinis kodas LTU
+naujas -->> kažkas, ko dar nebuvo
+nustatyti -->> nureguliuoti ir palikti
+puodukas -->> 1. indas kavai gerti [2] 2.... dar nesugalvojau
+senas -->> kažkas, kas buvo seniai
+x -->> [Ljava.lang.String;@2159d1cf
+xxx -->> fdk;lwek vkmev oemqp wokpwekf peok  l ej  ewfwkmlkfmwfei jijff j   fjsjpsdcpsamc l   ls sl ldav
+z3 -->> aiškinamasis žodynas

@@ -23,6 +23,7 @@ sklandžiai uždaromas antras view su mygtuku [close]
 pakeisti visi kintamųjų ir metodų pavadinimai išlietuviškų į angliškus
 kur reikia pakeista public -> private
 padaryta kad vaikštant su klaviaturos rodyklem, kad rodytu vertima iškart
+sukurtas jar failas + UTF-8 kodacija
 
 TODO veikia blogai:
 * nepavyksta automatiškai atlikti veiksmų parent view'e, po children view uždarymo
@@ -31,13 +32,12 @@ TODO veikia blogai:
         2 žodyno išvedimas į listView
 
 TODO kodo optimizavimas:
-* žodynų Map įrašymas į list view naudojant observableList
+* todo žodynų Map įrašymas į list view naudojant observableList
 * įkelti žodyną į Info klasę inicilizacijos metu, ir kreiptis į failą tik pakeitimų metu
 
 TODO:
 * Stage paga Andriaus pavyzdį
 * button [Ką sako internetas]
-* sukurti jar failą, todo failas sukurtas, bet nepasileidžia... :(
 
 
 TODO klausimai Andriui:
