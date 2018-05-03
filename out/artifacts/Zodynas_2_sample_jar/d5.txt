@@ -1,6 +1,0 @@
-Marsas -->> planeta
-asilas+ -->> 1. gyvulys <enter> xxxxxxxxxxx <enter> 2..... šššššš
-bandymas -->> bandymas vertimas
-bandymas++ -->> bandymas vertimas <enter> 2e <enter> 3e+
-gaublys -->> 1. toks apvalus daiktas  
-saulė -->> dangaus šviesulys
