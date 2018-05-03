@@ -4,4 +4,4 @@ d3 -->> Aiškinamasis
 d4 -->> Italų - Lietuvių
 d5 -->> Bandomasis
 d6 -->> Ilgas
-default -->> d6
+default -->> d1

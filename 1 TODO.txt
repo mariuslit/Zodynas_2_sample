@@ -1,4 +1,4 @@
-﻿TODO Atlikta, veikia gerai:
+TODO Atlikta, veikia gerai:
 suranda žodį atitinkamame žodyne ir parodo vertimą
 veikia žodynų pasirinkimo radiobutonai
 veikia spausdinimas į ListView per mano metodą + for ciklą
@@ -56,4 +56,5 @@ TODO klausimai Andriui:
     @FXML
 
 * Parent, Stage, Scene,
+
 
