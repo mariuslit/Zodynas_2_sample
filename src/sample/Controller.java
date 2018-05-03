@@ -55,9 +55,12 @@ public class Controller implements Initializable {
     private static int x = 0; // skaitliukas man, TODO vėliau ištrinti
 
     public static Info info;
-    private Map<String, String> dictionaryTreeMap = new TreeMap<>(); //
-    public static ObservableList<Map> sarasasObservableList;
+
+    private Map<String, String> dictionaryTreeMap = new TreeMap<>(); // todo keitimas į observableList
+    public static ObservableList<String> map_Obs; // todo keitimas į observableList
+
     private Map<String, String> settingsTreeMap = new TreeMap<>();
+
     private Boolean first = false; // šokinėjimo tarp fragment <-> variant laukų valdymui
 
 
@@ -66,6 +69,7 @@ public class Controller implements Initializable {
         settingsTreeMap = ReadWriteData.readFile("settings"); // nuskaitomas settings.txt
         doOnSelectRadioButton(settingsTreeMap.get("default")); // keičiamas zodynas į default stratup metu
         translate(fragment_TextField.getText());
+
         variants_ListView.setStyle("-fx-font-size: 16px;");
         variants_ListView.setFixedCellSize(28);
         allWords_ListView.setStyle("-fx-font-size: 14px;");
@@ -148,14 +152,21 @@ public class Controller implements Initializable {
         d5.setText(settingsTreeMap.get("d5"));
         d6.setText(settingsTreeMap.get("d6"));
 
-        // nuskaito duomenis "Žodynas"
-        dictionaryTreeMap = ReadWriteData.readFile(toggelID_fileName); // užkrauna žodyną
+        // nuskaito duomenis išfailo ir  užkrauna žodyną į Map'ą
+        dictionaryTreeMap = ReadWriteData.readFile(toggelID_fileName);
 
         // išvedamas zodyno turinys į ListView
         allWords_ListView.getItems().clear();// duomenų trynimas iš ListView
+
+        List<String> str = new ArrayList<>(); // todo observableList
         for (String item : dictionaryTreeMap.keySet()) { // public Map'as
-            allWords_ListView.getItems().addAll(item);
+//            allWords_ListView.getItems().addAll(item); // spausdina po vieną eilutę į ListView // todo pakeičiau su observableList
+            str.add(item); // todo observableList
         }
+
+        map_Obs = FXCollections.observableList(str); // todo observableList
+        allWords_ListView.setItems(map_Obs); // todo atspausdina visą observableList sąrašą į ListView be ciklų
+
         allWords_ListView.getSelectionModel().selectFirst(); // padeda kursorių į pirmą celę
         sizeOfDictionaryBelowListView_Label.setText(dictionaryTreeMap.size() + "");
     } // end of doOnSelectRadioButton

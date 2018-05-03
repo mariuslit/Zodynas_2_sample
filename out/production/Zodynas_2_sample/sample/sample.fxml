@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+
 <!--čia jei norėsiu sugryžti į gridpane-->
 <!--<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">-->
 <!--<columnConstraints>-->
@@ -74,7 +75,7 @@
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button alignment="CENTER" layoutX="568.0" layoutY="514.0" mnemonicParsing="false" onAction="#onExitButtonPress" prefHeight="40.0" prefWidth="215.0" text="BAIGTI" wrapText="true">
+        <Button alignment="CENTER" layoutX="568.0" layoutY="514.0" mnemonicParsing="false" onAction="#onExitButtonPress" prefHeight="40.0" prefWidth="215.0" text="BAIGTI" textFill="RED" wrapText="true">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
