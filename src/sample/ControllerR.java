@@ -5,6 +5,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import sample.ReadWriteData.ReadWriteData;
+import sun.reflect.generics.tree.Tree;
 
 import java.util.Map;
 import java.util.Optional;
@@ -23,15 +24,15 @@ public class ControllerR {
     @FXML
     private ListView<String> allWords_ListViewR;
 
-    private Map<String, String> dictionaryTreeMapR = new TreeMap<>();
-    private Map<String, String> settingsTreeMapR = new TreeMap<>();
+    private TreeMap<String, String> dictionaryTreeMapR = Controller.dictionaryTreeMap;//new TreeMap<>();
+    private TreeMap<String, String> settingsTreeMapR = Controller.settingsTreeMap;//new TreeMap<>();
     private String selectedWord;
 
     public void initialize() { // ištryniau (URL location, ResourceBundle resources) ir suveikė
         word_TextFieldR.setText(Controller.info.getFragmentas()); // informacijos nuskaitymas iš Info klasės
-        settingsTreeMapR = ReadWriteData.readFile("settings");
+//        settingsTreeMapR = Controller.settingsTreeMap; // ReadWriteData.readFile("settings");
         String defaultDictionaryId = settingsTreeMapR.get("default");
-        dictionaryTreeMapR = ReadWriteData.readFile(defaultDictionaryId);
+//        dictionaryTreeMapR = Controller.dictionaryTreeMap; // ReadWriteData.readFile(defaultDictionaryId);
         title_LabelR.setText("\"" + settingsTreeMapR.get(defaultDictionaryId) + "\" žodyno redagavimas");
         translation_TextAreaR.setText(Controller.info.getVertimas()); // informacijos nuskaitymas iš Info klasės
         fillInTheListViewR();
@@ -43,15 +44,18 @@ public class ControllerR {
     public void changeDictionaryNameR() {
         TextInputDialog dialog = new TextInputDialog(settingsTreeMapR.get(settingsTreeMapR.get("default")));
         dialog.setTitle("Žodyno pavadinomo keitimas");
-        dialog.setHeaderText("Senasis žodyno pavadinimas: \"" + settingsTreeMapR.get(settingsTreeMapR.get("default"))+"\"");
+        dialog.setHeaderText("Senasis žodyno pavadinimas: \"" + settingsTreeMapR.get(settingsTreeMapR.get("default")) + "\"");
         dialog.setContentText("Įveskite naują žodyno avadinimą:");
         // Traditional way to get the response value.
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
-            title_LabelR.setText("\"" + result.get() + "\" žodyno redagavimas");
-            settingsTreeMapR.put(settingsTreeMapR.get("default"), result.get());
-            ReadWriteData.writeFile(settingsTreeMapR, "settings");
-            title_LabelR.setTextFill(Color.RED);
+            String newName = result.get().trim().replace("  ", " ");
+            if (!newName.replaceAll(" ", "").equals("")) {
+                title_LabelR.setText("\"" + newName + "\" žodyno redagavimas");
+                settingsTreeMapR.put(settingsTreeMapR.get("default"), newName);
+                ReadWriteData.writeFile(settingsTreeMapR, "settings");
+                title_LabelR.setTextFill(Color.RED);
+            }
         }
     }
 

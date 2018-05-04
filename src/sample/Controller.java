@@ -52,14 +52,14 @@ public class Controller implements Initializable {
     @FXML
     private RadioButton d6;
 
-    private static int x = 0; // skaitliukas man, TODO vėliau ištrinti
+    public static int y = ReadWriteData.x; // skaitliukas man, TODO vėliau ištrinti
 
     public static Info info;
 
-    private Map<String, String> dictionaryTreeMap = new TreeMap<>(); // todo keitimas į observableList
-    public static ObservableList<String> map_Obs; // todo keitimas į observableList
+    public static TreeMap<String, String> dictionaryTreeMap = new TreeMap<>(); // todo keitimas į observableList
+    public static ObservableList<String> obsList; // todo keitimas į observableList
 
-    private Map<String, String> settingsTreeMap = new TreeMap<>();
+    public static TreeMap<String, String> settingsTreeMap = new TreeMap<>();
 
     private Boolean first = false; // šokinėjimo tarp fragment <-> variant laukų valdymui
 
@@ -67,6 +67,7 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         settingsTreeMap = ReadWriteData.readFile("settings"); // nuskaitomas settings.txt
+        System.out.println(++ReadWriteData.x + " " + ReadWriteData.getObsList("settings") + " " + ++ReadWriteData.x);
         doOnSelectRadioButton(settingsTreeMap.get("default")); // keičiamas zodynas į default stratup metu
         translate(fragment_TextField.getText());
 
@@ -109,9 +110,10 @@ public class Controller implements Initializable {
 
     // aktyvaus žodyno keitimas
     public void nextDictionary(ActionEvent event) { // kreipiasi visi 6 radioButton į šį metodą onAction
-        settingsTreeMap = ReadWriteData.readFile("settings"); // nuskaitomas settings.txt
+//        settingsTreeMap = ReadWriteData.readFile("settings"); // nuskaitomas settings.txt
         RadioButton selectedDict = (RadioButton) dictionarys_ToggleGroup.getSelectedToggle();
         doOnSelectRadioButton(selectedDict.getId());
+        ReadWriteData.writeFile(settingsTreeMap, "settings"); // įrašo settings į failą
         translate(fragment_TextField.getText());
         allWords_ListView.getSelectionModel().select(0); // padeda kursorių į pirmą celę
     }
@@ -141,7 +143,6 @@ public class Controller implements Initializable {
 
         // išsaugomas default žodynas "setings" faile
         settingsTreeMap.put("default", toggelID_fileName);
-        ReadWriteData.writeFile(settingsTreeMap, "settings"); // įrašo settings į failą
 
         // žodynų pavadinimų surašymas iš settings failo
         title_Label.setText("Žodžių paieška žodyne \"" + settingsTreeMap.get(toggelID_fileName) + "\"");
@@ -164,8 +165,8 @@ public class Controller implements Initializable {
             str.add(item); // todo observableList
         }
 
-        map_Obs = FXCollections.observableList(str); // todo observableList
-        allWords_ListView.setItems(map_Obs); // todo atspausdina visą observableList sąrašą į ListView be ciklų
+        obsList = FXCollections.observableList(str); // todo observableList
+        allWords_ListView.setItems(obsList); // todo atspausdina visą observableList sąrašą į ListView be ciklų
 
         allWords_ListView.getSelectionModel().selectFirst(); // padeda kursorių į pirmą celę
         sizeOfDictionaryBelowListView_Label.setText(dictionaryTreeMap.size() + "");
@@ -218,9 +219,9 @@ public class Controller implements Initializable {
             }
         }
         return variant;
-    }
+    } // todo ////////////////////////////////////////////////////// end of <Back-End>
 
-        public void onNewButtonPress() throws Exception {
+    public void onNewButtonPress() throws Exception {
         info = new Info(dictionaryTreeMap, fragment_TextField.getText());
         openNewStageR();
     }
@@ -240,7 +241,7 @@ public class Controller implements Initializable {
             fillColorsToFields();
         }
         if (event.getClickCount() == 2 && !selectedItem.equals("")) {
-            onDoubleClick(selectedItem);
+            onDoubleClickListView_1_2(selectedItem);
         }
     }
 
@@ -254,12 +255,12 @@ public class Controller implements Initializable {
             fillColorsToFields();
         }
         if (event.getClickCount() == 2 && !selectedItem.equals("")) {
-            onDoubleClick(selectedItem);
+            onDoubleClickListView_1_2(selectedItem);
         }
     }
 
     // aptarnauja tik doByClickingOnListView_1 + _2
-    private void onDoubleClick(String selectedItem) {
+    private void onDoubleClickListView_1_2(String selectedItem) {
         fragment_TextField.setText(selectedItem);
         translate(selectedItem);
         fillColorsToFields();
@@ -280,8 +281,8 @@ public class Controller implements Initializable {
 
     // reakcija į klavišo paspaudimą ant ListView_1
     public void doOnKeyPressListView_1(KeyEvent event) {
-        if (event.getCode().equals(KeyCode.RIGHT)) {
-            System.out.println("r");
+        if (event.getCode().isArrowKey()/*equals(KeyCode.RIGHT)*/) {
+            System.out.println(++y + " r");// TODO: 2018-05-04 neveikia kai spaudžiamas dešinėn
         }
         if ((event.getCode().equals(KeyCode.UP) && variants_ListView.getSelectionModel().isSelected(0))) {
             if (first) {
@@ -311,15 +312,15 @@ public class Controller implements Initializable {
         }
     }
 
-    public void doOnEscapePres(KeyEvent event) {
+    public void doOnEscapePresPane(KeyEvent event) {
         if (event.getCode().equals(KeyCode.ESCAPE)) {
             fragment_TextField.clear();
             clearFields();
             translate("");
             fragment_TextField.requestFocus(); // padeda kursorių į input langelį
         }
-        if (event.getCode().equals(KeyCode.LEFT)) {
-            System.out.println("kairėn");
+        if (event.getCode().equals(KeyCode.LEFT)) {// TODO: 2018-05-04
+            System.out.println(++y + " kairėn");// TODO: 2018-05-04
         }
     }
 

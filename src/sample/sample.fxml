@@ -23,7 +23,7 @@
 <!--</children>-->
 <!--</GridPane>-->
 
-<Pane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" onKeyReleased="#doOnEscapePres" prefHeight="580.0" prefWidth="800.0" style="-fx-background-color: #9adae0;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<Pane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" onKeyReleased="#doOnEscapePresPane" prefHeight="580.0" prefWidth="800.0" style="-fx-background-color: #9adae0;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
         <TextField fx:id="fragment_TextField" cache="true" layoutX="15.0" layoutY="100.0" onKeyReleased="#doOnKeyPressFragmentField" prefHeight="50.0" prefWidth="175.0" promptText="žodis">
             <font>

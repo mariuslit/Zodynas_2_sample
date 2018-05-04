@@ -11,7 +11,6 @@ KCA -->> kas tai?
 KCS -->> Puiki programuotojų mokykla!
 Pakuonis123+ -->> 1 vertimas <enter> 2 vertimas  <enter> 3 vertimas
 Pakuonis147 -->> 147+++
-Pakuonis171 -->> 171
 Pakuonis195 -->> 195
 Pakuonis219 -->> 219+
 Pakuonis243 -->> 243
@@ -45,7 +44,6 @@ Panevėžys344 -->> 344
 Panevėžys368 -->> 368
 Panevėžys392 -->> 392
 Panevėžys416 -->> 416
-Panevėžys440 -->> 440
 Panevėžys464 -->> 464
 Panevėžys488 -->> 488
 Panevėžys512 -->> 512
@@ -619,6 +617,7 @@ plienas599 -->> 599
 plienas623 -->> 623
 plienas71 -->> 71
 plienas95 -->> 95
+pp -->> pp vertimas
 puodukas120 -->> 120
 puodukas144 -->> 144
 puodukas168 -->> 168

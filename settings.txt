@@ -1,7 +1,7 @@
 d1 -->> Lietuvių - Italų
 d2 -->> Anglų - Lietuvių
 d3 -->> Aiškinamasis
-d4 -->> Italų - Lietuvių
+d4 -->> Lt - it
 d5 -->> Bandomasis
-d6 -->> Ilgas
-default -->> d1
+d6 -->> Ilgas žodis
+default -->> d4
