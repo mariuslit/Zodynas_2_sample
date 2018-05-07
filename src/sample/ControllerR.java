@@ -152,8 +152,8 @@ public class ControllerR {
 
     // exitas iš sampleR
     public void exitButonR() {
-        Controller x = new Controller();
-        x.closeStageR();
+        Controller close = new Controller();
+        close.closeStageR();
     }
 }
 

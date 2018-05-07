@@ -56,8 +56,8 @@ public class Controller implements Initializable {
 
     public static Info info;
 
-    public static TreeMap<String, String> dictionaryTreeMap = new TreeMap<>(); // todo keitimas į observableList
-    public static ObservableList<String> obsList; // todo keitimas į observableList
+    public static TreeMap<String, String> dictionaryTreeMap = new TreeMap<>();
+    public static ObservableList<String> obsList; // naudojamas tik tam kad įsisavinčiau darbą su observableList, aplamai nelabai naudingas šiame projekte
 
     public static TreeMap<String, String> settingsTreeMap = new TreeMap<>();
 
@@ -67,6 +67,7 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         settingsTreeMap = ReadWriteData.readFile("settings"); // nuskaitomas settings.txt
+        // TODO: 2018-05-04 reikia panaikinti Info klasę, nes galima imti duomenis tiesiogiai iš Controler'ių klasių
         System.out.println(++ReadWriteData.x + " " + ReadWriteData.getObsList("settings") + " " + ++ReadWriteData.x);
         doOnSelectRadioButton(settingsTreeMap.get("default")); // keičiamas zodynas į default stratup metu
         translate(fragment_TextField.getText());
@@ -78,9 +79,10 @@ public class Controller implements Initializable {
     }
 
     // čia šio Controller kodas iškviečia ControllerR valdomą langą sampleR.fxml
+//        Platform.isImplicitExit(); // TODO reika kad atidarius langą, tėvinis langa liktų užrkaintas
     @FXML
     private void openNewStageR() throws Exception {
-//        Platform.isImplicitExit(); // TODO reika kad atidarius langą, tėvinis langa liktų užrkaintas
+
         FXMLLoader load = new FXMLLoader(getClass().getResource("sampleR.fxml")); // perkopijuota iš Main
         Parent root = load.load(); // perkopijuota iš Main
 //        Parent root = FXMLLoader.load(getClass().getResource("sampleR.fxml"));
@@ -101,9 +103,10 @@ public class Controller implements Initializable {
         doSomething();
     }
 
-    //TODO Ppadaryti kad atliktų kokius nors veiksmus po sampleR uždarymo
+    // TODO padaryti kad atliktų kokius nors veiksmus po sampleR uždarymo
+    // TODO Andriaus komentaras: "Na taip neiskviesi metodo. ir state turi pasiimti controleri ir is jo kviesti PUBLIC metoda!!!! #7"
     private void doSomething() {
-//        System.out.println("atlikti Kokius Nors Veiksmus");
+        System.out.println("Uždarius children langą atlieka ne visus veiksmus");
 //        doOnSelectRadioButton(settingsTreeMap.get("default"));
 //        translate(fragment_TextField.getText());
     }
@@ -159,14 +162,14 @@ public class Controller implements Initializable {
         // išvedamas zodyno turinys į ListView
         allWords_ListView.getItems().clear();// duomenų trynimas iš ListView
 
-        List<String> str = new ArrayList<>(); // todo observableList
-        for (String item : dictionaryTreeMap.keySet()) { // public Map'as
-//            allWords_ListView.getItems().addAll(item); // spausdina po vieną eilutę į ListView // todo pakeičiau su observableList
-            str.add(item); // todo observableList
+        // TODO observableList naudojimas spausdinimui į ListView, vietoj įrašymo po vieną item
+        List<String> str = new ArrayList<>(); // List'o sukūrimas kad galėčiau įrašyti į observableList
+        for (String item : dictionaryTreeMap.keySet()) {
+//            allWords_ListView.getItems().addAll(item); // spausdina po vieną eilutę į ListView -> pakeičiau su observableList
+            str.add(item); // List'o pildymas kad galėčiau įrašyti į observableList
         }
-
-        obsList = FXCollections.observableList(str); // todo observableList
-        allWords_ListView.setItems(obsList); // todo atspausdina visą observableList sąrašą į ListView be ciklų
+        obsList = FXCollections.observableList(str); // sukuriamas observableList
+        allWords_ListView.setItems(obsList); // atspausdina visą observableList sąrašą į ListView be ciklų
 
         allWords_ListView.getSelectionModel().selectFirst(); // padeda kursorių į pirmą celę
         sizeOfDictionaryBelowListView_Label.setText(dictionaryTreeMap.size() + "");
@@ -175,7 +178,7 @@ public class Controller implements Initializable {
     // vertimas
     private void translate(String fragment) {
         if ((!fragment.equals(""))) {
-            TreeSet<String> variant = getEquivalentVariants(fragment.toLowerCase());
+            TreeSet<String> variant = getEquivalentVariants(fragment.toLowerCase()); // Andriaus komentaras: "naudoti interface SET! #8" [kol kas neveikia]
             // spausdinti variantue į ListView
             variants_ListView.getItems().clear();// duomenų trynimas iš ListView
             for (String item : variant) {
@@ -282,7 +285,7 @@ public class Controller implements Initializable {
     // reakcija į klavišo paspaudimą ant ListView_1
     public void doOnKeyPressListView_1(KeyEvent event) {
         if (event.getCode().isArrowKey()/*equals(KeyCode.RIGHT)*/) {
-            System.out.println(++y + " r");// TODO: 2018-05-04 neveikia kai spaudžiamas dešinėn
+            System.out.println(++y + " r"+event.getCode().getDeclaringClass());// TODO: 2018-05-04 neveikia kai spaudžiamas dešinėn
         }
         if ((event.getCode().equals(KeyCode.UP) && variants_ListView.getSelectionModel().isSelected(0))) {
             if (first) {

@@ -19,7 +19,7 @@ public class ReadWriteData {
     public static int x = 0; // laikinas skaitliukas
 
     public static ObservableList getObsList(String fileName) {
-        System.out.println(x+" obs");
+        System.out.println(x + " obs");
         return FXCollections.observableList(new ArrayList<>(readFile(fileName).keySet()));
 //        TreeMap<String,String> tr = new TreeMap(readFile(fileName));
 //        ObservableList<String> obs;
