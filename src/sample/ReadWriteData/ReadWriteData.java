@@ -1,12 +1,6 @@
 package sample.ReadWriteData;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import sun.reflect.generics.tree.Tree;
-
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.TreeMap;
 
 /**
@@ -19,10 +13,8 @@ public class ReadWriteData {
 
     public static TreeMap readFile(String fileName) {
         TreeMap<String, String> data = new TreeMap<>();
-        try {
-            BufferedReader file = new BufferedReader(new InputStreamReader(new FileInputStream(fileName + ".txt"), "UTF-8"));
+        try (BufferedReader file = new BufferedReader(new InputStreamReader(new FileInputStream(fileName + ".txt"), "UTF-8"))){
             String line;
-
             while ((line = file.readLine()) != null) { // jeigu eilutė egzistuoja, t.y. ne lygi nuliui
                 String[] mas = line.split(SPLITER);
                 String s = mas[1].replace(SPLITER2, "\n");

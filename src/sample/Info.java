@@ -10,7 +10,7 @@ public class Info {
     private Map<String, String> dictionary = new TreeMap<>();
     private String fragment;
     private String translation;
-    private Stage stageR;// = new Stage();
+    private Stage stageR;
 
     // konstruktoriaus Overloading'as
     Info(Map<String, String> dictionary, String fragment) {
