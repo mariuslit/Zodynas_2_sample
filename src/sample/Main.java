@@ -19,8 +19,8 @@ public class Main extends Application {
         primaryStage.setTitle("Žodynas Ltit");
 
 //        // atlieka veiksmus prieš nutraukiant programos veikimą
-//        Controller controller = load.getController();
-//        primaryStage.setOnHidden(event -> controller.onCloseEvent());
+        Controller controller = load.getController();
+        primaryStage.setOnHidden(event -> controller.onCloseEvent());
 
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

@@ -5,9 +5,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import sample.ReadWriteData.ReadWriteData;
-import sun.reflect.generics.tree.Tree;
 
-import java.util.Map;
 import java.util.Optional;
 import java.util.TreeMap;
 
@@ -24,15 +22,13 @@ public class ControllerR {
     @FXML
     private ListView<String> allWords_ListViewR;
 
-    private TreeMap<String, String> dictionaryTreeMapR = Controller.dictionaryTreeMap;//new TreeMap<>();
-    private TreeMap<String, String> settingsTreeMapR = Controller.settingsTreeMap;//new TreeMap<>();
+    private TreeMap<String, String> dictionaryTreeMapR = Controller.dictionaryTreeMap;
+    private TreeMap<String, String> settingsTreeMapR = Controller.settingsTreeMap;
     private String selectedWord;
 
     public void initialize() { // ištryniau (URL location, ResourceBundle resources) ir suveikė
         word_TextFieldR.setText(Controller.info.getFragmentas()); // informacijos nuskaitymas iš Info klasės
-//        settingsTreeMapR = Controller.settingsTreeMap; // ReadWriteData.readFile("settings");
         String defaultDictionaryId = settingsTreeMapR.get("default");
-//        dictionaryTreeMapR = Controller.dictionaryTreeMap; // ReadWriteData.readFile(defaultDictionaryId);
         title_LabelR.setText("\"" + settingsTreeMapR.get(defaultDictionaryId) + "\" žodyno redagavimas");
         translation_TextAreaR.setText(Controller.info.getVertimas()); // informacijos nuskaitymas iš Info klasės
         fillInTheListViewR();
@@ -82,7 +78,7 @@ public class ControllerR {
                 dictionaryTreeMapR.put(word, transl);
                 String activeDict = settingsTreeMapR.get("default");
                 ReadWriteData.writeFile(dictionaryTreeMapR, activeDict);
-                System.out.println("addWord: įdėtas naujas žodis į žodyną: " + activeDict + ", įrašomas į failą 'Zx.txt'");
+                System.out.println("addWord: įdėtas naujas žodis į žodyną: " + activeDict + ", įrašomas į failą 'Zx.txt'"); // TODO TRINTI
                 allWords_ListViewR.getItems().clear(); // duomenų trynimas iš ListView
                 fillInTheListViewR(); // žodyno spausdinimas toliau
                 Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -109,8 +105,6 @@ public class ControllerR {
             alert.setContentText(selectedWord);
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
-                // ... user chose OK
-//            System.out.println("žodis " + selectedWord + " trinamas");
                 dictionaryTreeMapR.remove(selectedWord);
                 allWords_ListViewR.getItems().clear(); // duomenų trynimas iš ListView
                 fillInTheListViewR(); // žodyno spausdinimas toliau
@@ -152,33 +146,16 @@ public class ControllerR {
 
     // exitas iš sampleR
     public void exitButonR() {
-        Controller close = new Controller();
-        close.closeStageR();
+//        Controller close = new Controller();
+//        close.closeStageR();
+        Controller.closeStageR();
+
+        System.out.println("ConrtollerR: exitButonR()");
     }
+
+    // Atliekami veiksmai prieš nutraukiant programos veikimą
+    public void onCloseEventR() {
+        System.out.println("atliktas veiksmas EXIT");
+    }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

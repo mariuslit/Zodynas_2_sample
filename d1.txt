@@ -1,4 +1,4 @@
-Pakuonis3 -->> 3++
+Pakuonis3 -->> 3+++
 Pakuonis5 -->> 3+++++ <enter> + <enter> + <enter> + <enter> +
 Pakuonis5+ -->> 3+++++ <enter> + <enter> + <enter> + <enter> +
 Panevėžys8 -->> 8

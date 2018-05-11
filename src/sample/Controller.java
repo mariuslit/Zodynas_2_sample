@@ -15,6 +15,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import sample.ReadWriteData.ReadWriteData;
+import sun.reflect.generics.tree.Tree;
 
 import java.net.URL;
 import java.util.*;
@@ -38,7 +39,8 @@ public class Controller implements Initializable {
     @FXML
     private ListView<String> variants_ListView;
     @FXML
-    private ToggleGroup dictionarys_ToggleGroup;
+    public ToggleGroup dictionarys_ToggleGroup;
+    // RadioButton Id turi būti tokie patys kaip ir failų pavadinimai
     @FXML
     private RadioButton d1;
     @FXML
@@ -52,23 +54,20 @@ public class Controller implements Initializable {
     @FXML
     private RadioButton d6;
 
-    public static int y = ReadWriteData.x; // skaitliukas man, TODO vėliau ištrinti
+    public static int y = 0; // skaitliukas man, TODO TRINTI
+    public static Info info; // tarpinė klasė - informacijos pernešimui tarp Controller'ių
 
-    public static Info info;
-
-    public static TreeMap<String, String> dictionaryTreeMap = new TreeMap<>();
-    public static ObservableList<String> obsList; // naudojamas tik tam kad įsisavinčiau darbą su observableList, aplamai nelabai naudingas šiame projekte
-
+    public static ObservableList<String> obsList; // naudojamas tik tam, kad įsisavinčiau darbą su observableList, kol kas nelabai naudingas
+    public static TreeMap<String, String> dictionaryTreeMap = new TreeMap<>(); // pagrindinis Map - žodynas
     public static TreeMap<String, String> settingsTreeMap = new TreeMap<>();
 
     private Boolean first = false; // šokinėjimo tarp fragment <-> variant laukų valdymui
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        settingsTreeMap = ReadWriteData.readFile("settings"); // nuskaitomas settings.txt
-        // TODO: 2018-05-04 reikia panaikinti Info klasę, nes galima imti duomenis tiesiogiai iš Controler'ių klasių
-        System.out.println(++ReadWriteData.x + " " + ReadWriteData.getObsList("settings") + " " + ++ReadWriteData.x);
+        settingsTreeMap = ReadWriteData.readFile("settings"); // nuskaitomas settings.txt failas
+        // TODO: reikia panaikinti Info klasę, nes galima imti duomenis tiesiogiai iš Controller'ių klasių
+        // TODO: tik Stage kol kas niekuo negaliu pakeisti
         doOnSelectRadioButton(settingsTreeMap.get("default")); // keičiamas zodynas į default stratup metu
         translate(fragment_TextField.getText());
 
@@ -79,25 +78,36 @@ public class Controller implements Initializable {
     }
 
     // čia šio Controller kodas iškviečia ControllerR valdomą langą sampleR.fxml
-//        Platform.isImplicitExit(); // TODO reika kad atidarius langą, tėvinis langa liktų užrkaintas
+//    @Override
     @FXML
     private void openNewStageR() throws Exception {
+//    Platform.isImplicitExit(); // TODO reika kad atidarius langą, tėvinis langa liktų užrkaintas
+// viskas pagal G:\Coding\3 GitHub projektai\ANDRIAUS_projektai_su_Java\fx_table_view-master
+        FXMLLoader load = new FXMLLoader(getClass().getResource("sampleR.fxml"));
+//        Parent root = null;
+//        try {
+////     Parent root = FXMLLoader.load(getClass().getResource("sampleR.fxml"));
+//            root = FXMLLoader.load(getClass().getResource("sampleR.fxml"));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        Parent root = load.load();
 
-        FXMLLoader load = new FXMLLoader(getClass().getResource("sampleR.fxml")); // perkopijuota iš Main
-        Parent root = load.load(); // perkopijuota iš Main
-//        Parent root = FXMLLoader.load(getClass().getResource("sampleR.fxml"));
         Stage stageR = new Stage();
         stageR.setTitle("Žodynas Ltit");
-//        Controller controllerR = load.getController(); // perkopijuota iš Main
-//        exitButton.setOnAction(e -> windowClose());
+
+//        Controller controller = load.getController();
+//        stageR.setOnHidden(event -> controller.onCloseEvent());
+
         stageR.setScene(new Scene(root));
         stageR.show();
+
         info = new Info(stageR);
     }
 
     @FXML
-    public void closeStageR() {
-//        System.out.println("kreipinys į Controler iš antro view");
+    public static void closeStageR() {
+        System.out.println("closeStageR()");
         Stage stage = info.getStage();
         stage.close();
         doSomething();
@@ -105,15 +115,16 @@ public class Controller implements Initializable {
 
     // TODO padaryti kad atliktų kokius nors veiksmus po sampleR uždarymo
     // TODO Andriaus komentaras: "Na taip neiskviesi metodo. ir state turi pasiimti controleri ir is jo kviesti PUBLIC metoda!!!! #7"
-    private void doSomething() {
-        System.out.println("Uždarius children langą atlieka ne visus veiksmus");
+    private static void doSomething() {
+//        dictionarys_ToggleGroup.selectToggle(d1);// TODO: 2018-05-08 pyksta
+        System.out.print("doSomething()"); // TODO TRINTI
+        System.out.println(" Uždarius children langą atlieka ne visus veiksmus"); // TODO TRINTI
 //        doOnSelectRadioButton(settingsTreeMap.get("default"));
 //        translate(fragment_TextField.getText());
     }
 
     // aktyvaus žodyno keitimas
     public void nextDictionary(ActionEvent event) { // kreipiasi visi 6 radioButton į šį metodą onAction
-//        settingsTreeMap = ReadWriteData.readFile("settings"); // nuskaitomas settings.txt
         RadioButton selectedDict = (RadioButton) dictionarys_ToggleGroup.getSelectedToggle();
         doOnSelectRadioButton(selectedDict.getId());
         ReadWriteData.writeFile(settingsTreeMap, "settings"); // įrašo settings į failą
@@ -122,7 +133,7 @@ public class Controller implements Initializable {
     }
 
     // žodyno pakeitimas, toggel ID = failo vardas
-    private void doOnSelectRadioButton(String toggelID_fileName) {
+    public void doOnSelectRadioButton(String toggelID_fileName) {
         switch (toggelID_fileName) {
             case "d1":
                 dictionarys_ToggleGroup.selectToggle(d1);
@@ -156,37 +167,30 @@ public class Controller implements Initializable {
         d5.setText(settingsTreeMap.get("d5"));
         d6.setText(settingsTreeMap.get("d6"));
 
-        // nuskaito duomenis išfailo ir  užkrauna žodyną į Map'ą
+        // nuskaito naujo žodyno duomenis išfailo ir užkrauna žodyną į Map'ą
         dictionaryTreeMap = ReadWriteData.readFile(toggelID_fileName);
 
         // išvedamas zodyno turinys į ListView
         allWords_ListView.getItems().clear();// duomenų trynimas iš ListView
 
-        // TODO observableList naudojimas spausdinimui į ListView, vietoj įrašymo po vieną item
-        List<String> str = new ArrayList<>(); // List'o sukūrimas kad galėčiau įrašyti į observableList
-        for (String item : dictionaryTreeMap.keySet()) {
-//            allWords_ListView.getItems().addAll(item); // spausdina po vieną eilutę į ListView -> pakeičiau su observableList
-            str.add(item); // List'o pildymas kad galėčiau įrašyti į observableList
-        }
-        obsList = FXCollections.observableList(str); // sukuriamas observableList
-        allWords_ListView.setItems(obsList); // atspausdina visą observableList sąrašą į ListView be ciklų
+        // observableList naudojimas spausdinimui į ListView, vietoj įrašymo po vieną item per ciklus
+        allWords_ListView.setItems(FXCollections.observableList(new ArrayList<>(dictionaryTreeMap.keySet()))); // optimizuota
 
-        allWords_ListView.getSelectionModel().selectFirst(); // padeda kursorių į pirmą celę
+        // pažymi pirmą celę
+        allWords_ListView.getSelectionModel().selectFirst();
+
         sizeOfDictionaryBelowListView_Label.setText(dictionaryTreeMap.size() + "");
     } // end of doOnSelectRadioButton
 
     // vertimas
     private void translate(String fragment) {
-        if ((!fragment.equals(""))) {
+        if (!fragment.equals("")) {
             TreeSet<String> variant = getEquivalentVariants(fragment.toLowerCase()); // Andriaus komentaras: "naudoti interface SET! #8" [kol kas neveikia]
-            // spausdinti variantue į ListView
-            variants_ListView.getItems().clear();// duomenų trynimas iš ListView
-            for (String item : variant) {
-                variants_ListView.getItems().addAll(item);
-            }
+            variants_ListView.setItems(FXCollections.observableList(new ArrayList<>(variant))); // optimizuota
+            System.out.println((FXCollections.observableList(new ArrayList<>(variant)))); // optimizuota
             countityOfVariantsBelowListView_Label.setText(variant.size() + "");
-            if (variant.size() != 0) { // ne lygu nuliui
-                String firstEquiv = variant.first();
+            if (!variant.isEmpty()) { // ne lygu nuliui
+                String firstEquiv = variant.first(); // TODO pakeitus TreeSet į Set neveikia .fista()
                 firstEquivalent_Label.setText(firstEquiv);
                 translation_Label.setText(dictionaryTreeMap.get(firstEquiv));
             } else {
@@ -197,13 +201,11 @@ public class Controller implements Initializable {
         }
         variants_ListView.getSelectionModel().selectFirst(); // padeda kursorių į pirmą celę
         info = new Info(dictionaryTreeMap, fragment_TextField.getText());
-//        System.out.println("Controller: " + fragment_TextField.getText() + " -> " + info.getFragmentas());
         fillColorsToFields();
     }
 
-    // tikrina ir pataiso spalvas
+    // tikrina ir pataiso fono spalvas
     private void fillColorsToFields() {
-        // fono spalvos
         if (!fragment_TextField.getText().toLowerCase().equals(firstEquivalent_Label.getText().toLowerCase())) {
             firstEquivalent_Label.setStyle("-fx-background-color: #b0e5ea");
             translation_Label.setStyle("-fx-background-color: #b0e5ea");
@@ -285,7 +287,8 @@ public class Controller implements Initializable {
     // reakcija į klavišo paspaudimą ant ListView_1
     public void doOnKeyPressListView_1(KeyEvent event) {
         if (event.getCode().isArrowKey()/*equals(KeyCode.RIGHT)*/) {
-            System.out.println(++y + " r"+event.getCode().getDeclaringClass());// TODO: 2018-05-04 neveikia kai spaudžiamas dešinėn
+            // TODO: 2018-05-04 neveikia kai spaudžiamas dešinėn
+            System.out.println(++y + " r" + event.getCode().getDeclaringClass()); // TODO TRINTI
         }
         if ((event.getCode().equals(KeyCode.UP) && variants_ListView.getSelectionModel().isSelected(0))) {
             if (first) {
@@ -346,8 +349,8 @@ public class Controller implements Initializable {
         Platform.exit();
     }
 
-//    // Atliekami veiksmai prieš nutraukiant programos veikimą
-//    public void onCloseEvent() {
-//        System.out.println("Atliekami veiksmai prieš nutraukiant programos veikimą");
-//    }
+    // Atliekami veiksmai prieš nutraukiant programos veikimą
+    public void onCloseEvent() {
+        System.out.println("atliktas veiksmas EXIT");
+    }
 }

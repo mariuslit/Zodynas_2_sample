@@ -9,8 +9,8 @@ public class Info {
 
     private Map<String, String> dictionary = new TreeMap<>();
     private String fragment;
-    private String translation;// = new String();
-    private Stage stageR = new Stage();
+    private String translation;
+    private Stage stageR;// = new Stage();
 
     // konstruktoriaus Overloading'as
     Info(Map<String, String> dictionary, String fragment) {
@@ -19,16 +19,19 @@ public class Info {
     }
 
     // konstruktoriaus Overloading'as
-    Info(Map<String, String> dictionary, String fragment, String translation/*, String zodynoID*/) {
+    Info(Map<String, String> dictionary, String fragment, String translation) {
         this.dictionary = dictionary;
         this.fragment = fragment;
         this.translation = translation;
-//        this.zodynoIdR = zodynoID;
     }
 
     // konstruktoriaus Overloading'as
     public Info(Stage stage) {
         this.stageR = stage;
+    }
+
+    public void setStageR(Stage stageR) {
+        this.stageR = stageR;
     }
 
     public Stage getStage() {

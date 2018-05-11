@@ -27,7 +27,7 @@ Pakuonis507 -->> 507
 Pakuonis51 -->> 51
 Pakuonis531 -->> 531
 Pakuonis555 -->> 555++ <enter> +++
-Pakuonis603 -->> 603
+Pakuonis603 -->> 603++
 Pakuonis627 -->> 627
 Pakuonis75 -->> 75
 Pakuonis99 -->> 99
@@ -49,7 +49,6 @@ Panevėžys488 -->> 488
 Panevėžys512 -->> 512
 Panevėžys536 -->> 536
 Panevėžys56 -->> 56
-Panevėžys560 -->> 560
 Panevėžys608 -->> 608
 Panevėžys632 -->> 632
 Panevėžys8 -->> 8
@@ -69,7 +68,7 @@ padas265 -->> 265
 padas289 -->> 289
 padas313 -->> 313
 padas337 -->> 337
-padas361 -->> 361
+padas361 -->> 361+
 padas385 -->> 385
 padas409 -->> 409
 padas457 -->> 457
