@@ -3,5 +3,5 @@ d2 -->> Anglų - Lietuvių
 d3 -->> Aiškinamasis
 d4 -->> Lt - itAL
 d5 -->> Bandomasis
-d6 -->> Ilgas žodis
-default -->> d4
+d6 -->> Ilgas žodynas
+default -->> d6

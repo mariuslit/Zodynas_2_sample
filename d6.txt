@@ -1,5 +1,7 @@
 A -->> A raidė
+AA -->> AA+
 ABC -->> ABĖCĖLĖ visomis kalbomis
+Abc -->> abc d
 K -->> ok 1
 KA -->> ok 1
 KAU -->> ok 1
@@ -12,19 +14,13 @@ KCS -->> Puiki programuotojų mokykla!
 Pakuonis123+ -->> 1 vertimas <enter> 2 vertimas  <enter> 3 vertimas
 Pakuonis147 -->> 147+++
 Pakuonis195 -->> 195
-Pakuonis219 -->> 219+
-Pakuonis243 -->> 243
-Pakuonis267 -->> 267
-Pakuonis27 -->> 27+
 Pakuonis291 -->> 291
 Pakuonis3+ -->> 3++
 Pakuonis315 -->> 315
 Pakuonis387 -->> 387
 Pakuonis411 -->> 411
-Pakuonis435 -->> 435
 Pakuonis483 -->> 483
 Pakuonis507 -->> 507
-Pakuonis51 -->> 51
 Pakuonis531 -->> 531
 Pakuonis555 -->> 555++ <enter> +++
 Pakuonis603 -->> 603++
@@ -32,30 +28,24 @@ Pakuonis627 -->> 627
 Pakuonis75 -->> 75
 Pakuonis99 -->> 99
 Panevėžys104 -->> 104
-Panevėžys128 -->> 128
 Panevėžys152 -->> 152
-Panevėžys176 -->> 176
+Panevėžys176 -->> 176d
 Panevėžys200 -->> 200
-Panevėžys272 -->> 272
 Panevėžys296 -->> 296
 Panevėžys32 -->> 32
-Panevėžys320 -->> 320
-Panevėžys344 -->> 344
 Panevėžys368 -->> 368
 Panevėžys392 -->> 392
-Panevėžys416 -->> 416
-Panevėžys464 -->> 464
-Panevėžys488 -->> 488
-Panevėžys512 -->> 512
 Panevėžys536 -->> 536
 Panevėžys56 -->> 56
-Panevėžys608 -->> 608
 Panevėžys632 -->> 632
 Panevėžys8 -->> 8
 Panevėžys80 -->> 80
+aBC -->> aBC +
 aa -->> aa aa S   <enter> SADSS <enter>    SDDDD
 con -->> yra toks žodis
 conduct -->> belenkas+ <enter> ++ <enter> xxxxxxxxxxxxxxxxxxxxxxxx
+d -->> dd
+dd -->> d
 padas1 -->> 1
 padas121 -->> 121
 padas145 -->> 145
@@ -105,7 +95,6 @@ pakulos506 -->> 506
 pakulos530 -->> 530
 pakulos578 -->> 578
 pakulos602 -->> 602
-pakulos626 -->> 626
 pakulos74 -->> 74
 pakulos98 -->> 98
 panda100 -->> 100

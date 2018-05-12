@@ -13,12 +13,6 @@ public class Info {
     private Stage stageR;
 
     // konstruktoriaus Overloading'as
-    Info(Map<String, String> dictionary, String fragment) {
-        this.dictionary = dictionary;
-        this.fragment = fragment;
-    }
-
-    // konstruktoriaus Overloading'as
     Info(Map<String, String> dictionary, String fragment, String translation) {
         this.dictionary = dictionary;
         this.fragment = fragment;
@@ -26,7 +20,7 @@ public class Info {
     }
 
     // konstruktoriaus Overloading'as
-    public Info(Stage stage) {
+    Info(Stage stage) {
         this.stageR = stage;
     }
 
@@ -34,15 +28,15 @@ public class Info {
         this.stageR = stageR;
     }
 
-    public Stage getStage() {
+    public Stage getStageR() {
         return stageR;
     }
 
-    public String getFragmentas() {
+    public String getFragment() {
         return fragment;
     }
 
-    public String getVertimas() {
+    public String getTranslation() {
         return translation;
     }
 }

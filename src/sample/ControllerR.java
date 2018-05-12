@@ -27,13 +27,16 @@ public class ControllerR {
     private String selectedWord;
 
     public void initialize() { // ištryniau (URL location, ResourceBundle resources) ir suveikė
-        word_TextFieldR.setText(Controller.info.getFragmentas()); // informacijos nuskaitymas iš Info klasės
+        word_TextFieldR.setText(Controller.info.getFragment()); // informacijos nuskaitymas iš Info klasės
         String defaultDictionaryId = settingsTreeMapR.get("default");
         title_LabelR.setText("\"" + settingsTreeMapR.get(defaultDictionaryId) + "\" žodyno redagavimas");
-        translation_TextAreaR.setText(Controller.info.getVertimas()); // informacijos nuskaitymas iš Info klasės
-        fillInTheListViewR();
+        translation_TextAreaR.setText(Controller.info.getTranslation()); // informacijos nuskaitymas iš Info klasės
+        fillListViewR();
         allWords_ListViewR.setStyle("-fx-font-size: 14px;");
         allWords_ListViewR.setFixedCellSize(24);
+        allWords_ListViewR.getSelectionModel().selectFirst();
+        allWords_ListViewR.getSelectionModel().select(Controller.info.getFragment());
+        selectedWord=null;
     }
 
     // žodyno pavadinimo keitimas
@@ -55,35 +58,41 @@ public class ControllerR {
         }
     }
 
+    // nujas alert metodas
+    public boolean alertai(Alert.AlertType alertType, String title, String header, String content) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        boolean b = false;
+        if (alertType == Alert.AlertType.CONFIRMATION) {
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                b = true;
+            }
+        } else {
+            alert.show();
+        }
+        return b;
+    }
+
     // naujas žodis
     public void addWordR() {
         String word = word_TextFieldR.getText();
         String transl = translation_TextAreaR.getText();
-
-        // neteisingo žodyno pildymo filtrai
+        // neteisingo žodyno pildymo filtrai todo sukurti įspėjimus: [verčiamas žodis nepakeistas senas vertimas -> naujas vertimas], [du vienoodi vertimai]
         if (word.length() == 0 || transl.length() == 0) { // tuščių ir bereikšmių žodžių filtras
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Klaidelė:");
-            alert.setHeaderText(null);
-            alert.setContentText("Ne visi laukai užpildyti");
-            alert.show();
+            alertai(Alert.AlertType.ERROR, "Klaidelė", null, "Ne visi laukai užpildyti");
         } else {
             if (dictionaryTreeMapR.containsKey(word) && dictionaryTreeMapR.get(word).equals(transl)) { // vienodų žodžių filtras
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Klaidelė:");
-                alert.setHeaderText(null);
-                alert.setContentText("Toks žodis su tokiu pačiu vertimu šiame žodyne jau yra");
-                alert.show();
+                alertai(Alert.AlertType.ERROR, "Klaidelė:", null, "Toks žodis su tokiu pačiu vertimu šiame žodyne jau yra");
             } else {
                 dictionaryTreeMapR.put(word, transl);
                 String activeDict = settingsTreeMapR.get("default");
                 ReadWriteData.writeFile(dictionaryTreeMapR, activeDict);
                 System.out.println("addWord: įdėtas naujas žodis į žodyną: " + activeDict + ", įrašomas į failą 'Zx.txt'"); // TODO TRINTI
-                allWords_ListViewR.getItems().clear(); // duomenų trynimas iš ListView
-                fillInTheListViewR(); // žodyno spausdinimas toliau
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setContentText("Žodis išsaugotas");
-                alert.show();
+                fillListViewR(); // žodyno spausdinimas toliau
+                alertai(Alert.AlertType.WARNING, null, null, "Žodis išsaugotas");
                 title_LabelR.setTextFill(Color.RED);
             }
         }
@@ -91,27 +100,22 @@ public class ControllerR {
 
     // button [EDIT]
     public void editWordR() {
-        if (selectedWord != null) {
-            fillInTheFieldsR();
+        if (selectedWord !=null) {
+            fillFieldsR();
         }
     }
 
     // button [DELETE]
     public void deleteWordFromDictionaryR() {
-        if (selectedWord != null) {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Įspėjimas !!!");
-            alert.setHeaderText("Ar tikrai norite ištrinti žodį iš žodyno?");
-            alert.setContentText(selectedWord);
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK) {
+        if (selectedWord !=null) {
+            if (alertai(Alert.AlertType.CONFIRMATION, "Įspėjimas !!!", "Ar tikrai norite ištrinti žodį iš žodyno?", selectedWord)) {
                 dictionaryTreeMapR.remove(selectedWord);
-                allWords_ListViewR.getItems().clear(); // duomenų trynimas iš ListView
-                fillInTheListViewR(); // žodyno spausdinimas toliau
-                ReadWriteData.writeFile(dictionaryTreeMapR, settingsTreeMapR.get("default"));
+                fillListViewR();
                 clearFieldsR();
+                ReadWriteData.writeFile(dictionaryTreeMapR, settingsTreeMapR.get("default"));
                 title_LabelR.setTextFill(Color.RED);
             }
+        selectedWord = null;
         }
     }
 
@@ -120,14 +124,14 @@ public class ControllerR {
         String selectedItem = allWords_ListViewR.getSelectionModel().getSelectedItem(); // padaryta pagal Andriaus kodą
         selectedWord = selectedItem;
         if (event.getClickCount() == 2) {
-            fillInTheFieldsR();
+            fillFieldsR();
         }
     }
 
-    private void fillInTheFieldsR() {
-        String a = selectedWord;
-        word_TextFieldR.setText(a);
-        translation_TextAreaR.setText(dictionaryTreeMapR.get(a));
+    private void fillFieldsR() {
+        String word = selectedWord;
+        word_TextFieldR.setText(word);
+        translation_TextAreaR.setText(dictionaryTreeMapR.get(word));
     }
 
     public void clearFieldsR() {
@@ -137,7 +141,8 @@ public class ControllerR {
     }
 
     // veikiantis metodas atspausdinti duomenis į ListView
-    private void fillInTheListViewR() {
+    private void fillListViewR() {
+        allWords_ListViewR.getItems().clear(); // duomenų trynimas iš ListView
         for (String item : dictionaryTreeMapR.keySet()) { // public Map'as
             allWords_ListViewR.getItems().addAll(item);
         }
@@ -155,7 +160,7 @@ public class ControllerR {
 
     // Atliekami veiksmai prieš nutraukiant programos veikimą
     public void onCloseEventR() {
-        System.out.println("atliktas veiksmas EXIT");
+        System.out.println("atliktas veiksmas EXIT iš ControllerR");
     }
 
 }

@@ -35,7 +35,10 @@ TODO veikia blogai:
 
 TODO kodo optimizavimas:
 * ištinti info klasę nes viską galima tvarkyti tiesiogiai tarp Controller'ių
-// * įkelti žodyną į Info klasę inicilizacijos metu, ir kreiptis į failą tik pakeitimų metu
+    įkelti žodyną į Info klasę inicilizacijos metu, ir kreiptis į failą tik pakeitimų metu
+
+TODO patobulinimai:
+* sukurti mygtukus žodyno aplinkos klabai nustatyti [En] [It] [Lt], naudoti žodyno infrastruktūrą žodžiams nuskaityti iš failo, surašyti
 
 TODO klausimai Andriui:
 ---

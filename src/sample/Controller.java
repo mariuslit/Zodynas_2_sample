@@ -15,7 +15,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import sample.ReadWriteData.ReadWriteData;
-import sun.reflect.generics.tree.Tree;
 
 import java.net.URL;
 import java.util.*;
@@ -57,7 +56,6 @@ public class Controller implements Initializable {
     public static int y = 0; // skaitliukas man, TODO TRINTI
     public static Info info; // tarpinė klasė - informacijos pernešimui tarp Controller'ių
 
-    public static ObservableList<String> obsList; // naudojamas tik tam, kad įsisavinčiau darbą su observableList, kol kas nelabai naudingas
     public static TreeMap<String, String> dictionaryTreeMap = new TreeMap<>(); // pagrindinis Map - žodynas
     public static TreeMap<String, String> settingsTreeMap = new TreeMap<>();
 
@@ -74,7 +72,7 @@ public class Controller implements Initializable {
         variants_ListView.setStyle("-fx-font-size: 16px;");
         variants_ListView.setFixedCellSize(28);
         allWords_ListView.setStyle("-fx-font-size: 14px;");
-        allWords_ListView.setFixedCellSize(24);
+        allWords_ListView.setFixedCellSize(26);
     }
 
     // čia šio Controller kodas iškviečia ControllerR valdomą langą sampleR.fxml
@@ -99,16 +97,16 @@ public class Controller implements Initializable {
 //        Controller controller = load.getController();
 //        stageR.setOnHidden(event -> controller.onCloseEvent());
 
+        info = new Info(stageR);
+
         stageR.setScene(new Scene(root));
         stageR.show();
-
-        info = new Info(stageR);
     }
 
     @FXML
     public static void closeStageR() {
         System.out.println("closeStageR()");
-        Stage stage = info.getStage();
+        Stage stage = info.getStageR();
         stage.close();
         doSomething();
     }
@@ -119,8 +117,10 @@ public class Controller implements Initializable {
 //        dictionarys_ToggleGroup.selectToggle(d1);// TODO: 2018-05-08 pyksta
         System.out.print("doSomething()"); // TODO TRINTI
         System.out.println(" Uždarius children langą atlieka ne visus veiksmus"); // TODO TRINTI
-//        doOnSelectRadioButton(settingsTreeMap.get("default"));
-//        translate(fragment_TextField.getText());
+
+//         // šis matodas nepasileidžia
+//        Controller obj = new Controller();
+//        obj.doOnSelectRadioButton(settingsTreeMap.get("default"));
     }
 
     // aktyvaus žodyno keitimas
@@ -200,7 +200,7 @@ public class Controller implements Initializable {
             clearFields();
         }
         variants_ListView.getSelectionModel().selectFirst(); // padeda kursorių į pirmą celę
-        info = new Info(dictionaryTreeMap, fragment_TextField.getText());
+        info = new Info(dictionaryTreeMap, fragment_TextField.getText(),firstEquivalent_Label.getText());
         fillColorsToFields();
     }
 
@@ -224,15 +224,15 @@ public class Controller implements Initializable {
             }
         }
         return variant;
-    } // todo ////////////////////////////////////////////////////// end of <Back-End>
+    } /////////// end of <Back-End>
 
     public void onNewButtonPress() throws Exception {
-        info = new Info(dictionaryTreeMap, fragment_TextField.getText());
+        info = new Info(dictionaryTreeMap, fragment_TextField.getText(),"");
         openNewStageR();
     }
 
     public void onEditButtonPress() throws Exception {
-        info = new Info(dictionaryTreeMap, firstEquivalent_Label.getText(), translation_Label.getText()); // jei reikės papildomo parametro, settingsTreeMap.get("default"));
+        info = new Info(dictionaryTreeMap, firstEquivalent_Label.getText(), translation_Label.getText());
         openNewStageR();
     }
 
