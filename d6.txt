@@ -23,7 +23,6 @@ Pakuonis483 -->> 483
 Pakuonis507 -->> 507
 Pakuonis531 -->> 531
 Pakuonis555 -->> 555++ <enter> +++
-Pakuonis603 -->> 603++
 Pakuonis627 -->> 627
 Pakuonis75 -->> 75
 Pakuonis99 -->> 99
