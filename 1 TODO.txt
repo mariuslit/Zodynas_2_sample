@@ -25,32 +25,18 @@ kur reikia pakeista public -> private
 padaryta kad vaikštant su klaviaturos rodyklem, kad rodytu vertima iškart
 sukurtas jar failas + UTF-8 kodacija
 padariau žodynų Map įrašymas į list view naudojant observableList, bet tik dėl oservableList įsisavinimo, realiai tai pridėjo 3 papildomas eilutes
+padariau kad atnaujintų duomenis (refresh) po antro view uždarymo
 
-TODO veikia blogai:
-* nepavyksta automatiškai atlikti veiksmų parent view'e, po children view uždarymo
-    reiktų atnaujinti duomenis (refresh):
-        1 žodyno pavadinimas
-        2 žodyno išvedimas į listView
-* Stage paga Andriaus pavyzdį
 
 TODO kodo optimizavimas:
 * ištinti info klasę nes viską galima tvarkyti tiesiogiai tarp Controller'ių
     įkelti žodyną į Info klasę inicilizacijos metu, ir kreiptis į failą tik pakeitimų metu
 
-TODO patobulinimai:
+TODO papildomi patobulinimai:
 * sukurti mygtukus žodyno aplinkos klabai nustatyti [En] [It] [Lt], naudoti žodyno infrastruktūrą žodžiams nuskaityti iš failo, surašyti
 
 TODO klausimai Andriui:
 ---
-* Kodėl galimi 4 kintamojo List deklaravimo variantai, kada kurį geriau naudoti?
-    1 List<String> examples;
-    2 List<String> examples = new ArrayList<>();
-    3 ArrayList<String> examples = new ArrayList<>();
-    4 ArrayList<String> examples = new ArrayList<>( reikšmių priskyrimas );
-
-* kas tiksliai yra ObservableList<Klasė>
-                   ObservableValue
-
 * dar karta  apie @:
     @Override
     @FXML

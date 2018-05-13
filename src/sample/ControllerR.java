@@ -59,7 +59,6 @@ public class ControllerR {
         }
     }
 
-    // nujas alert metodas
     // naujas žodis
     public void addWordR() {
         String word = word_TextFieldR.getText();
@@ -74,7 +73,6 @@ public class ControllerR {
                 dictionaryTreeMapR.put(word, transl);
                 String activeDict = settingsTreeMapR.get("default");
                 ReadWriteData.writeFile(dictionaryTreeMapR, activeDict);
-                System.out.println("addWord: įdėtas naujas žodis į žodyną: " + activeDict + ", įrašomas į failą 'Zx.txt'"); // TODO TRINTI
                 fillListViewR(); // žodyno spausdinimas toliau
                 alertR.alertai(Alert.AlertType.WARNING, null, null, "Žodis išsaugotas");
                 title_LabelR.setTextFill(Color.RED);
@@ -135,16 +133,6 @@ public class ControllerR {
 
     // on press [UŽDARYTI] button, do this method
     public void exitButonR() {
-//        Controller close = new Controller();
-//        close.closeStageR();
         Controller.closeStageR();
-
-        System.out.println("ConrtollerR: exitButonR()");
     }
-
-    // Atliekami veiksmai prieš nutraukiant programos veikimą
-    public void onCloseEventR() {
-        System.out.println("atliktas veiksmas EXIT iš ControllerR");
-    }
-
 }

@@ -17,11 +17,6 @@ public class Main extends Application {
         FXMLLoader load = new FXMLLoader(getClass().getResource("sample.fxml"));
         Parent root = load.load();
         primaryStage.setTitle("Žodynas Ltit");
-
-//        // atlieka veiksmus prieš nutraukiant programos veikimą
-        Controller controller = load.getController();
-        primaryStage.setOnHidden(event -> controller.onCloseEvent());
-
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }

@@ -13,6 +13,8 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.ReadWriteData.ReadWriteData;
 
@@ -21,6 +23,8 @@ import java.util.*;
 
 public class Controller implements Initializable {
 
+    @FXML
+    private Pane pane;
     @FXML
     private TextField fragment_TextField;
     @FXML
@@ -76,51 +80,30 @@ public class Controller implements Initializable {
     }
 
     // čia šio Controller kodas iškviečia ControllerR valdomą langą sampleR.fxml
-//    @Override
-    @FXML
     private void openNewStageR() throws Exception {
-//    Platform.isImplicitExit(); // TODO reika kad atidarius langą, tėvinis langa liktų užrkaintas
-// viskas pagal G:\Coding\3 GitHub projektai\ANDRIAUS_projektai_su_Java\fx_table_view-master
+
+        // todo čia kažko per daug, reikia pratrinti
         FXMLLoader load = new FXMLLoader(getClass().getResource("sampleR.fxml"));
-//        Parent root = null;
-//        try {
-////     Parent root = FXMLLoader.load(getClass().getResource("sampleR.fxml"));
-//            root = FXMLLoader.load(getClass().getResource("sampleR.fxml"));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
         Parent root = load.load();
-
         Stage stageR = new Stage();
-        stageR.setTitle("Žodynas Ltit");
-
-//        Controller controller = load.getController();
-//        stageR.setOnHidden(event -> controller.onCloseEvent());
-
         info = new Info(stageR);
-
+        stageR.setTitle("Žodynas Ltit");
         stageR.setScene(new Scene(root));
-        stageR.show();
+        // todo
+
+        stageR.initModality(Modality.APPLICATION_MODAL);
+        pane.setDisable(true);
+        stageR.showAndWait();
+        pane.setDisable(false);
+
+        RadioButton selectedDict = (RadioButton) dictionarys_ToggleGroup.getSelectedToggle();
+        doOnSelectRadioButton(selectedDict.getId());
     }
 
-    @FXML
+    // inicijuojamas išControllerR
     public static void closeStageR() {
-        System.out.println("closeStageR()");
         Stage stage = info.getStageR();
         stage.close();
-        doSomething();
-    }
-
-    // TODO padaryti kad atliktų kokius nors veiksmus po sampleR uždarymo
-    // TODO Andriaus komentaras: "Na taip neiskviesi metodo. ir state turi pasiimti controleri ir is jo kviesti PUBLIC metoda!!!! #7"
-    private static void doSomething() {
-//        dictionarys_ToggleGroup.selectToggle(d1);// TODO: 2018-05-08 pyksta
-        System.out.print("doSomething()"); // TODO TRINTI
-        System.out.println(" Uždarius children langą atlieka ne visus veiksmus"); // TODO TRINTI
-
-//         // šis matodas nepasileidžia
-//        Controller obj = new Controller();
-//        obj.doOnSelectRadioButton(settingsTreeMap.get("default"));
     }
 
     // aktyvaus žodyno keitimas
@@ -185,12 +168,11 @@ public class Controller implements Initializable {
     // vertimas
     private void translate(String fragment) {
         if (!fragment.equals("")) {
-            TreeSet<String> variant = getEquivalentVariants(fragment.toLowerCase()); // Andriaus komentaras: "naudoti interface SET! #8" [kol kas neveikia]
+            TreeSet<String> variant = getEquivalentVariants(fragment.toLowerCase());
             variants_ListView.setItems(FXCollections.observableList(new ArrayList<>(variant))); // optimizuota
-            System.out.println((FXCollections.observableList(new ArrayList<>(variant)))); // optimizuota
             countityOfVariantsBelowListView_Label.setText(variant.size() + "");
             if (!variant.isEmpty()) { // ne lygu nuliui
-                String firstEquiv = variant.first(); // TODO pakeitus TreeSet į Set neveikia .fista()
+                String firstEquiv = variant.first();
                 firstEquivalent_Label.setText(firstEquiv);
                 translation_Label.setText(dictionaryTreeMap.get(firstEquiv));
             } else {
@@ -325,8 +307,7 @@ public class Controller implements Initializable {
             translate("");
             fragment_TextField.requestFocus(); // padeda kursorių į input langelį
         }
-        if (event.getCode().equals(KeyCode.LEFT)) {// TODO: 2018-05-04
-            System.out.println(++y + " kairėn");// TODO: 2018-05-04
+        if (event.getCode().equals(KeyCode.LEFT)) {
         }
     }
 
@@ -347,10 +328,5 @@ public class Controller implements Initializable {
 
     public void onExitButtonPress() {
         Platform.exit();
-    }
-
-    // Atliekami veiksmai prieš nutraukiant programos veikimą
-    public void onCloseEvent() {
-        System.out.println("atliktas veiksmas EXIT");
     }
 }

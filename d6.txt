@@ -1,4 +1,4 @@
-A -->> A raidė
+A -->> A raidė MMMMMMMMM
 AA -->> AA+
 ABC -->> ABĖCĖLĖ visomis kalbomis
 Abc -->> abc d

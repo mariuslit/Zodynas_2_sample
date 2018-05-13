@@ -1,5 +1,7 @@
 Legge sulle Società per Azioni della Repubblica di Lituania -->> Lietuvos Respublikos akcinių bendrovių įstatymas
 Si da atto... -->> Pažymima, kad...
+a -->> aaaaaaaaaaa
+aa -->> aaa
 accertamento -->> fin. kontrolė
 amministratore delegato -->> įgaliotasis bendrovės vadovas
 antecedente -->> ankstesnis, pirmesnis
@@ -8,6 +10,7 @@ asseverativo -->> patvirtinantis, užtikrinantis
 assolvere -->> išteisinti 
 atto notorio -->> notarinis aktas
 azione ordinaria nominativa -->> paprastoji vardinė akcija
+c -->> dddd
 camera di cogsiglio -->> uždaras teismo posėdis
 camera di consiglio -->> uždaras teismo posėdis
 casellario giudiziale -->> teistumo informacijos skyrius 
