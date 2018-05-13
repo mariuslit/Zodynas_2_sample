@@ -59,7 +59,7 @@ public class ControllerR {
         }
     }
 
-    // naujas žodis 
+    // naujas žodis
     public void addWordR() {
         String word = word_TextFieldR.getText();
         String transl = translation_TextAreaR.getText();
