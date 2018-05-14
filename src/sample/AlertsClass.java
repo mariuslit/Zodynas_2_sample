@@ -5,7 +5,7 @@ import javafx.scene.control.ButtonType;
 
 import java.util.Optional;
 
-public class Utils {
+public class AlertsClass {
     public boolean alerts(Alert.AlertType alertType, String title, String header, String content) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
@@ -22,5 +22,4 @@ public class Utils {
         }
         return b;
     }
-
 }

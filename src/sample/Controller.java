@@ -2,7 +2,6 @@ package sample;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +25,7 @@ public class Controller implements Initializable {
     @FXML
     private Pane pane;
     @FXML
-    private TextField fragment_TextField;
+    public TextField fragment_TextField;
     @FXML
     private Label firstEquivalent_Label;
     @FXML
@@ -57,9 +56,10 @@ public class Controller implements Initializable {
     @FXML
     private RadioButton d6;
 
-    public static int y = 0; // skaitliukas man, TODO TRINTI
-    public static Info info; // tarpinė klasė - informacijos pernešimui tarp Controller'ių
-
+    // ststic kintamieji skirti paruoti duomenis į kitą Controller
+    public static Stage stageR;
+    public static String wordR;
+    public static String translationR;
     public static TreeMap<String, String> dictionaryTreeMap = new TreeMap<>(); // pagrindinis Map - žodynas
     public static TreeMap<String, String> settingsTreeMap = new TreeMap<>();
 
@@ -68,11 +68,8 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         settingsTreeMap = ReadWriteData.readFile("settings"); // nuskaitomas settings.txt failas
-        // TODO: reikia panaikinti Info klasę, nes galima imti duomenis tiesiogiai iš Controller'ių klasių
-        // TODO: tik Stage kol kas niekuo negaliu pakeisti
         doOnSelectRadioButton(settingsTreeMap.get("default")); // keičiamas zodynas į default stratup metu
         translate(fragment_TextField.getText());
-
         variants_ListView.setStyle("-fx-font-size: 16px;");
         variants_ListView.setFixedCellSize(28);
         allWords_ListView.setStyle("-fx-font-size: 14px;");
@@ -81,29 +78,22 @@ public class Controller implements Initializable {
 
     // čia šio Controller kodas iškviečia ControllerR valdomą langą sampleR.fxml
     private void openNewStageR() throws Exception {
-
-        // todo čia kažko per daug, reikia pratrinti
         FXMLLoader load = new FXMLLoader(getClass().getResource("sampleR.fxml"));
         Parent root = load.load();
-        Stage stageR = new Stage();
-        info = new Info(stageR);
+        stageR = new Stage();
         stageR.setTitle("Žodynas Ltit");
         stageR.setScene(new Scene(root));
-        // todo
+
 
         stageR.initModality(Modality.APPLICATION_MODAL);
         pane.setDisable(true);
         stageR.showAndWait();
         pane.setDisable(false);
 
+        // refresh
         RadioButton selectedDict = (RadioButton) dictionarys_ToggleGroup.getSelectedToggle();
         doOnSelectRadioButton(selectedDict.getId());
-    }
-
-    // inicijuojamas išControllerR
-    public static void closeStageR() {
-        Stage stage = info.getStageR();
-        stage.close();
+        translate(fragment_TextField.getText());
     }
 
     // aktyvaus žodyno keitimas
@@ -182,7 +172,6 @@ public class Controller implements Initializable {
             clearFields();
         }
         variants_ListView.getSelectionModel().selectFirst(); // padeda kursorių į pirmą celę
-        info = new Info(dictionaryTreeMap, fragment_TextField.getText(),firstEquivalent_Label.getText());
         fillColorsToFields();
     }
 
@@ -208,15 +197,17 @@ public class Controller implements Initializable {
             }
         }
         return variant;
-    } /////////// end of <Back-End>
+    } // end of <Back-End>
 
     public void onNewButtonPress() throws Exception {
-        info = new Info(dictionaryTreeMap, fragment_TextField.getText(),"");
+        wordR = fragment_TextField.getText();
+        translationR = "";
         openNewStageR();
     }
 
     public void onEditButtonPress() throws Exception {
-        info = new Info(dictionaryTreeMap, firstEquivalent_Label.getText(), translation_Label.getText());
+        wordR = firstEquivalent_Label.getText();
+        translationR = translation_Label.getText();
         openNewStageR();
     }
 

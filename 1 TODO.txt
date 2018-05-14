@@ -5,11 +5,11 @@ veikia spausdinimas į ListView per mano metodą + for ciklą
 veikia žodžių pagal fragmentą paieška
 veikia failų nuskaitymas / įrašymas
 veikia interaktyvi paieška po kiekvieno mygtuko paspaudimo
-    (info iš Andriaus: G:\Coding\3 GitHub projektai\fx_random_game)
+    (pagal Andriaus: G:\Coding\3 GitHub projektai\fx_random_game)
 sukurtas žodyno redagavimo UI (R - žodyno redagavimo režimas) valdomas per Controller2
 veikia žodyno pavadinimo keitimas
 rodomas vertimas kai pažymi su pele ant bet kurio ListView
-sukurtas informacijos pernešimo tarp kontrolerių tarpininkas - klasė "Informacija"
+sukurtas informacijos pernešimo tarp kontrolerių tarpininkas - klasė "Info"
 veikia informacijos nuskaitymas ir antrame kontroleryje, kaip tarpininką naudojant statinį objektą
 veikia žodynų pavadinimų išsaugojimas faile settings
 ? idėja žodyno map įrašymas į list view, gal naudoti observableList ?
@@ -26,19 +26,23 @@ padaryta kad vaikštant su klaviaturos rodyklem, kad rodytu vertima iškart
 sukurtas jar failas + UTF-8 kodacija
 padariau žodynų Map įrašymas į list view naudojant observableList, bet tik dėl oservableList įsisavinimo, realiai tai pridėjo 3 papildomas eilutes
 padariau kad atnaujintų duomenis (refresh) po antro view uždarymo
+sukurta Alertų klasė ir metodas
+panaikinta tarpinė Info klasė, nes viską galima tvarkyti tiesiogiai tarp Controller'ių per public static matomumus
 
-
-TODO kodo optimizavimas:
-* ištinti info klasę nes viską galima tvarkyti tiesiogiai tarp Controller'ių
-    įkelti žodyną į Info klasę inicilizacijos metu, ir kreiptis į failą tik pakeitimų metu
 
 TODO papildomi patobulinimai:
-* sukurti mygtukus žodyno aplinkos klabai nustatyti [En] [It] [Lt], naudoti žodyno infrastruktūrą žodžiams nuskaityti iš failo, surašyti
+failas iš Excel
+
 
 TODO klausimai Andriui:
 ---
-* dar karta  apie @:
+* dar karta  apie:
+    @
     @Override
     @FXML
 
-* Parent, Stage, Scene, state
+    Parent
+    Stage
+    Scene
+    kas yra state
+

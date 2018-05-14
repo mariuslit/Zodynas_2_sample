@@ -29,14 +29,14 @@
 
 <Pane fx:id="pane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" onKeyReleased="#doOnEscapePresPane" prefHeight="580.0" prefWidth="800.0" style="-fx-background-color: #9adae0;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b0e5ea" height="62.0" layoutX="10.0" layoutY="502.0" stroke="#0000004e" strokeType="INSIDE" width="553.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b0e5ea" height="62.0" layoutX="10.0" layoutY="502.0" stroke="#b0e3e84f" strokeType="INSIDE" width="553.0" />
         <TextField fx:id="fragment_TextField" cache="true" layoutX="15.0" layoutY="100.0" onKeyReleased="#doOnKeyPressFragmentField" prefHeight="50.0" prefWidth="175.0" promptText="žodis">
             <font>
                 <Font size="18.0" />
             </font>
         </TextField>
         <ListView fx:id="variants_ListView" layoutX="15.0" layoutY="150.0" onKeyReleased="#doOnKeyPressListView_1" onMouseClicked="#doByClickingOnListView_1" prefHeight="285.0" prefWidth="215.0" />
-        <ListView fx:id="allWords_ListView" layoutX="570.0" layoutY="150.0" onKeyReleased="#doOnKeyPressListView_2" onMouseClicked="#doByClickingOnListView_2" prefHeight="333.0" prefWidth="215.0" />
+        <ListView fx:id="allWords_ListView" layoutX="570.0" layoutY="150.0" onKeyReleased="#doOnKeyPressListView_2" onMouseClicked="#doByClickingOnListView_2" prefHeight="324.0" prefWidth="215.0" />
         <RadioButton fx:id="d1" layoutX="15.0" layoutY="506.0" mnemonicParsing="false" onAction="#nextDictionary" prefHeight="25.0" prefWidth="175.0" selected="true" text="Žodynas 1">
             <font>
                 <Font size="16.0" />
@@ -80,7 +80,7 @@
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button alignment="CENTER" layoutX="570.0" layoutY="510.0" mnemonicParsing="false" onAction="#onExitButtonPress" prefHeight="40.0" prefWidth="215.0" text="BAIGTI" textFill="RED" wrapText="true">
+        <Button alignment="CENTER" layoutX="570.0" layoutY="502.0" mnemonicParsing="false" onAction="#onExitButtonPress" prefHeight="62.0" prefWidth="215.0" text="BAIGTI" textFill="RED" wrapText="true">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
@@ -110,7 +110,7 @@
                 <Font name="System Bold" size="19.0" />
             </font>
         </Button>
-        <Label fx:id="sizeOfDictionaryBelowListView_Label" alignment="TOP_LEFT" layoutX="570.0" layoutY="483.0" prefHeight="20.0" prefWidth="175.0" text="0">
+        <Label fx:id="sizeOfDictionaryBelowListView_Label" alignment="TOP_LEFT" layoutX="570.0" layoutY="474.0" prefHeight="20.0" prefWidth="175.0" text="0">
             <font>
                 <Font size="14.0" />
             </font>

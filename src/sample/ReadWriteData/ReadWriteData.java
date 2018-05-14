@@ -5,7 +5,7 @@ import java.util.TreeMap;
 
 /**
  * txt failas turi būti pagrindiniame projekto kataloge, jokiu būdu ne crs\, ne \crs\sample
- * mano kodas pagal << Created by andriusbaltrunas on 3/3/2017. >> pavyzdį
+ * mano kodas sukurtas pagal Andriaus pvz: << Created by andriusbaltrunas on 3/3/2017. >>
  */
 public class ReadWriteData {
     private static final String SPLITER = " -->> ";
@@ -29,7 +29,6 @@ public class ReadWriteData {
     }
 
     public static void writeFile(TreeMap<String, String> dict, String fileName) {
-//        try (BufferedWriter file = new BufferedWriter(new FileWriter(fileName + ".txt"))) { // pirminė versija be UTF-8
         try (BufferedWriter file = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName + ".txt"), "UTF-8"))) {
             for (String item : dict.keySet()) {
                 file.write(item + SPLITER + dict.get(item).replace("\n", SPLITER2));
