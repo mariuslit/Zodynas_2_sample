@@ -1,7 +1,17 @@
-A -->> A raidė MMMMMMMMM
+A -->> A1+
+A+ -->> A1+
+A++ -->> A1+
+A+++ -->> A1+
+A++++ -->> A1+
+A+++++ -->> A1+
+A++++++ -->> A1+
 AA -->> AA+
+AAA -->> AA++
 ABC -->> ABĖCĖLĖ visomis kalbomis
 Abc -->> abc d
+B -->> A1+
+B+ -->> B+++++
+B++ -->> A1+
 K -->> ok 1
 KA -->> ok 1
 KAU -->> ok 1
@@ -21,7 +31,7 @@ Pakuonis387 -->> 387
 Pakuonis411 -->> 411
 Pakuonis483 -->> 483
 Pakuonis507 -->> 507
-Pakuonis531 -->> 531
+Pakuonis531 -->> 531+333
 Pakuonis555 -->> 555++ <enter> +++
 Pakuonis627 -->> 627
 Pakuonis75 -->> 75
@@ -631,6 +641,9 @@ puodukas600 -->> 600
 puodukas624 -->> 624
 puodukas72 -->> 72
 puodukas96 -->> 96
+q -->> q+++
+qwerty -->> klaviatūra
+qwerty+ -->> klaviatūra+
 z61 -->> z6+++++++++
 z62 -->> z6++
 z63 -->> z6+++

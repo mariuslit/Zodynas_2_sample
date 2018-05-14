@@ -1,13 +1,16 @@
 package sample;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import sample.ReadWriteData.ReadWriteData;
 
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 public class ControllerR {
 
@@ -63,22 +66,47 @@ public class ControllerR {
     public void addWordR() {
         String word = word_TextFieldR.getText();
         String transl = translation_TextAreaR.getText();
-        // neteisingo žodyno pildymo filtrai TODO sukurti įspėjimus: [verčiamas žodis nepakeistas senas vertimas -> naujas vertimas], [du vienoodi vertimai]
+        // neteisingo žodyno pildymo filtrai
         if (word.length() == 0 || transl.length() == 0) { // tuščių ir bereikšmių žodžių filtras
-            alertR.alertai(Alert.AlertType.ERROR, "Klaidelė", null, "Ne visi laukai užpildyti");
-        } else {
-            if (dictionaryTreeMapR.containsKey(word) && dictionaryTreeMapR.get(word).equals(transl)) { // vienodų žodžių filtras
-                alertR.alertai(Alert.AlertType.ERROR, "Klaidelė:", null, "Toks žodis su tokiu pačiu vertimu šiame žodyne jau yra");
+            alertR.alerts(Alert.AlertType.ERROR, "Klaidos pranešimas", null, "Ne visi laukai užpildyti");
+        } else { // 4 Alertai:
+            // Aleret1 senas žodis + senas aprašymas:
+            if (dictionaryTreeMapR.containsKey(word) && dictionaryTreeMapR.get(word).equals(transl)) {
+                alertR.alerts(Alert.AlertType.ERROR, "Klaidos pranešimas", null, "Toks žodis su tokiu pačiu aprašymu šiame žodyne jau yra");
             } else {
-                dictionaryTreeMapR.put(word, transl);
-                String activeDict = settingsTreeMapR.get("default");
-                ReadWriteData.writeFile(dictionaryTreeMapR, activeDict);
-                fillListViewR(); // žodyno spausdinimas toliau
-                alertR.alertai(Alert.AlertType.WARNING, null, null, "Žodis išsaugotas");
-                title_LabelR.setTextFill(Color.RED);
+                // Aleret2 senas žodis + naujas aprašymas:
+                if (dictionaryTreeMapR.containsKey(word) && !dictionaryTreeMapR.get(word).equals(transl)) {
+                    alertR.alerts(Alert.AlertType.WARNING, "Pranešimas", "Žodžio '" + word + "' aprašymas pakeistas:", " Senas aprašymas: '" + dictionaryTreeMapR.get(word_TextFieldR.getText()) + "'" + "\nNaujas aprašymas: '" + transl + "'");
+                    dictionaryTreeMapR.put(word, transl);
+                } else {
+                    // Aleret3 naujas žodis + senas (pasikartojantis) aprašymas:
+                    dictionaryTreeMapR.put(word, transl);
+                    int x = 0;
+                    StringBuilder s = new StringBuilder("\n");
+                    for (String item : dictionaryTreeMapR.keySet()) {
+                        if (dictionaryTreeMapR.get(item).equals(transl)) {
+                            x++;
+                            s.append("\n").append(x).append(". ").append(item);
+                        }
+                    }
+                    System.out.println(x);
+                    if (x > 1) {
+//                        System.out.println(transl + " (value) kartojasi " + x + " kartų");
+                        alertR.alerts(Alert.AlertType.WARNING, "Pranešimas", "Naujas žodis išsaugotas", "DĖMESIO !\n\nReikšmė '" + transl + "' žodyne kartojasi " + x + " kart." + s);
+                    } else {
+                        // Aleret4 naujas žodis + naujas aprašymas
+                        alertR.alerts(Alert.AlertType.WARNING, "Pranešimas", "Naujas žodis išsaugotas", "Žodis: '" + word + "'" + "\n\nAprašymas: '" + transl + "'");
+                    }
+                }
             }
+//            dictionaryTreeMapR.put(word, transl);
+            String activeDict = settingsTreeMapR.get("default");
+            ReadWriteData.writeFile(dictionaryTreeMapR, activeDict);
+            fillListViewR(); // žodyno spausdinimas toliau
+            title_LabelR.setTextFill(Color.RED);
         }
     }
+
 
     // button [EDIT]
     public void editWordR() {
@@ -90,7 +118,7 @@ public class ControllerR {
     // button [DELETE]
     public void deleteWordFromDictionaryR() {
         if (selectedWord != null) {
-            if (alertR.alertai(Alert.AlertType.CONFIRMATION, "Įspėjimas !!!", "Ar tikrai norite ištrinti žodį iš žodyno?", selectedWord)) {
+            if (alertR.alerts(Alert.AlertType.CONFIRMATION, "Įspėjimas !!!", "Ar tikrai norite ištrinti žodį iš žodyno?", selectedWord)) {
                 dictionaryTreeMapR.remove(selectedWord);
                 fillListViewR();
                 clearFieldsR();
@@ -124,10 +152,8 @@ public class ControllerR {
 
     // veikiantis metodas atspausdinti duomenis į ListView
     private void fillListViewR() {
-        allWords_ListViewR.getItems().clear(); // duomenų trynimas iš ListView
-        for (String item : dictionaryTreeMapR.keySet()) { // public Map'as
-            allWords_ListViewR.getItems().addAll(item);
-        }
+        TreeSet<String> variant = new TreeSet<>(dictionaryTreeMapR.keySet());
+        allWords_ListViewR.setItems(FXCollections.observableList(new ArrayList<>(variant))); // optimizuota
         sizeOfDictionaryBelowListView_LabelR.setText(dictionaryTreeMapR.size() + "");
     }
 

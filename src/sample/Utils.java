@@ -6,7 +6,7 @@ import javafx.scene.control.ButtonType;
 import java.util.Optional;
 
 public class Utils {
-    public boolean alertai(Alert.AlertType alertType, String title, String header, String content) {
+    public boolean alerts(Alert.AlertType alertType, String title, String header, String content) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(header);

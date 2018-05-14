@@ -8,6 +8,7 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <!--
@@ -28,6 +29,7 @@
 
 <Pane fx:id="pane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" onKeyReleased="#doOnEscapePresPane" prefHeight="580.0" prefWidth="800.0" style="-fx-background-color: #9adae0;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b0e5ea" height="62.0" layoutX="10.0" layoutY="502.0" stroke="#0000004e" strokeType="INSIDE" width="553.0" />
         <TextField fx:id="fragment_TextField" cache="true" layoutX="15.0" layoutY="100.0" onKeyReleased="#doOnKeyPressFragmentField" prefHeight="50.0" prefWidth="175.0" promptText="žodis">
             <font>
                 <Font size="18.0" />
@@ -68,17 +70,17 @@
                 <Font size="16.0" />
             </font>
         </RadioButton>
-        <Button alignment="CENTER" layoutX="240.0" layoutY="442.0" mnemonicParsing="false" onAction="#onNewButtonPress" prefHeight="40.0" prefWidth="153.0" text="NAUJAS ŽODIS" wrapText="true">
+        <Button alignment="CENTER" layoutX="76.0" layoutY="442.0" mnemonicParsing="false" onAction="#onNewButtonPress" prefHeight="35.0" prefWidth="153.0" text="NAUJAS ŽODIS" wrapText="true">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button alignment="CENTER" layoutX="407.0" layoutY="442.0" mnemonicParsing="false" onAction="#onEditButtonPress" prefHeight="40.0" prefWidth="153.0" text="REDAGUOTI ŽODĮ" wrapText="true">
+        <Button alignment="CENTER" layoutX="240.0" layoutY="442.0" mnemonicParsing="false" onAction="#onEditButtonPress" prefHeight="35.0" prefWidth="153.0" text="REDAGUOTI ŽODĮ" wrapText="true">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button alignment="CENTER" layoutX="568.0" layoutY="514.0" mnemonicParsing="false" onAction="#onExitButtonPress" prefHeight="40.0" prefWidth="215.0" text="BAIGTI" textFill="RED" wrapText="true">
+        <Button alignment="CENTER" layoutX="570.0" layoutY="510.0" mnemonicParsing="false" onAction="#onExitButtonPress" prefHeight="40.0" prefWidth="215.0" text="BAIGTI" textFill="RED" wrapText="true">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
@@ -113,7 +115,7 @@
                 <Font size="14.0" />
             </font>
         </Label>
-        <Label fx:id="countityOfVariantsBelowListView_Label" alignment="TOP_LEFT" layoutX="15.0" layoutY="435.0" prefHeight="20.0" prefWidth="175.0" text="0">
+        <Label fx:id="countityOfVariantsBelowListView_Label" alignment="TOP_LEFT" layoutX="15.0" layoutY="435.0" prefHeight="20.0" prefWidth="39.0" text="0">
             <font>
                 <Font size="14.0" />
             </font>
@@ -123,12 +125,12 @@
                 <Font size="14.0" />
             </font>
         </Label>
-        <Label alignment="BOTTOM_LEFT" layoutX="240.0" layoutY="130.0" prefHeight="20.0" prefWidth="60.0" text="Vertimas">
+        <Label alignment="BOTTOM_LEFT" layoutX="240.0" layoutY="130.0" prefHeight="20.0" prefWidth="87.0" text="Paaiškinimas">
             <font>
                 <Font size="14.0" />
             </font>
         </Label>
-      <Label alignment="BOTTOM_LEFT" layoutX="15.0" layoutY="477.0" prefHeight="20.0" prefWidth="215.0" text="Pasirinkite žodyną:">
+      <Label alignment="BOTTOM_LEFT" layoutX="15.0" layoutY="480.0" prefHeight="20.0" prefWidth="215.0" text="Pasirinkite žodyną:">
          <font>
             <Font size="14.0" />
          </font>

@@ -189,9 +189,11 @@ public class Controller implements Initializable {
     // tikrina ir pataiso fono spalvas
     private void fillColorsToFields() {
         if (!fragment_TextField.getText().toLowerCase().equals(firstEquivalent_Label.getText().toLowerCase())) {
+            // melsva
             firstEquivalent_Label.setStyle("-fx-background-color: #b0e5ea");
             translation_Label.setStyle("-fx-background-color: #b0e5ea");
         } else {
+            // žalsva
             firstEquivalent_Label.setStyle("-fx-background-color: #80ea9e");
             translation_Label.setStyle("-fx-background-color: #80ea9e");
         }
@@ -268,10 +270,6 @@ public class Controller implements Initializable {
 
     // reakcija į klavišo paspaudimą ant ListView_1
     public void doOnKeyPressListView_1(KeyEvent event) {
-        if (event.getCode().isArrowKey()/*equals(KeyCode.RIGHT)*/) {
-            // TODO: 2018-05-04 neveikia kai spaudžiamas dešinėn
-            System.out.println(++y + " r" + event.getCode().getDeclaringClass()); // TODO TRINTI
-        }
         if ((event.getCode().equals(KeyCode.UP) && variants_ListView.getSelectionModel().isSelected(0))) {
             if (first) {
                 fragment_TextField.requestFocus(); // padeda kursorių į input langelį
@@ -289,6 +287,7 @@ public class Controller implements Initializable {
             firstEquivalent_Label.setText(a);
             translation_Label.setText(dictionaryTreeMap.get(a));
         }
+        fillColorsToFields();
     }
 
     // reakcija į klavišo paspaudimą ant ListView_2
@@ -298,6 +297,7 @@ public class Controller implements Initializable {
             firstEquivalent_Label.setText(a);
             translation_Label.setText(dictionaryTreeMap.get(a));
         }
+        fillColorsToFields();
     }
 
     public void doOnEscapePresPane(KeyEvent event) {
