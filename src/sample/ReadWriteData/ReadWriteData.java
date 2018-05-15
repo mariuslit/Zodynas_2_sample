@@ -10,10 +10,12 @@ import java.util.TreeMap;
 public class ReadWriteData {
     private static final String SPLITER = " -->> ";
     private static final String SPLITER2 = " <enter> ";
+    private static final String TXT = ".txt";
+    private static final String UTF8 = "UTF-8";
 
     public static TreeMap readFile(String fileName) {
         TreeMap<String, String> data = new TreeMap<>();
-        try (BufferedReader file = new BufferedReader(new InputStreamReader(new FileInputStream(fileName + ".txt"), "UTF-8"))){
+        try (BufferedReader file = new BufferedReader(new InputStreamReader(new FileInputStream(fileName + TXT), UTF8))){
             String line;
             while ((line = file.readLine()) != null) { // jeigu eilutė egzistuoja, t.y. ne lygi nuliui
                 String[] mas = line.split(SPLITER);
@@ -29,7 +31,7 @@ public class ReadWriteData {
     }
 
     public static void writeFile(TreeMap<String, String> dict, String fileName) {
-        try (BufferedWriter file = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName + ".txt"), "UTF-8"))) {
+        try (BufferedWriter file = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName + TXT), UTF8))){
             for (String item : dict.keySet()) {
                 file.write(item + SPLITER + dict.get(item).replace("\n", SPLITER2));
                 file.newLine();

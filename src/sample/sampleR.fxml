@@ -13,12 +13,12 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="800.0" style="-fx-background-color: #9adae0;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerR">
     <children>
-          <TextField fx:id="word_TextFieldR" layoutX="15.0" layoutY="83.0" prefHeight="45.0" prefWidth="366.0" promptText="Naujas žodis">
+          <TextField fx:id="wordTextFieldR" layoutX="15.0" layoutY="83.0" prefHeight="45.0" prefWidth="366.0" promptText="Naujas žodis">
               <font>
                   <Font size="18.0" />
               </font>
           </TextField>
-      <TextArea fx:id="translation_TextAreaR" layoutX="15.0" layoutY="152.0" prefHeight="326.0" prefWidth="405.0" promptText="Naujo žodžio aprašymas / vertimas" wrapText="true">
+      <TextArea fx:id="translationTextAreaR" layoutX="15.0" layoutY="152.0" prefHeight="326.0" prefWidth="405.0" promptText="Naujo žodžio aprašymas / vertimas" wrapText="true">
          <font>
             <Font size="16.0" />
          </font></TextArea>
@@ -27,21 +27,21 @@
                   <Font name="System Bold" size="18.0" />
               </font>
           </Button>
-        <ListView fx:id="allWords_ListViewR" layoutX="428.0" layoutY="83.0" onMouseClicked="#editWordOnDoubleClickMouseSelectionR" prefHeight="396.0" prefWidth="357.0">
+        <ListView fx:id="allWordsListViewR" layoutX="428.0" layoutY="83.0" onMouseClicked="#editWordOnDoubleClickMouseSelectionR" prefHeight="396.0" prefWidth="357.0">
             <opaqueInsets>
                 <Insets />
             </opaqueInsets>
         </ListView>
         <VBox alignment="CENTER" prefHeight="53.0" prefWidth="800.0">
             <children>
-                <Label id="spalvos" fx:id="title_LabelR" alignment="CENTER" contentDisplay="TOP" prefHeight="58.0" prefWidth="800.0" style="-fx-background-color: #2bb9e0;" text="Žodyno &quot;Žodynas 1&quot; redagavimas">
+                <Label id="spalvos" fx:id="titleLabelR" alignment="CENTER" contentDisplay="TOP" prefHeight="58.0" prefWidth="800.0" style="-fx-background-color: #2bb9e0;" text="Žodyno &quot;Žodynas 1&quot; redagavimas">
                     <font>
                         <Font name="System Bold" size="24.0" />
                     </font>
                 </Label>
             </children>
         </VBox>
-        <Label fx:id="sizeOfDictionaryBelowListView_LabelR" alignment="TOP_LEFT" layoutX="428.0" layoutY="479.0" prefHeight="20.0" prefWidth="175.0" text="0">
+        <Label fx:id="sizeOfDictionaryBelowListViewLabelR" alignment="TOP_LEFT" layoutX="428.0" layoutY="479.0" prefHeight="20.0" prefWidth="175.0" text="0">
             <font>
                 <Font size="14.0" />
             </font>

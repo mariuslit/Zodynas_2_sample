@@ -25,23 +25,23 @@ public class Controller implements Initializable {
     @FXML
     private Pane pane;
     @FXML
-    public TextField fragment_TextField;
+    public TextField fragmentTextField;
     @FXML
-    private Label firstEquivalent_Label;
+    private Label firstEquivalentLabel;
     @FXML
-    private Label title_Label;
+    private Label titleLabel;
     @FXML
-    private Label translation_Label;
+    private Label translationLabel;
     @FXML
-    private Label countityOfVariantsBelowListView_Label;
+    private Label countityOfVariantsBelowListViewLabel;
     @FXML
-    private Label sizeOfDictionaryBelowListView_Label;
+    private Label sizeOfDictionaryBelowListViewLabel;
     @FXML
-    private ListView<String> allWords_ListView; // visada užpildomas iš dictionaryTreeMap Key reikšmėmis
+    private ListView<String> allWordsListView; // visada užpildomas iš dictionaryTreeMap Key reikšmėmis
     @FXML
-    private ListView<String> variants_ListView;
+    private ListView<String> variantsListView;
     @FXML
-    public ToggleGroup dictionarys_ToggleGroup;
+    public ToggleGroup dictionarysToggleGroup;
     // RadioButton Id turi būti tokie patys kaip ir failų pavadinimai
     @FXML
     private RadioButton d1;
@@ -60,20 +60,20 @@ public class Controller implements Initializable {
     public static Stage stageR;
     public static String wordR;
     public static String translationR;
-    public static TreeMap<String, String> dictionaryTreeMap = new TreeMap<>(); // pagrindinis Map - žodynas
-    public static TreeMap<String, String> settingsTreeMap = new TreeMap<>();
+    public static TreeMap<String, String> dictionaryTreeMap; // pagrindinis Map'as - žodynas
+    public static TreeMap<String, String> settingsTreeMap;
 
-    private Boolean first = false; // šokinėjimo tarp fragment <-> variant laukų valdymui
+    private Boolean isFirst = false; // šokinėjimo tarp [fragment] <-> [variant] laukų valdymui
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         settingsTreeMap = ReadWriteData.readFile("settings"); // nuskaitomas settings.txt failas
         doOnSelectRadioButton(settingsTreeMap.get("default")); // keičiamas zodynas į default stratup metu
-        translate(fragment_TextField.getText());
-        variants_ListView.setStyle("-fx-font-size: 16px;");
-        variants_ListView.setFixedCellSize(28);
-        allWords_ListView.setStyle("-fx-font-size: 14px;");
-        allWords_ListView.setFixedCellSize(26);
+        translate(fragmentTextField.getText());
+        variantsListView.setStyle("-fx-font-size: 16px;");
+        variantsListView.setFixedCellSize(28);
+        allWordsListView.setStyle("-fx-font-size: 14px;");
+        allWordsListView.setFixedCellSize(26);
     }
 
     // čia šio Controller kodas iškviečia ControllerR valdomą langą sampleR.fxml
@@ -91,40 +91,40 @@ public class Controller implements Initializable {
         pane.setDisable(false);
 
         // refresh
-        RadioButton selectedDict = (RadioButton) dictionarys_ToggleGroup.getSelectedToggle();
+        RadioButton selectedDict = (RadioButton) dictionarysToggleGroup.getSelectedToggle();
         doOnSelectRadioButton(selectedDict.getId());
-        translate(fragment_TextField.getText());
+        translate(fragmentTextField.getText());
     }
 
     // aktyvaus žodyno keitimas
     public void nextDictionary(ActionEvent event) { // kreipiasi visi 6 radioButton į šį metodą onAction
-        RadioButton selectedDict = (RadioButton) dictionarys_ToggleGroup.getSelectedToggle();
+        RadioButton selectedDict = (RadioButton) dictionarysToggleGroup.getSelectedToggle();
         doOnSelectRadioButton(selectedDict.getId());
         ReadWriteData.writeFile(settingsTreeMap, "settings"); // įrašo settings į failą
-        translate(fragment_TextField.getText());
-        allWords_ListView.getSelectionModel().select(0); // padeda kursorių į pirmą celę
+        translate(fragmentTextField.getText());
+        allWordsListView.getSelectionModel().select(0); // padeda kursorių į pirmą celę
     }
 
     // žodyno pakeitimas, toggel ID = failo vardas
     public void doOnSelectRadioButton(String toggelID_fileName) {
         switch (toggelID_fileName) {
             case "d1":
-                dictionarys_ToggleGroup.selectToggle(d1);
+                dictionarysToggleGroup.selectToggle(d1);
                 break;
             case "d2":
-                dictionarys_ToggleGroup.selectToggle(d2);
+                dictionarysToggleGroup.selectToggle(d2);
                 break;
             case "d3":
-                dictionarys_ToggleGroup.selectToggle(d3);
+                dictionarysToggleGroup.selectToggle(d3);
                 break;
             case "d4":
-                dictionarys_ToggleGroup.selectToggle(d4);
+                dictionarysToggleGroup.selectToggle(d4);
                 break;
             case "d5":
-                dictionarys_ToggleGroup.selectToggle(d5);
+                dictionarysToggleGroup.selectToggle(d5);
                 break;
             case "d6":
-                dictionarys_ToggleGroup.selectToggle(d6);
+                dictionarysToggleGroup.selectToggle(d6);
                 break;
         }
 
@@ -132,7 +132,7 @@ public class Controller implements Initializable {
         settingsTreeMap.put("default", toggelID_fileName);
 
         // žodynų pavadinimų surašymas iš settings failo
-        title_Label.setText("Žodžių paieška žodyne \"" + settingsTreeMap.get(toggelID_fileName) + "\"");
+        titleLabel.setText("Žodžių paieška žodyne \"" + settingsTreeMap.get(toggelID_fileName) + "\"");
         d1.setText(settingsTreeMap.get("d1"));
         d2.setText(settingsTreeMap.get("d2"));
         d3.setText(settingsTreeMap.get("d3"));
@@ -144,47 +144,47 @@ public class Controller implements Initializable {
         dictionaryTreeMap = ReadWriteData.readFile(toggelID_fileName);
 
         // išvedamas zodyno turinys į ListView
-        allWords_ListView.getItems().clear();// duomenų trynimas iš ListView
+        allWordsListView.getItems().clear();// duomenų trynimas iš ListView
 
         // observableList naudojimas spausdinimui į ListView, vietoj įrašymo po vieną item per ciklus
-        allWords_ListView.setItems(FXCollections.observableList(new ArrayList<>(dictionaryTreeMap.keySet()))); // optimizuota
+        allWordsListView.setItems(FXCollections.observableList(new ArrayList<>(dictionaryTreeMap.keySet()))); // optimizuota
 
         // pažymi pirmą celę
-        allWords_ListView.getSelectionModel().selectFirst();
+        allWordsListView.getSelectionModel().selectFirst();
 
-        sizeOfDictionaryBelowListView_Label.setText(dictionaryTreeMap.size() + "");
+        sizeOfDictionaryBelowListViewLabel.setText(dictionaryTreeMap.size() + "");
     } // end of doOnSelectRadioButton
 
     // vertimas
     private void translate(String fragment) {
         if (!fragment.equals("")) {
             TreeSet<String> variant = getEquivalentVariants(fragment.toLowerCase());
-            variants_ListView.setItems(FXCollections.observableList(new ArrayList<>(variant))); // optimizuota
-            countityOfVariantsBelowListView_Label.setText(variant.size() + "");
+            variantsListView.setItems(FXCollections.observableList(new ArrayList<>(variant))); // optimizuota
+            countityOfVariantsBelowListViewLabel.setText(variant.size() + "");
             if (!variant.isEmpty()) { // ne lygu nuliui
                 String firstEquiv = variant.first();
-                firstEquivalent_Label.setText(firstEquiv);
-                translation_Label.setText(dictionaryTreeMap.get(firstEquiv));
+                firstEquivalentLabel.setText(firstEquiv);
+                translationLabel.setText(dictionaryTreeMap.get(firstEquiv));
             } else {
                 clearFields();
             }
         } else {
             clearFields();
         }
-        variants_ListView.getSelectionModel().selectFirst(); // padeda kursorių į pirmą celę
+        variantsListView.getSelectionModel().selectFirst(); // padeda kursorių į pirmą celę
         fillColorsToFields();
     }
 
     // tikrina ir pataiso fono spalvas
     private void fillColorsToFields() {
-        if (!fragment_TextField.getText().toLowerCase().equals(firstEquivalent_Label.getText().toLowerCase())) {
+        if (!fragmentTextField.getText().toLowerCase().equals(firstEquivalentLabel.getText().toLowerCase())) {
             // melsva
-            firstEquivalent_Label.setStyle("-fx-background-color: #b0e5ea");
-            translation_Label.setStyle("-fx-background-color: #b0e5ea");
+            firstEquivalentLabel.setStyle("-fx-background-color: #b0e5ea");
+            translationLabel.setStyle("-fx-background-color: #b0e5ea");
         } else {
             // žalsva
-            firstEquivalent_Label.setStyle("-fx-background-color: #80ea9e");
-            translation_Label.setStyle("-fx-background-color: #80ea9e");
+            firstEquivalentLabel.setStyle("-fx-background-color: #80ea9e");
+            translationLabel.setStyle("-fx-background-color: #80ea9e");
         }
     }
 
@@ -200,121 +200,121 @@ public class Controller implements Initializable {
     } // end of <Back-End>
 
     public void onNewButtonPress() throws Exception {
-        wordR = fragment_TextField.getText();
+        wordR = fragmentTextField.getText();
         translationR = "";
         openNewStageR();
     }
 
     public void onEditButtonPress() throws Exception {
-        wordR = firstEquivalent_Label.getText();
-        translationR = translation_Label.getText();
+        wordR = firstEquivalentLabel.getText();
+        translationR = translationLabel.getText();
         openNewStageR();
     }
 
     // reakcija į pelės paspaudimą ant ListView_1 lauko
-    public void doByClickingOnListView_1(MouseEvent event) {
+    public void doByClickingOnListView1(MouseEvent event) {
         String selectedItem = "";
-        if (variants_ListView.getSelectionModel().getSelectedItem() != null) {
-            selectedItem = variants_ListView.getSelectionModel().getSelectedItem();
-            firstEquivalent_Label.setText(selectedItem);
-            translation_Label.setText(dictionaryTreeMap.get(selectedItem));
+        if (variantsListView.getSelectionModel().getSelectedItem() != null) {
+            selectedItem = variantsListView.getSelectionModel().getSelectedItem();
+            firstEquivalentLabel.setText(selectedItem);
+            translationLabel.setText(dictionaryTreeMap.get(selectedItem));
             fillColorsToFields();
         }
         if (event.getClickCount() == 2 && !selectedItem.equals("")) {
-            onDoubleClickListView_1_2(selectedItem);
+            onDoubleClickListView12(selectedItem);
         }
     }
 
     // reakcija į pelės paspaudimą ant ListView_2 lauko
-    public void doByClickingOnListView_2(MouseEvent event) {
+    public void doByClickingOnListView2(MouseEvent event) {
         String selectedItem = "";
-        if (allWords_ListView.getSelectionModel().getSelectedItem() != null) {
-            selectedItem = allWords_ListView.getSelectionModel().getSelectedItem();
-            firstEquivalent_Label.setText(selectedItem);
-            translation_Label.setText(dictionaryTreeMap.get(selectedItem));
+        if (allWordsListView.getSelectionModel().getSelectedItem() != null) {
+            selectedItem = allWordsListView.getSelectionModel().getSelectedItem();
+            firstEquivalentLabel.setText(selectedItem);
+            translationLabel.setText(dictionaryTreeMap.get(selectedItem));
             fillColorsToFields();
         }
         if (event.getClickCount() == 2 && !selectedItem.equals("")) {
-            onDoubleClickListView_1_2(selectedItem);
+            onDoubleClickListView12(selectedItem);
         }
     }
 
-    // aptarnauja tik doByClickingOnListView_1 + _2
-    private void onDoubleClickListView_1_2(String selectedItem) {
-        fragment_TextField.setText(selectedItem);
+    // aptarnauja tik doByClickingOnListView1 + _2
+    private void onDoubleClickListView12(String selectedItem) {
+        fragmentTextField.setText(selectedItem);
         translate(selectedItem);
         fillColorsToFields();
     }
 
     // reakcija į klavišo paspaudimą žodžio fragmento įvedimo langelyje (interaktyvi paieška)
     public void doOnKeyPressFragmentField(KeyEvent event) {
-        if (event.getCode().equals(KeyCode.DOWN) && !variants_ListView.getSelectionModel().isEmpty()) {
-            variants_ListView.requestFocus();
-            variants_ListView.getSelectionModel().selectFirst();
-            variants_ListView.scrollTo(0);
-            first = true;
+        if (event.getCode().equals(KeyCode.DOWN) && !variantsListView.getSelectionModel().isEmpty()) {
+            variantsListView.requestFocus();
+            variantsListView.getSelectionModel().selectFirst();
+            variantsListView.scrollTo(0);
+            isFirst = true;
         } else {
-            translate(fragment_TextField.getText());
-            fragment_TextField.requestFocus(); // padeda kursorių į input langelį
+            translate(fragmentTextField.getText());
+            fragmentTextField.requestFocus(); // padeda kursorių į input langelį
         }
     }
 
     // reakcija į klavišo paspaudimą ant ListView_1
-    public void doOnKeyPressListView_1(KeyEvent event) {
-        if ((event.getCode().equals(KeyCode.UP) && variants_ListView.getSelectionModel().isSelected(0))) {
-            if (first) {
-                fragment_TextField.requestFocus(); // padeda kursorių į input langelį
-                fragment_TextField.positionCaret(fragment_TextField.getLength()); // padeda kursorių į teksto galą
-                first = false;
+    public void doOnKeyPressListView1(KeyEvent event) {
+        if ((event.getCode().equals(KeyCode.UP) && variantsListView.getSelectionModel().isSelected(0))) {
+            if (isFirst) {
+                fragmentTextField.requestFocus(); // padeda kursorių į input langelį
+                fragmentTextField.positionCaret(fragmentTextField.getLength()); // padeda kursorių į teksto galą
+                isFirst = false;
             } else {
-                first = true;
+                isFirst = true;
             }
         }
-        if (variants_ListView.getSelectionModel().isSelected(1)) {
-            first = false;
+        if (variantsListView.getSelectionModel().isSelected(1)) {
+            isFirst = false;
         }
-        if (variants_ListView.getItems().size() > 0) { // jei ListView ne tuščias
-            String a = variants_ListView.getSelectionModel().getSelectedItem();
-            firstEquivalent_Label.setText(a);
-            translation_Label.setText(dictionaryTreeMap.get(a));
+        if (variantsListView.getItems().size() > 0) { // jei ListView ne tuščias
+            String a = variantsListView.getSelectionModel().getSelectedItem();
+            firstEquivalentLabel.setText(a);
+            translationLabel.setText(dictionaryTreeMap.get(a));
         }
         fillColorsToFields();
     }
 
     // reakcija į klavišo paspaudimą ant ListView_2
-    public void doOnKeyPressListView_2(KeyEvent event) {
-        if (allWords_ListView.getFocusModel().getFocusedIndex() != -1) {
-            String a = allWords_ListView.getSelectionModel().getSelectedItem();
-            firstEquivalent_Label.setText(a);
-            translation_Label.setText(dictionaryTreeMap.get(a));
+    public void doOnKeyPressListView2(KeyEvent event) {
+        if (allWordsListView.getFocusModel().getFocusedIndex() != -1) {
+            String a = allWordsListView.getSelectionModel().getSelectedItem();
+            firstEquivalentLabel.setText(a);
+            translationLabel.setText(dictionaryTreeMap.get(a));
         }
         fillColorsToFields();
     }
 
     public void doOnEscapePresPane(KeyEvent event) {
         if (event.getCode().equals(KeyCode.ESCAPE)) {
-            fragment_TextField.clear();
+            fragmentTextField.clear();
             clearFields();
             translate("");
-            fragment_TextField.requestFocus(); // padeda kursorių į input langelį
+            fragmentTextField.requestFocus(); // padeda kursorių į input langelį
         }
         if (event.getCode().equals(KeyCode.LEFT)) {
         }
     }
 
     public void clearAllFields() {
-        fragment_TextField.clear();
+        fragmentTextField.clear();
         clearFields();
         translate("");
-        fragment_TextField.requestFocus(); // padeda kursorių į input langelį
+        fragmentTextField.requestFocus(); // padeda kursorių į input langelį
     }
 
     private void clearFields() {
-        allWords_ListView.scrollTo(0);
-        allWords_ListView.getSelectionModel().selectFirst();
-        variants_ListView.getItems().clear(); // duomenų trynimas iš ListView
-        firstEquivalent_Label.setText("");
-        translation_Label.setText("");
+        allWordsListView.scrollTo(0);
+        allWordsListView.getSelectionModel().selectFirst();
+        variantsListView.getItems().clear(); // duomenų trynimas iš ListView
+        firstEquivalentLabel.setText("");
+        translationLabel.setText("");
     }
 
     public void onExitButtonPress() {

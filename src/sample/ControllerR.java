@@ -15,15 +15,15 @@ import java.util.TreeSet;
 public class ControllerR {
 
     @FXML
-    private Label title_LabelR;
+    private Label titleLabelR;
     @FXML
-    private Label sizeOfDictionaryBelowListView_LabelR;
+    private Label sizeOfDictionaryBelowListViewLabelR;
     @FXML
-    private TextField word_TextFieldR;
+    private TextField wordTextFieldR;
     @FXML
-    private TextArea translation_TextAreaR;
+    private TextArea translationTextAreaR;
     @FXML
-    private ListView<String> allWords_ListViewR;
+    private ListView<String> allWordsListViewR;
 
     private TreeMap<String, String> dictionaryTreeMapR = Controller.dictionaryTreeMap;
     private TreeMap<String, String> settingsTreeMapR = Controller.settingsTreeMap;
@@ -31,16 +31,15 @@ public class ControllerR {
     private AlertsClass alertR = new AlertsClass();
 
     public void initialize() {
-        word_TextFieldR.setText(Controller.wordR);
+        wordTextFieldR.setText(Controller.wordR);
         String defaultDictionaryId = settingsTreeMapR.get("default");
-        title_LabelR.setText("\"" + settingsTreeMapR.get(defaultDictionaryId) + "\" žodyno redagavimas");
-        translation_TextAreaR.setText(Controller.translationR); // informacijos nuskaitymas iš Info klasės
+        titleLabelR.setText("\"" + settingsTreeMapR.get(defaultDictionaryId) + "\" žodyno redagavimas");
+        translationTextAreaR.setText(Controller.translationR); // informacijos nuskaitymas iš Info klasės
         fillListViewR();
-        allWords_ListViewR.setStyle("-fx-font-size: 14px;");
-        allWords_ListViewR.setFixedCellSize(24);
-        allWords_ListViewR.getSelectionModel().selectFirst();
-        allWords_ListViewR.getSelectionModel().select(Controller.wordR);
-        System.out.println(Controller.wordR);
+        allWordsListViewR.setStyle("-fx-font-size: 14px;");
+        allWordsListViewR.setFixedCellSize(24);
+        allWordsListViewR.getSelectionModel().selectFirst();
+        allWordsListViewR.getSelectionModel().select(Controller.wordR);
         selectedWord = null;
     }
 
@@ -55,18 +54,18 @@ public class ControllerR {
         if (result.isPresent()) {
             String newName = result.get().trim();
             if (!newName.replaceAll(" ", "").equals("")) {
-                title_LabelR.setText("\"" + newName + "\" žodyno redagavimas");
+                titleLabelR.setText("\"" + newName + "\" žodyno redagavimas");
                 settingsTreeMapR.put(settingsTreeMapR.get("default"), newName);
                 ReadWriteData.writeFile(settingsTreeMapR, "settings");
-                title_LabelR.setTextFill(Color.RED);
+                titleLabelR.setTextFill(Color.RED);
             }
         }
     }
 
     // naujas žodis
     public void addWordR() {
-        String word = word_TextFieldR.getText();
-        String transl = translation_TextAreaR.getText();
+        String word = wordTextFieldR.getText();
+        String transl = translationTextAreaR.getText();
         // neteisingo žodyno pildymo filtrai
         if (word.length() == 0 || transl.length() == 0) { // tuščių ir bereikšmių žodžių filtras
             alertR.alerts(Alert.AlertType.ERROR, "Klaidos pranešimas", null, "Ne visi laukai užpildyti");
@@ -77,7 +76,7 @@ public class ControllerR {
             } else {
                 // Aleret2 senas žodis + naujas aprašymas:
                 if (dictionaryTreeMapR.containsKey(word) && !dictionaryTreeMapR.get(word).equals(transl)) {
-                    alertR.alerts(Alert.AlertType.INFORMATION, "Pranešimas", "Žodžio '" + word + "' aprašymas pakeistas.", "Senas aprašymas:\n" + dictionaryTreeMapR.get(word_TextFieldR.getText()) + "\n\nNaujas aprašymas:\n" + transl);
+                    alertR.alerts(Alert.AlertType.INFORMATION, "Pranešimas", "Žodžio '" + word + "' aprašymas pakeistas.", "Senas aprašymas:\n" + dictionaryTreeMapR.get(wordTextFieldR.getText()) + "\n\nNaujas aprašymas:\n" + transl);
                     dictionaryTreeMapR.put(word, transl);
                 } else {
                     // Aleret3 naujas žodis + senas (pasikartojantis) aprašymas:
@@ -102,7 +101,7 @@ public class ControllerR {
             String activeDict = settingsTreeMapR.get("default");
             ReadWriteData.writeFile(dictionaryTreeMapR, activeDict);
             fillListViewR(); // žodyno spausdinimas toliau
-            title_LabelR.setTextFill(Color.RED);
+            titleLabelR.setTextFill(Color.RED);
         }
     }
 
@@ -122,7 +121,7 @@ public class ControllerR {
                 fillListViewR();
                 clearFieldsR();
                 ReadWriteData.writeFile(dictionaryTreeMapR, settingsTreeMapR.get("default"));
-                title_LabelR.setTextFill(Color.RED);
+                titleLabelR.setTextFill(Color.RED);
             }
             selectedWord = null;
         }
@@ -130,7 +129,7 @@ public class ControllerR {
 
     // reakcija į pelės paspaudimą ListViewR
     public void editWordOnDoubleClickMouseSelectionR(MouseEvent event) {
-        String selectedItem = allWords_ListViewR.getSelectionModel().getSelectedItem();
+        String selectedItem = allWordsListViewR.getSelectionModel().getSelectedItem();
         selectedWord = selectedItem;
         if (event.getClickCount() == 2) {
             fillFieldsR();
@@ -139,21 +138,21 @@ public class ControllerR {
 
     private void fillFieldsR() {
         String word = selectedWord;
-        word_TextFieldR.setText(word);
-        translation_TextAreaR.setText(dictionaryTreeMapR.get(word));
+        wordTextFieldR.setText(word);
+        translationTextAreaR.setText(dictionaryTreeMapR.get(word));
     }
 
     public void clearFieldsR() {
-        word_TextFieldR.clear();
-        translation_TextAreaR.clear();
-        word_TextFieldR.requestFocus(); // padeda kursorių į input langelį
+        wordTextFieldR.clear();
+        translationTextAreaR.clear();
+        wordTextFieldR.requestFocus(); // padeda kursorių į input langelį
     }
 
     // veikiantis metodas atspausdinti duomenis į ListView
     private void fillListViewR() {
         TreeSet<String> variant = new TreeSet<>(dictionaryTreeMapR.keySet());
-        allWords_ListViewR.setItems(FXCollections.observableList(new ArrayList<>(variant))); // optimizuota
-        sizeOfDictionaryBelowListView_LabelR.setText(dictionaryTreeMapR.size() + "");
+        allWordsListViewR.setItems(FXCollections.observableList(new ArrayList<>(variant))); // optimizuota
+        sizeOfDictionaryBelowListViewLabelR.setText(dictionaryTreeMapR.size() + "");
     }
 
     // on press [UŽDARYTI] button, do this method
