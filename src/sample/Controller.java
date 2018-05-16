@@ -74,6 +74,7 @@ public class Controller implements Initializable {
         variantsListView.setFixedCellSize(28);
         allWordsListView.setStyle("-fx-font-size: 14px;");
         allWordsListView.setFixedCellSize(26);
+
     }
 
     // čia šio Controller kodas iškviečia ControllerR valdomą langą sampleR.fxml
@@ -83,7 +84,6 @@ public class Controller implements Initializable {
         stageR = new Stage();
         stageR.setTitle("Žodynas Ltit");
         stageR.setScene(new Scene(root));
-
 
         stageR.initModality(Modality.APPLICATION_MODAL);
         pane.setDisable(true);
