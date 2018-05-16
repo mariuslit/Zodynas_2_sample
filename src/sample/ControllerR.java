@@ -131,7 +131,9 @@ public class ControllerR {
     // button [TRINTI]
     public void deleteWordFromDictionaryR() {
         if (selectedWord != null) { // neveiks, jeigu joks žodis nepažymėtas
-            if (alertR.alerts(Alert.AlertType.CONFIRMATION, "Įspėjimas !!!", "Žodis ir jo aprašymas bus ištrintas iš žodyno.\nAr tikrai norite trinti?", "Žodis:\n" + selectedWord + "\n\nVertimas:\n" + dictionaryTreeMapR.get(selectedWord))) {
+            if (alertR.alerts(Alert.AlertType.CONFIRMATION, "Įspėjimas !!!",
+                    "Žodis ir jo aprašymas bus ištrintas iš žodyno.\nAr tikrai norite trinti?", "Žodis:\n"
+                    + selectedWord + "\n\nVertimas:\n" + dictionaryTreeMapR.get(selectedWord))) {
                 dictionaryTreeMapR.remove(selectedWord);
                 fillListViewR();
                 clearFieldsR();
