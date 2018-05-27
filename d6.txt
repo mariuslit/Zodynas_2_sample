@@ -1,18 +1,13 @@
-A -->> A1+
-A 1000 -->> A 1000 vertimas
+A -->> a
+A 1 -->> a+
+A 1000 -->> a
+A 1000- -->> A 1000 vertimas+2+3
 A 10000 -->> A 10000 vertimas
-A 10000+ -->> A 10000 vertimas
-A 10000++ -->> A 10000 vertimas
-A 10000+++ -->> A 10000 vertimas
-A 10000++++ -->> A 10000 vertimas
-A 10000+++++ -->> A 10000 vertimas
-A 10000++++++ -->> A 10000 vertimas
-A 10000+++y -->> A 10000 vertimas
-A 10000+++y6 -->> A 10000 v
-A 10001 -->> A 10001 vertimas
-A 10002 -->> A 10002 vertimas
-A 10003 -->> A 10003 vertimas
-A 10004 -->> A 10004 vertimas
+A 10000+ -->> A 10000 vertimas x
+A 10001 -->> A <enter> +++
+A 10002 -->> A <enter> +++
+A 10003 -->> A <enter> +++
+A 10004 -->> A <enter> ++++
 A 10004+ -->> A 10004 vertimas
 A 10005 -->> A 10005 vertimas
 A 10006 -->> A 10006 vertimas
@@ -10504,7 +10499,6 @@ A 19532 -->> A 19532 vertimas
 A 19533 -->> A 19533 vertimas
 A 19534 -->> A 19534 vertimas
 A 19535 -->> A 19535 vertimas
-A 19536 -->> A 19536 vertimas
 A 19537 -->> A 19537 vertimas
 A 19538 -->> A 19538 vertimas
 A 19539 -->> A 19539 vertimas
@@ -39366,6 +39360,8 @@ A+d+d -->> A1+
 A+s+s+s+s -->> A1+
 A+sss -->> A1+
 A+ww -->> A1+
+A10 -->>  d
+A11 -->> A1+
 AA -->> AA+
 AAA -->> AA+++
 AAA+ -->> AA+++
@@ -39412,8 +39408,10 @@ Panevėžys56 -->> 56
 Panevėžys632 -->> 632
 Panevėžys8 -->> 8
 Panevėžys80 -->> 80
+a -->> a
+a 10 -->>  d
 aBC -->> aBC +
-aa -->> aa aa S   <enter> SADSS <enter>    SDDDD
+aa -->> a
 con -->> yra toks žodis
 conduct -->> belenkas+ <enter> ++ <enter> xxxxxxxxxxxxxxxxxxxxxxxx
 d -->> dd

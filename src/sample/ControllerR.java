@@ -7,6 +7,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import sample.ReadWriteData.ReadWriteData;
 
+import java.io.EOFException;
 import java.util.*;
 
 public class ControllerR {
@@ -25,7 +26,7 @@ public class ControllerR {
     private TreeMap<String, String> dictionaryTreeMapR = Controller.dictionaryTreeMap;
     private TreeMap<String, String> settingsTreeMapR = Controller.settingsTreeMap;
     private String selectedWord; // kintamasis skirtas patikrinti ar koks nors žodis yra baksteltas ant ListView
-    private AlertsClass alertR = new AlertsClass();
+    private AlertsClass alert = new AlertsClass();
 
     public void initialize() {
         wordTextFieldR.setText(Controller.wordR);
@@ -34,7 +35,7 @@ public class ControllerR {
         translationTextAreaR.setText(Controller.translationR); // informacijos nuskaitymas iš Info klasės
         fillListViewR();
         allWordsListViewR.setStyle("-fx-font-size: 14px;");
-        allWordsListViewR.setFixedCellSize(24);
+        allWordsListViewR.setFixedCellSize(26);
         allWordsListViewR.getSelectionModel().selectFirst();
         allWordsListViewR.getSelectionModel().select(Controller.wordR);
         selectedWord = null;
@@ -46,10 +47,12 @@ public class ControllerR {
         dialog.setTitle("Žodyno pavadinomo keitimas");
         dialog.setHeaderText("Senasis žodyno pavadinimas: \"" + settingsTreeMapR.get(settingsTreeMapR.get("default")) + "\"");
         dialog.setContentText("Įveskite naują žodyno avadinimą:");
+
         // Traditional way to get the response value.
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
             String newName = result.get().trim();
+
             // patikrina ar vartotojas neįrašė tuščio pavadinimo - vieno ar kelių tuščių tarpų.
             if (!newName.replaceAll(" ", "").equals("")) {
                 titleLabelR.setText("\"" + newName + "\" žodyno redagavimas");
@@ -60,60 +63,105 @@ public class ControllerR {
         }
     }
 
+
     // button [IŠSAUGOTI ŽODYNE]
     public void addWordR() {
-        String word = wordTextFieldR.getText();
-        String transl = translationTextAreaR.getText();
+        String newWord = wordTextFieldR.getText();
+        boolean isNewWord = !dictionaryTreeMapR.containsKey(newWord);
+        String oldTranslation = dictionaryTreeMapR.get(newWord);
+        String newTranslation = translationTextAreaR.getText();
 
-        // neteisingo žodyno pildymo filtrai if-else...
+        // pranešimas jeigu laukai tušti (neteisingo pildymo filtras)
+        if (newWord.replace(" ", "").equals("") || newTranslation.replace(" ", "").equals("")) {
 
-        if (word.length() == 0 || transl.length() == 0) {
-            // pranešimas, kai ne visi lakai užpildyti
-            alertR.alerts(Alert.AlertType.ERROR, "Klaidos pranešimas", null, "Prašome užpildyti vsus laukus!");
-        } else {
+            alert.alert(Alert.AlertType.ERROR, "KLAIDA\n\n Prašome užpildyti vsus laukus!");
+            return;
+        }
 
+        //  jeigu žodis ir reikšmė kartojasi - nieko nedaryti (niekas nepakeista)
+        if (!isNewWord && oldTranslation.equals(newTranslation)) {
+            alert.alert(Alert.AlertType.INFORMATION, "Nėra jokių pakeitimų!");
+            return;
+        }
 
-            if (dictionaryTreeMapR.containsKey(word) && !dictionaryTreeMapR.get(word).equals(transl)) {
-                // pranešimas, kai pakeista aprašymo reikšmė
-                alertR.alerts(Alert.AlertType.INFORMATION, "Pranešimas", "Žodžio \"" + word + "\" aprašymas pakeistas.",
-                        "Senas aprašymas:\n" + dictionaryTreeMapR.get(wordTextFieldR.getText()) + "\n\nNaujas aprašymas:\n" + transl);
-                dictionaryTreeMapR.put(word, transl);
+        // pakeitimai įrašomi į žodyną
+        dictionaryTreeMapR.put(newWord, newTranslation);
 
-            } else { // pranešimai, kai sukurtas unikalus žodis
-                dictionaryTreeMapR.put(word, transl);
+        // alertų teksto formavimas
+        String content = "";
+        String contentPlusDuplicates = "";
 
-                // tikrina reikšmė unikali ar dubluojasi
-                ArrayList<String> dublicates = dublicateList(transl);
+        // dublikatų paieška tarp žodyno reikšmių
+        ArrayList<String> duplicatesList = getDuplicatesList(newWord, newTranslation); // dublikatų sąrašas
+        int duplicatesCountity = duplicatesList.size(); // dublikatų kiekis
+        boolean isDuplicated = duplicatesCountity > 1; // ar yra dublikatų
 
-                if (dublicates.size() > 1) {
-                    // pranešimai, kai žodžio reikšmė žodyne dubliuojas
-                    alertR.alerts(Alert.AlertType.WARNING, "Pranešimas", "Naujas žodis išsaugotas", "DĖMESIO !" +
-                            "\n\nŽodžio aprašymas:" +
-                            "\n    \"" + transl +
-                            "\"\nžodyne kartojasi " + dublicates.size() + " kart." +
-                            "\n\nJį turi šie žodžiai:" +
-                            dublicates.toString().replaceAll("\\[|\\]", "").replaceAll(", ", ""));
+        // papildomas įrašas alerte jeigu dublikatų yra
+        if (isDuplicated) {
+            contentPlusDuplicates = "\n" +
+                    "\n----------------------" +
+                    "\nDĖMESIO !" +
+                    "\n" +
+                    "\nŽodžio aprašymas:" +
+                    "\n" + newTranslation +
+                    "\n" +
+                    "\nŽODYNE KARTOJASI " + duplicatesCountity + " KART." +
+                    "\n" +
+                    "\nJį turi šie žodžiai:" +
+                    duplicatesList.toString().replaceAll("\\[|\\]", "").replaceAll(", ", ""); // pašalina simbolius: [],
+        }
 
-                } else {
-                    // pranešimai, kai žodžio reikšmė žodyne unikali
-                    alertR.alerts(Alert.AlertType.INFORMATION, "Pranešimas", "Naujas žodis išsaugotas", "Žodis: \n" + word + "\n\nAprašymas: \n" + transl);
-                }
-            }
+        //  jeigu žodis kartojasi o reikšmė nesikartoja - tai tik rodžio paredagavimas
+        if (!isNewWord && !oldTranslation.equals(newTranslation)) {
+            content = "ŽODŽIO" +
+                    "\n" + newWord +
+                    "\n" +
+                    "\nAPRAŠYMAS PAKEISTAS." +
+                    "\n" +
+                    "\nSenas aprašymas:" +
+                    "\n" + oldTranslation +
+                    "\n" +
+                    "\nNaujas aprašymas:" +
+                    "\n" + newTranslation +
+                    contentPlusDuplicates;
+            alert.alert(Alert.AlertType.INFORMATION, content);
+            saveAndRefresh();
+            return;
+        }
 
-
-            String activeDict = settingsTreeMapR.get("default");
-            ReadWriteData.writeFile(dictionaryTreeMapR, activeDict);
-            fillListViewR(); // žodyno spausdinimas toliau
-            titleLabelR.setTextFill(Color.RED);
+        //  NAUJAS ŽODIS
+        if (isNewWord) {
+            content = "NAUJAS ŽODIS IŠSAUGOTAS." +
+                    "\n" +
+                    "\nŽodis: " +
+                    "\n" + newWord + "" +
+                    "\n" +
+                    "\nAprašymas: " +
+                    "\n" + newTranslation +
+                    contentPlusDuplicates;
+            alert.alert(Alert.AlertType.INFORMATION, content);
+            saveAndRefresh();
         }
     }
 
-    // dublikatų paieška
-    private ArrayList<String> dublicateList(String transl) {
+
+    private void saveAndRefresh() {
+        // išsaugo žodyną faile
+        ReadWriteData.writeFile(dictionaryTreeMapR, settingsTreeMapR.get("default"));
+
+        // refresh ListView
+        fillListViewR();
+        titleLabelR.setTextFill(Color.RED);
+    }
+
+    // dublikatų paieška tarp žodyno reikšmių
+    private ArrayList<String> getDuplicatesList(String key, String transl) {
         ArrayList<String> list = new ArrayList<>();
+        TreeMap<String, String> treeMap = dictionaryTreeMapR;
+//        treeMap.put(key, transl);
         int x = 0;
-        for (String item : dictionaryTreeMapR.keySet()) {
-            if (dictionaryTreeMapR.get(item).equals(transl)) {
+        for (String item : treeMap.keySet()) {
+            if (treeMap.get(item).equals(transl)) {
                 list.add("\n" + ++x + ".   " + item);
             }
         }
@@ -130,26 +178,49 @@ public class ControllerR {
 
     // button [TRINTI]
     public void deleteWordFromDictionaryR() {
-        if (selectedWord != null) { // neveiks, jeigu joks žodis nepažymėtas
-            if (alertR.alerts(Alert.AlertType.CONFIRMATION, "Įspėjimas !!!",
-                    "Žodis ir jo aprašymas bus ištrintas iš žodyno.\nAr tikrai norite trinti?", "Žodis:\n"
-                    + selectedWord + "\n\nVertimas:\n" + dictionaryTreeMapR.get(selectedWord))) {
-                dictionaryTreeMapR.remove(selectedWord);
-                fillListViewR();
-                clearFieldsR();
-                ReadWriteData.writeFile(dictionaryTreeMapR, settingsTreeMapR.get("default"));
-                titleLabelR.setTextFill(Color.RED);
-            }
-            selectedWord = null;
+
+        // nutraukia veiksmus jeigu joks žodis nepažymėtas
+        if (selectedWord == null) {
+            return;
         }
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("PRANEŠIMAS");
+        alert.setHeaderText(null);
+        String content = "Žodis ir jo aprašymas bus ištrintas iš žodyno." +
+                "\n" +
+                "\nAR TIKRAI NORITE TRINTI ?" +
+                "\n" +
+                "\nŽodis:" +
+                "\n" + selectedWord + "" +
+                "\n" +
+                "\nAprašymas:" +
+                "\n" + dictionaryTreeMapR.get(selectedWord);
+        alert.setContentText(content);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            dictionaryTreeMapR.remove(selectedWord);
+            fillListViewR();
+            clearFieldsR();
+            ReadWriteData.writeFile(dictionaryTreeMapR, settingsTreeMapR.get("default"));
+            titleLabelR.setTextFill(Color.RED);
+        }
+
+        selectedWord = null;
+
     }
 
     // reakcija į pelės paspaudimą ListViewR
     public void editWordOnDoubleClickMouseSelectionR(MouseEvent event) {
-        String selectedItem = allWordsListViewR.getSelectionModel().getSelectedItem();
-        selectedWord = selectedItem;
-        if (event.getClickCount() == 2) {
-            fillFieldsR();
+        try {
+            String selectedItem = allWordsListViewR.getSelectionModel().getSelectedItem();
+            selectedWord = selectedItem;
+            if (event.getClickCount() == 2) {
+                fillFieldsR();
+            }
+        } catch (Exception e) {
+            System.out.println("klaida");
         }
     }
 

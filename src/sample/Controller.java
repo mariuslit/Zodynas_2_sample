@@ -261,34 +261,43 @@ public class Controller implements Initializable {
 
     // reakcija į klavišo paspaudimą ant ListView_1
     public void doOnKeyPressListView1(KeyEvent event) {
-        if ((event.getCode().equals(KeyCode.UP) && variantsListView.getSelectionModel().isSelected(0))) {
-            if (isFirst) {
-                fragmentTextField.requestFocus(); // padeda kursorių į input langelį
-                fragmentTextField.positionCaret(fragmentTextField.getLength()); // padeda kursorių į teksto galą
-                isFirst = false;
-            } else {
-                isFirst = true;
+        try {
+            if ((event.getCode().equals(KeyCode.UP) && variantsListView.getSelectionModel().isSelected(0))) {
+                if (isFirst) {
+                    fragmentTextField.requestFocus(); // padeda kursorių į input langelį
+                    fragmentTextField.positionCaret(fragmentTextField.getLength()); // padeda kursorių į teksto galą
+                    isFirst = false;
+                } else {
+                    isFirst = true;
+                }
             }
+            if (variantsListView.getSelectionModel().isSelected(1)) {
+                isFirst = false;
+            }
+            if (variantsListView.getItems().size() > 0) { // jei ListView ne tuščias
+                String a = variantsListView.getSelectionModel().getSelectedItem();
+                firstEquivalentLabel.setText(a);
+                translationLabel.setText(dictionaryTreeMap.get(a));
+            }
+            fillColorsToFields();
+            fillColorsToFields();
+        } catch (Exception e) {
+            System.out.println("klaida");
         }
-        if (variantsListView.getSelectionModel().isSelected(1)) {
-            isFirst = false;
-        }
-        if (variantsListView.getItems().size() > 0) { // jei ListView ne tuščias
-            String a = variantsListView.getSelectionModel().getSelectedItem();
-            firstEquivalentLabel.setText(a);
-            translationLabel.setText(dictionaryTreeMap.get(a));
-        }
-        fillColorsToFields();
     }
 
     // reakcija į klavišo paspaudimą ant ListView_2
     public void doOnKeyPressListView2(KeyEvent event) {
-        if (allWordsListView.getFocusModel().getFocusedIndex() != -1) {
-            String a = allWordsListView.getSelectionModel().getSelectedItem();
-            firstEquivalentLabel.setText(a);
-            translationLabel.setText(dictionaryTreeMap.get(a));
+        try {
+            if (allWordsListView.getFocusModel().getFocusedIndex() != -1) {
+                String a = allWordsListView.getSelectionModel().getSelectedItem();
+                firstEquivalentLabel.setText(a);
+                translationLabel.setText(dictionaryTreeMap.get(a));
+            }
+            fillColorsToFields();
+        } catch (Exception e) {
+            System.out.println("klaida");
         }
-        fillColorsToFields();
     }
 
     public void doOnEscapePresPane(KeyEvent event) {

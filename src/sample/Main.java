@@ -16,6 +16,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader load = new FXMLLoader(getClass().getResource("sample.fxml"));
         Parent root = load.load();
+        primaryStage.setResizable(false); // nekintantis rėmelis
         primaryStage.setTitle("Žodynas Ltit");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

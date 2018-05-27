@@ -29,6 +29,8 @@ padariau kad atnaujintų duomenis (refresh) po antro view uždarymo
 sukurta Alertų klasė ir metodas
 panaikinta tarpinė Info klasė, nes viską galima tvarkyti tiesiogiai tarp Controller'ių per public static matomumus
 
+TODO:
+paspaudus ant ListView su pele [Ctrl + duble click] meta klaidas, reikia try-catch
 
 TODO papildomi patobulinimai:
 failas iš Excel
