@@ -16,6 +16,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sample.ReadWriteData.ReadWriteData;
+import sun.reflect.generics.tree.Tree;
 
 import java.net.URL;
 import java.util.*;
@@ -147,7 +148,9 @@ public class Controller implements Initializable {
         allWordsListView.getItems().clear();// duomenų trynimas iš ListView
 
         // observableList naudojimas spausdinimui į ListView, vietoj įrašymo po vieną item per ciklus
-        allWordsListView.setItems(FXCollections.observableList(new ArrayList<>(dictionaryTreeMap.keySet()))); // optimizuota
+        allWordsListView.setItems(FXCollections.observableList(new ArrayList<>(sortedTreeMap(dictionaryTreeMap).values()))); // optimizuota
+//        allWordsListView.setItems(FXCollections.observableList(new ArrayList<>(dictionaryTreeMap.keySet()))); // optimizuota
+        System.out.println(sortedTreeMap(dictionaryTreeMap).values());
 
         // pažymi pirmą celę
         allWordsListView.getSelectionModel().selectFirst();
@@ -159,6 +162,13 @@ public class Controller implements Initializable {
     private void translate(String fragment) {
         if (!fragment.equals("")) {
             TreeSet<String> variant = getEquivalentVariants(fragment.toLowerCase());
+/*todo
+            Map<String,String> map = new TreeMap<>();
+            map.putAll(variant,null);
+todo*/  
+
+
+
             variantsListView.setItems(FXCollections.observableList(new ArrayList<>(variant))); // optimizuota
             countityOfVariantsBelowListViewLabel.setText(variant.size() + "");
             if (!variant.isEmpty()) { // ne lygu nuliui
@@ -209,6 +219,25 @@ public class Controller implements Initializable {
         wordR = firstEquivalentLabel.getText();
         translationR = translationLabel.getText();
         openNewStageR();
+    }
+
+    // metodas skirtas surūšiuoti a-z neatsižvelgiant į didžiasias raides
+    private TreeMap<String,String> sortedTreeMap(TreeMap<String,String> oldTreeMap) {
+
+        // sukuriam naują TreeMap
+        // key = senasis key mažosiomis raidėmis + eilės skaičius jeigu dubluotas
+        // value = key
+        TreeMap<String, String> newTreeMap = new TreeMap<>();
+
+        int num = 0;
+        for (String item : oldTreeMap.keySet()) {
+            if (newTreeMap.containsKey(item)) {
+                newTreeMap.put(item.toLowerCase() + ++num, item);
+            } else {
+                newTreeMap.put(item.toLowerCase(), item);
+            }
+        }
+        return newTreeMap;
     }
 
     // reakcija į pelės paspaudimą ant ListView_1 lauko

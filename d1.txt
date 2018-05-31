@@ -1,6 +1,5 @@
 Pakuonis3 -->> 3+++
-Pakuonis5 -->> 3+++++ <enter> + <enter> + <enter> + <enter> +
-Pakuonis5+ -->> 3+++++ <enter> + <enter> + <enter> + <enter> +
+Pakuonis7 -->> 3+++
 Panevėžys8 -->> 8
 a -->> /ei/ is the first letter and the first vowel of the ISO basic Latin alphabet
 b -->> antra raidė /by/
@@ -8,6 +7,7 @@ c -->> cccc
 lietuvis -->> lituano
 naujas -->> new
 nustatyti -->> set+
+pakuonis5 -->> 3+++++ <enter> + <enter> + <enter> + <enter> +
 panda4 -->> 4
 pandemija5 -->> nepandemija
 panelė6 -->> 6

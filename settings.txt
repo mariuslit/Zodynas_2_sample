@@ -4,4 +4,4 @@ d3 -->> Aiškinamasis
 d4 -->> Lt - it
 d5 -->> Bandomasis
 d6 -->> Ilgas žodynas
-default -->> d5
+default -->> d1
