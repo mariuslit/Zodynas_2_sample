@@ -1,24 +1,26 @@
 package sample;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.TreeMap;
 
 public class Sortiravimas {
 
-    private Map<String, String> sortingLinkedHashMap() {
+    // metodas skirtas surūšiuoti a-z neatsižvelgiant į didžiasias raides
+    public static TreeMap<String,String> sortedTreeMap(TreeMap<String, String> oldTreeMap) {
 
-        // įkeliam žodyną į nerūšiuotą mapą
-        Map<String, String> unsortMap = new LinkedHashMap<>(Controller.dictionaryTreeMap);
-        Map<String, String> map = new LinkedHashMap<>();
-
-        // sukuriam naują LinkedHashMap
+        // sukuriam naują TreeMap
         // key = senasis key mažosiomis raidėmis + eilės skaičius jeigu dubluotas
-        // o value = key
+        // value = key
+        TreeMap<String, String> newTreeMap = new TreeMap<>();
 
-        for (String item : unsortMap.keySet()) {
-            map.put(item.toLowerCase(), item);
+        int num = 0;
+        for (String item : oldTreeMap.keySet()) {
+            if (newTreeMap.containsKey(item)) {
+                newTreeMap.put(item.toLowerCase() + ++num, item);
+            } else {
+                newTreeMap.put(item.toLowerCase(), item);
+            }
         }
-
-        return unsortMap;
+        return newTreeMap;
     }
+
 }

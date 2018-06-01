@@ -6,6 +6,21 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/*****************************************************************
+
+ Developer:   Marius Litvinas 2018-03-31
+ Customer:    Indrė Litvinienė
+ Programm:    Dictionary "Ltit"
+
+ *****************************************************************
+ Description:
+
+ paremta principu: ŽODIS - VERTIMAS
+ ŽODIS    - verčiamas žodis arba frazė iš kelių žodžių
+ VERTIMAS - sakinys ar keli sakiniai, gali būti iš kelių eilučių.
+ galima susikurti savo 6 žodynus, juos pildyti ir readaguoti
+
+ *****************************************************************/
 public class Main extends Application {
 
     public static void main(String[] args) {
