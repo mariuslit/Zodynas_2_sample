@@ -1,4 +1,4 @@
-TODO Atlikta, veikia gerai:
+Atlikta:
 suranda žodį atitinkamame žodyne ir parodo vertimą
 veikia žodynų pasirinkimo radiobutonai
 veikia spausdinimas į ListView per mano metodą + for ciklą
@@ -28,26 +28,16 @@ padariau žodynų Map įrašymas į list view naudojant observableList, bet tik 
 padariau kad atnaujintų duomenis (refresh) po antro view uždarymo
 sukurta Alertų klasė ir metodas
 panaikinta tarpinė Info klasė, nes viską galima tvarkyti tiesiogiai tarp Controller'ių per public static matomumus
-try-catch sugauna klaidas spaudinėjant su klaviatųra ir pele ant ListView [Ctrl + duble click]
+try-catch sugauna klaidas spaudinėjant su klaviatūra ir pele ant ListView [Ctrl + duble click]
+[v] check box, kai reikia ieškoti žodžių su fragmentu iš žodžio vidurio
 
 
 TODO:
-sort teisingas sortiravimas a-z be didžiųjų mažųjų raidžių
-paryškinti taktą, bold, italik aprašyme
+sort teisingas sortiravimas a-z be didžiųjų mažųjų raidžių, naudoti tik išvedimui į ekraną
+  + pagrindiniame žodyne [atlikta, bet reikia pratestuoti kaip veikia]
+  + redagavimo
+    variantuose
 
-TODO papildomi patobulinimai:
-failas iš Excel
 
 
-TODO klausimai Andriui:
----
-* dar karta  apie:
-    @
-    @Override
-    @FXML
-
-    Parent
-    Stage
-    Scene
-    kas yra state
 

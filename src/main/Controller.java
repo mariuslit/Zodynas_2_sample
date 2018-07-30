@@ -1,4 +1,4 @@
-package sample;
+package main;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -15,14 +15,15 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import sample.ReadWriteData.ReadWriteData;
-import sun.reflect.generics.tree.Tree;
+import main.ReadWriteData.ReadWriteData;
 
 import java.net.URL;
 import java.util.*;
 
 public class Controller implements Initializable {
 
+    @FXML
+    private CheckBox leistiIeskotiZodzioViduryjeCheckBox;
     @FXML
     private Pane pane;
     @FXML
@@ -57,7 +58,7 @@ public class Controller implements Initializable {
     @FXML
     private RadioButton d6;
 
-    // ststic kintamieji skirti paruoti duomenis į kitą Controller
+    // ststic kintamieji skirti perduoti duomenis į kitą Controller
     public static Stage stageR;
     public static String wordR;
     public static String translationR;
@@ -71,6 +72,8 @@ public class Controller implements Initializable {
         settingsTreeMap = ReadWriteData.readFile("settings"); // nuskaitomas settings.txt failas
         doOnSelectRadioButton(settingsTreeMap.get("default")); // keičiamas zodynas į default stratup metu
         translate(fragmentTextField.getText());
+
+        // teksto formatavimo pakeitimai
         variantsListView.setStyle("-fx-font-size: 16px;");
         variantsListView.setFixedCellSize(28);
         allWordsListView.setStyle("-fx-font-size: 14px;");
@@ -106,7 +109,7 @@ public class Controller implements Initializable {
         allWordsListView.getSelectionModel().select(0); // padeda kursorių į pirmą celę
     }
 
-    // žodyno pakeitimas, toggel ID = failo vardas
+    // žodyno pasirinkimas, toggel ID = failo vardas
     public void doOnSelectRadioButton(String toggelID_fileName) {
         switch (toggelID_fileName) {
             case "d1":
@@ -148,9 +151,8 @@ public class Controller implements Initializable {
         allWordsListView.getItems().clear();// duomenų trynimas iš ListView
 
         // observableList naudojimas spausdinimui į ListView, vietoj įrašymo po vieną item per ciklus
-        allWordsListView.setItems(FXCollections.observableList(new ArrayList<>(Sortiravimas.sortedTreeMap(dictionaryTreeMap).values()))); // optimizuota
-//        allWordsListView.setItems(FXCollections.observableList(new ArrayList<>(dictionaryTreeMap.keySet()))); // optimizuota
-        System.out.println(Sortiravimas.sortedTreeMap(dictionaryTreeMap).values());// TODO: 2018-06-01 trinti
+        allWordsListView.setItems(FXCollections.observableList(new ArrayList<>(
+                Sortiravimas.sortiruotiAaZzKeyReiksmes(dictionaryTreeMap).values())));
 
         // pažymi pirmą celę
         allWordsListView.getSelectionModel().selectFirst();
@@ -158,21 +160,41 @@ public class Controller implements Initializable {
         sizeOfDictionaryBelowListViewLabel.setText(dictionaryTreeMap.size() + "");
     } // end of doOnSelectRadioButton
 
-    // vertimas
+    // vertimas: imamas žodžio fragmentas, ieškoma atitikmenų, atspausdinama į laukus
     private void translate(String fragment) {
-        if (!fragment.equals("")) {
-            TreeSet<String> variant = getEquivalentVariants(fragment.toLowerCase());
-/*todo
-            Map<String,String> map = new TreeMap<>();
-            map.putAll(variant,null);
-todo*/  
+
+        // variantų sarašas kurį reikia atspausdinti po kiekvieno klavišo paspaudimo
+        TreeSet<String> variantaiNuoPradzios = new TreeSet<>();
+        TreeSet<String> variantaiNuoViduro = new TreeSet<>();
+        ArrayList<String> variantaiSpausdinimuiIlistView = new ArrayList<>();
+
+        // atliakami vaiksmai jei įvestas nors vienas simbolis paieškos lauke
+        if (fragment.length() > 0) {
+
+            // randa pradžios fragmentus
+            Fragmentai fragmentai = new Fragmentai(); // sukuriamas objektas
+            variantaiNuoPradzios.addAll(fragmentai.rastiZodziusSuPradziosFragmentu(fragment, dictionaryTreeMap));
+            variantaiNuoViduro.addAll(fragmentai.rastiZodziusSuVidurioFragmentu(fragment, dictionaryTreeMap));
+
+            // pauošia variantus spausdinimui į ListView,
+            variantaiSpausdinimuiIlistView.addAll(
+                    Sortiravimas.sortiruotiAaZzKeyReiksmes(variantaiNuoPradzios).values());
+
+            // paieška su vidurio fragmantu vykdoma, kai įjungtas check box [v]
+            // todo dar neiesko kai yra tik su vidurio
+            if (leistiIeskotiZodzioViduryjeCheckBox.isSelected()) {
+                variantaiSpausdinimuiIlistView.add("**************************");
+                variantaiSpausdinimuiIlistView.addAll(
+                        Sortiravimas.sortiruotiAaZzKeyReiksmes(variantaiNuoViduro).values());
+            }
 
 
+            // spausdinama į ListView
+            variantsListView.setItems(FXCollections.observableList(variantaiSpausdinimuiIlistView)); // optimizuota
 
-            variantsListView.setItems(FXCollections.observableList(new ArrayList<>(variant))); // optimizuota
-            countityOfVariantsBelowListViewLabel.setText(variant.size() + "");
-            if (!variant.isEmpty()) { // ne lygu nuliui
-                String firstEquiv = variant.first();
+            // užpildo verčiamo žodžio ir vertimo laukus
+            if (!variantaiNuoPradzios.isEmpty()) { // ne lygu nuliui
+                String firstEquiv = variantaiNuoPradzios.first();
                 firstEquivalentLabel.setText(firstEquiv);
                 translationLabel.setText(dictionaryTreeMap.get(firstEquiv));
             } else {
@@ -181,7 +203,10 @@ todo*/
         } else {
             clearFields();
         }
-        variantsListView.getSelectionModel().selectFirst(); // padeda kursorių į pirmą celę
+        countityOfVariantsBelowListViewLabel.setText(variantaiNuoPradzios.size() + variantaiNuoViduro.size() + "");
+
+        // padeda kursorių į pirmą celę, sutvarko spalvas
+        variantsListView.getSelectionModel().selectFirst();
         fillColorsToFields();
     }
 
@@ -198,16 +223,9 @@ todo*/
         }
     }
 
-    // variantų paieškos varikliukas veikia puikiai
-    private TreeSet<String> getEquivalentVariants(String fragment) {
-        TreeSet<String> variant = new TreeSet<>(); // čia talpinamas atsakymas
-        for (String item : dictionaryTreeMap.keySet()) {
-            if (item.toLowerCase().startsWith(fragment)) { // true jei rado atitikmenį
-                variant.add(item);
-            }
-        }
-        return variant;
-    } // end of <Back-End>
+
+    // end of Back-End
+
 
     public void onNewButtonPress() throws Exception {
         wordR = fragmentTextField.getText();

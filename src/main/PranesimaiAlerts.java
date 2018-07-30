@@ -1,8 +1,8 @@
-package sample;
+package main;
 
 import javafx.scene.control.Alert;
 
-public class AlertsClass {
+public class PranesimaiAlerts {
 
     public void alert(Alert.AlertType alertType, String content) {
         Alert alert = new Alert(alertType);

@@ -1,4 +1,4 @@
-package sample;
+package main;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,12 +12,13 @@ import javafx.stage.Stage;
  Customer:    Indrė Litvinienė
  Programm:    Dictionary "Ltit"
 
- *****************************************************************
+******************************************************************
  Description:
 
- paremta principu: ŽODIS - VERTIMAS
+ paremta principu: ŽODIS -> VERTIMAS
  ŽODIS    - verčiamas žodis arba frazė iš kelių žodžių
  VERTIMAS - sakinys ar keli sakiniai, gali būti iš kelių eilučių.
+
  galima susikurti savo 6 žodynus, juos pildyti ir readaguoti
 
  *****************************************************************/

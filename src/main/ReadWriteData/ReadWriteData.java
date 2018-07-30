@@ -1,10 +1,10 @@
-package sample.ReadWriteData;
+package main.ReadWriteData;
 
 import java.io.*;
 import java.util.TreeMap;
 
 /**
- * txt failas turi būti pagrindiniame projekto kataloge, jokiu būdu ne crs\, ne \crs\sample
+ * txt failas turi būti pagrindiniame projekto kataloge, jokiu būdu ne crs\, ne \crs\main
  * mano kodas sukurtas pagal Andriaus pvz: << Created by andriusbaltrunas on 3/3/2017. >>
  */
 public class ReadWriteData {
@@ -19,9 +19,9 @@ public class ReadWriteData {
             String line;
             while ((line = file.readLine()) != null) { // jeigu eilutė egzistuoja, t.y. ne lygi nuliui
                 String[] mas = line.split(SPLITER);
-                String s = mas[1].replace(SPLITER2, "\n");
+                String string = mas[1].replace(SPLITER2, "\n");
                 if (mas.length == 2) {
-                    data.put(mas[0], s);
+                    data.put(mas[0], string);
                 }
             }
         } catch (Exception e) {
@@ -30,6 +30,7 @@ public class ReadWriteData {
         return data;
     }
 
+    // duomenų įrašymas į failą
     public static void writeFile(TreeMap<String, String> dict, String fileName) {
         try (BufferedWriter file = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fileName + TXT), UTF8))){
             for (String item : dict.keySet()) {

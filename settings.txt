@@ -1,4 +1,4 @@
-d1 -->> Lietuvių - Italų
+d1 -->> IT - anglų - lietuvių
 d2 -->> Anglų - Lietuvių
 d3 -->> Aiškinamasis
 d4 -->> Lt - it

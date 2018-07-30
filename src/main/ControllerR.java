@@ -1,13 +1,12 @@
-package sample;
+package main;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import sample.ReadWriteData.ReadWriteData;
+import main.ReadWriteData.ReadWriteData;
 
-import java.io.EOFException;
 import java.util.*;
 
 public class ControllerR {
@@ -26,7 +25,7 @@ public class ControllerR {
     private TreeMap<String, String> dictionaryTreeMapR = Controller.dictionaryTreeMap;
     private TreeMap<String, String> settingsTreeMapR = Controller.settingsTreeMap;
     private String selectedWord; // kintamasis skirtas patikrinti ar koks nors žodis yra baksteltas ant ListView
-    private AlertsClass alert = new AlertsClass();
+    private PranesimaiAlerts alert = new PranesimaiAlerts();
 
     public void initialize() {
         wordTextFieldR.setText(Controller.wordR);
@@ -236,10 +235,10 @@ public class ControllerR {
         wordTextFieldR.requestFocus(); // padeda kursorių į input langelį
     }
 
-    // veikiantis metodas atspausdinti duomenis į ListView
+    // spausdina duomenis į ListView
     private void fillListViewR() {
-        TreeSet<String> variant = new TreeSet<>(dictionaryTreeMapR.keySet());
-        allWordsListViewR.setItems(FXCollections.observableList(new ArrayList<>(variant))); // optimizuota
+        allWordsListViewR.setItems(FXCollections.observableList(new ArrayList<>(
+                Sortiravimas.sortiruotiAaZzKeyReiksmes(dictionaryTreeMapR).values())));
         sizeOfDictionaryBelowListViewLabelR.setText(dictionaryTreeMapR.size() + "");
     }
 
